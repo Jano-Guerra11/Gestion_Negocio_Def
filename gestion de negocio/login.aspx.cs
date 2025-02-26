@@ -3,6 +3,7 @@ using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,24 +15,55 @@ namespace gestion_de_negocio
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                llenarDatosDeInicio();
+            }    
         }
-
-        protected void lbRegistrarse_Click(object sender, EventArgs e)
+        public void llenarDatosDeInicio()
         {
-            Response.Redirect("registracion.aspx");
+            HttpCookie ckNombre = Request.Cookies["nombreUsuario"];
+            HttpCookie ckContrasena = Request.Cookies["contrasenaUsuario"];
+            HttpCookie ckNegocio = Request.Cookies["negocio"];
+            if (ckNombre != null && ckContrasena != null && ckNegocio != null)
+            {
+                txtNombreUsuario.Text = ckNombre.ToString();
+                txtPassword.Text = ckContrasena.ToString();
+                txtNombreNegocio.Text = ckNegocio.ToString();
+            }
         }
-
-        protected void cvIniciarSesion_ServerValidate(object source, ServerValidateEventArgs args)
+        protected void btnMostrar_Click(object sender, EventArgs e)
         {
-            bool valido = false;
+            mostrarOcultarContrasena();
+        }
+        public void mostrarOcultarContrasena()
+        {
+            string contenido = txtPassword.Text;
+            if (btnMostrar.Text == "Mostrar")
+            {
+                ViewState["password"] = txtPassword.Text;
+                txtPassword.TextMode = TextBoxMode.SingleLine;
+                btnMostrar.Text = "Ocultar";
+                txtPassword.Attributes["value"] = contenido;
+            }
+            else
+            {
+                ViewState["password"] = txtPassword.Text;
+                txtPassword.TextMode = TextBoxMode.Password;
+                btnMostrar.Text = "Mostrar";
+                txtPassword.Attributes["value"] = contenido;
+
+            }
+        }
+        protected void btnIniciarSesion_Click(object sender, EventArgs e)
+        {
             if (iniciarSesion())
             {
-                valido = true;
+                Response.Redirect("Menu.aspx");
             }
-            args.IsValid = valido;
-            
+            else { lblMensajeDeInicio.Text = " No se pudo iniciar sesion. Usuario Incorrecto";}
         }
+
         public bool iniciarSesion()
         {
             bool UsuarioValido = false;
@@ -45,24 +77,35 @@ namespace gestion_de_negocio
             usuarios.NombreUsuario = txtNombreUsuario.Text;
             usuarios.Contrasenia = txtPassword.Text;
             negocio.NombreNegocio = txtNombreNegocio.Text;
-            NxU.IdUsuario = negocioUsuarios.obtenerID(usuarios); /*atravez del nombre que es unico*/
-            NxU.IdNegocio = negNeg.obtenerID(negocio); /*atravez del nombre que es unico*/
+            NxU.IdUsuario = negocioUsuarios.obtenerID(usuarios); 
+            NxU.IdNegocio = negNeg.obtenerID(negocio);
 
             if (negocioUsuarios.existeUsuario(usuarios) &&
               negNeg.existeNegocio(negocio) && negNxU.existeNxU(NxU))
             {
                 UsuarioValido = true;
-            Debug.WriteLine("xxxxxxxxxxxxx usuario valido");
+                Session["negocio"] = NxU.IdNegocio;
+                if (chbxRecordarme.Checked)
+                {
+                    crearCookies(usuarios,negocio);
+                }
+                
             }
             return UsuarioValido;
         }
-
-        protected void btnIniciarSesion_Click(object sender, EventArgs e)
+        public void crearCookies(Usuarios usuario,NegocioC negocio )
         {
-            if (iniciarSesion())
-            {
-                Debug.WriteLine("------------- inicio correcto ---------");
-            }
+            HttpCookie ckUsuario = new HttpCookie("nombreUsuario",usuario.NombreUsuario);
+            ckUsuario.Expires = DateTime.Now.AddDays(10);
+            HttpCookie ckContrasena = new HttpCookie("ContrasenaUsuario",usuario.Contrasenia);
+            ckContrasena.Expires = DateTime.Now.AddDays(10);
+            HttpCookie ckNegocio = new HttpCookie("negocio",negocio.NombreNegocio);
+            ckNegocio.Expires = DateTime.Now.AddDays(10);
+        }
+
+        protected void lbRegistrarse_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("registracion.aspx");
         }
     }
 }

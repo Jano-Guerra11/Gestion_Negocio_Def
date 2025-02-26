@@ -25,5 +25,9 @@ namespace Negocio
         {
             return dao.obtenerID(usuario);
         }
+        public bool existeNombreUsuario(string nombre)
+        {
+            return dao.existeNombreUsuario(nombre);
+        }
     }
 }

@@ -20,3 +20,14 @@ C:\Users\jano\Desktop\Proyectos_de_Programacion\Proyectos .NET\Apps_Web\Gestion\
 C:\Users\jano\Desktop\Proyectos_de_Programacion\Proyectos .NET\Apps_Web\Gestion\Negocio\obj\Debug\Negocio.csproj.Up2Date
 C:\Users\jano\Desktop\Proyectos_de_Programacion\Proyectos .NET\Apps_Web\Gestion\Negocio\obj\Debug\Negocio.dll
 C:\Users\jano\Desktop\Proyectos_de_Programacion\Proyectos .NET\Apps_Web\Gestion\Negocio\obj\Debug\Negocio.pdb
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\bin\Debug\Negocio.dll
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\bin\Debug\Negocio.pdb
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\bin\Debug\Dao.dll
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\bin\Debug\Entidades.dll
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\bin\Debug\Dao.pdb
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\bin\Debug\Entidades.pdb
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\obj\Debug\Negocio.csproj.Up2Date
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\obj\Debug\Negocio.dll
+C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Negocio\obj\Debug\Negocio.pdb

@@ -16,13 +16,22 @@
      <section class="table-bordered">
          <div class="h1">create an account</div>
           <div class="form-floating">
-        <asp:TextBox class="form-control" ID="txtUNRegistro" runat="server" TextMode="singleLine"></asp:TextBox>
+        <asp:TextBox class="form-control" ID="txtUNRegistro" runat="server" TextMode="singleLine" ControlToValidate="txtUNRegistro"></asp:TextBox>
         <label for="floatingPassword">UserName</label>
+          <asp:CustomValidator ID="cvNombreUsuario" runat="server" ValidationGroup="registro" Text="Nombre de usuario existente" ControlToValidate="txtUNRegistro" ForeColor="Red" OnServerValidate="cvNombreUsuario_ServerValidate"></asp:CustomValidator>
+              <asp:RequiredFieldValidator ID="rfvNombreUsuario" runat="server" ValidationGroup="registro"></asp:RequiredFieldValidator>
         </div>
-         <div class="form-floating">
-             <asp:TextBox class="form-control" ID="txtBNRegistro"  runat="server" TextMode="singleLine"></asp:TextBox>
-          <label for="floatingPassword">Bussines name</label>
+         <div class="">
+             <asp:DropDownList ID="ddlNegociosRegistrados" runat="server"  class="form-select" ControlToValidate="ddlNegociosRegistrados">
+                 <asp:ListItem Value="-1">Negocio al que pertenece ---</asp:ListItem>
+             </asp:DropDownList>   
+             <asp:RequiredFieldValidator ID="rfvDdlNegocios" runat="server" ControlToValidate="ddlNegociosRegistrados" InitialValue="-1" ForeColor="Red" ValidationGroup="registro">*</asp:RequiredFieldValidator>
         </div>
+             <div class="input-group mb-3">
+                 <asp:TextBox CssClass="form-control" ID="txtNuevoNegocio" runat="server"></asp:TextBox>
+                 <asp:Button CssClass="btn btn-outline-secondary" ID="btnAgregarNegocio" runat="server" Text="Agregar negocio" OnClick="btnAgregarNegocio_Click"/>
+                 <asp:Label ID="lblMensajeErrorAgregarNegocio" runat="server" Text=""></asp:Label>
+             </div>
           <div class="form-floating">
           <asp:TextBox class="form-control" ID="txtPassword1"  runat="server" TextMode="Password"></asp:TextBox>
           <label for="floatingPassword">Password</label>
@@ -30,9 +39,8 @@
           <div class="form-floating">
            <asp:TextBox class="form-control" ID="txtPassword2"  runat="server" TextMode="Password"></asp:TextBox>
            <label for="floatingPassword">Repeat password</label>
+              <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="CompareValidator"></asp:CompareValidator>
           </div>
-         <div class="paddingLogin">
-             <asp:CheckBox ID="chbxRecordarme2" runat="server" text="Remember user"/></div>
          <div class="paddingLogin">
              <asp:Button class="btn btn-primary" ID="btnRegistrarse" runat="server" Text="Create account" /></div>
          <div class="paddingLogin">

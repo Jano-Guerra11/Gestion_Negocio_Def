@@ -22,16 +22,17 @@
                 <div class="form-floating">
                     <asp:TextBox class="form-control" id="txtPassword"  runat="server" TextMode="Password"></asp:TextBox>
                  <label for="floatingPassword">Password</label>
+                     <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" OnClick="btnMostrar_Click" />
                </div>
                <div class="form-floating">
-                   <asp:TextBox class="form-control" id="txtNombreNegocio"  runat="server" TextMode="singleLine"></asp:TextBox>
+                   <asp:TextBox class="form-control" id="txtNombreNegocio"  runat="server" TextMode="Password"></asp:TextBox>
                    <label for="floatingPassword">Bussines Name</label>
                    </div>
                 <div>
                     <asp:CheckBox ID="chbxRecordarme" runat="server" text="Remember user"/></div>
                 <div>
                     <asp:Button class="btn btn-primary" ID="btnIniciarSesion" runat="server" Text="Login" OnClick="btnIniciarSesion_Click" />
-                    <asp:CustomValidator ID="cvIniciarSesion" runat="server" OnServerValidate="cvIniciarSesion_ServerValidate" ValidationGroup="1" ControlToValidate="txtNombreUsuario">Usuario o contrasenia incorrectos</asp:CustomValidator>
+                    <asp:Label ID="lblMensajeDeInicio" runat="server" ForeColor="Red"></asp:Label>
                 </div>
                 <div>
                     <asp:LinkButton ID="lbRegistrarse" runat="server" OnClick="lbRegistrarse_Click">¿no tiene cuenta? Registrese!</asp:LinkButton></div>

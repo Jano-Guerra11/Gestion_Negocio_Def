@@ -29,7 +29,7 @@ namespace Dao
             string consulta = "SELECT idUsuario_us FROM usuarios where nombre_Us = '" + usuario.NombreUsuario +
                 "' and contrasenia_us = '" + usuario.Contrasenia + "'";
             DataTable dt = ad.obtenerTabla(consulta,"idUsuario");
-            if(dt != null)
+            if(dt.Rows.Count > 0)
             {
               id = Convert.ToInt32(dt.Rows[0]);
             }
@@ -40,6 +40,11 @@ namespace Dao
         {
             string consulta = "SELECT * FROM Usuarios WHERE idUsuario_us = "+idUsuario;
             return ad.obtenerTabla(consulta, "infoDelUsuario");
+        }
+        public bool existeNombreUsuario(string nombre)
+        {
+            string consulta = "select * from usuarios where nombre_us = '" + nombre + "'";
+            return ad.existe(consulta);
         }
     }
 }
