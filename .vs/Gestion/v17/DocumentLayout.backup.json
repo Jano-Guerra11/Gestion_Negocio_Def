@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion\\gestion de negocio\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion\\gestion de negocio\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion\\gestion de negocio\\estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "estilos.css",
+              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion\\gestion de negocio\\estilos.css",
+              "RelativeDocumentMoniker": "gestion de negocio\\estilos.css",
+              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion\\gestion de negocio\\estilos.css",
+              "RelativeToolTip": "gestion de negocio\\estilos.css",
+              "ViewState": "AgIAAB4BAAAAAAAAAAAAAC4BAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-01-08T13:19:41.037Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Productos.aspx",
+              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion\\gestion de negocio\\Productos.aspx",
+              "RelativeDocumentMoniker": "gestion de negocio\\Productos.aspx",
+              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion\\gestion de negocio\\Productos.aspx",
+              "RelativeToolTip": "gestion de negocio\\Productos.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-01-09T19:01:55.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Productos.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion\\gestion de negocio\\Productos.aspx.cs",
+              "RelativeDocumentMoniker": "gestion de negocio\\Productos.aspx.cs",
+              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion\\gestion de negocio\\Productos.aspx.cs",
+              "RelativeToolTip": "gestion de negocio\\Productos.aspx.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAWwJYAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T19:06:04.942Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
