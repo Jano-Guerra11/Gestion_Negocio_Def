@@ -56,12 +56,12 @@
                     <Columns>
                         <asp:TemplateField HeaderText="ID">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_idUsuario" runat="server" Text="<%# Bind(IdUsuario_Us) %>"></asp:Label>
+                                <asp:Label ID="lbl_it_idUsuario" runat="server"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="NOMBRE">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_nombreUsuario" runat="server" Text="<%# Bind(nombre_Us) %>"></asp:Label>
+                                <asp:Label ID="lbl_it_nombreUsuario" runat="server" Text='<%# Bind("Nombre_Us") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Rol">

@@ -17,6 +17,7 @@ namespace gestion_de_negocio
         {
             if (!IsPostBack)
             {
+                Debug.WriteLine("------------------------fff");
                 cargarDDlNegocios();
                 cargarGridUsuarios();
             }
@@ -74,13 +75,14 @@ namespace gestion_de_negocio
         {
             NegocioPerXUsu negPxU = new NegocioPerXUsu();
             DataTable tabla = negPxU.tablaPermisosDeCadaUsuario();
-            Debug.WriteLine("------yo-------------" + tabla.Rows.Count);
+           
             grdUsuarios.DataSource = tabla;
+            Debug.WriteLine("Datos cargados: " + tabla.Rows.Count);
             grdUsuarios.DataBind();
         }
         protected void grdUsuarios_DataBound(object sender,EventArgs e)
         {
-            Debug.WriteLine("-------------------" + grdUsuarios.Rows.Count);
+            Debug.WriteLine("-------xd");
             if (grdUsuarios.Rows.Count == 0)
             {
                
@@ -101,10 +103,12 @@ namespace gestion_de_negocio
             {
                 int idEnInt = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "idUsuario_Us"));
                 string idEnString = idEnInt.ToString();
-                Label lblidUsuario = (Label)e.Row.FindControl("lbl_it_idUsuario");
-                Debug.WriteLine("---------------" + idEnString);
-                lblidUsuario.Text = idEnString;
+                Label lblId = (Label)e.Row.FindControl("lbl_it_IdUsuario");
+                lblId.Text = idEnString;    
+
+                Debug.WriteLine("-------" + idEnString);
             }
+           
         }
     }
 }
