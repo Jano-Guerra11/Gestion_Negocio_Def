@@ -46,5 +46,11 @@ namespace Dao
             string consulta = "select * from usuarios where nombre_us = '" + nombre + "'";
             return ad.existe(consulta);
         }
+        /*
+        public int altaUsuario(Usuarios usuario)
+        {
+            string consulta = "INSERT INTO usuarios ()";
+        }
+        */
     }
 }

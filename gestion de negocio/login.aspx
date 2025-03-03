@@ -34,10 +34,11 @@
                     <asp:Button class="btn btn-primary" ID="btnIniciarSesion" runat="server" Text="Login" OnClick="btnIniciarSesion_Click" />
                     <asp:Label ID="lblMensajeDeInicio" runat="server" ForeColor="Red"></asp:Label>
                 </div>
-                <div>
-                    <asp:LinkButton ID="lbRegistrarse" runat="server" OnClick="lbRegistrarse_Click">¿no tiene cuenta? Registrese!</asp:LinkButton></div>
+                
             </section>
-
+            <div>
+    para crear usuario debe ingresar como admin
+</div>
         </main>
     </form>
     <script src="Scripts/jquery.min.js"></script>

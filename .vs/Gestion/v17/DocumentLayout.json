@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\gestion de negocio\\registracion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\registracion.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\gestion de negocio\\administraciondeusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\administraciondeusuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\dao\\daonegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\daonegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\gestion de negocio\\administraciondeusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\administraciondeusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\negocio\\negocionegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|solutionrelative:negocio\\negocionegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\dao\\daopermisosxusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\daopermisosxusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\gestion de negocio\\registracion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\registracion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\negocio\\negociousuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|solutionrelative:negocio\\negociousuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\negocio\\negocioperxusu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|solutionrelative:negocio\\negocioperxusu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\dao\\daousuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\daousuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\gestion de negocio\\estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\estilos.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\usurio\\onedrive\\escritorio\\proyectos de programacion\\proyectos .net\\apps web\\gestion_negocio_def\\dao\\daonegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\daonegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,80 +42,93 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "NegocioUsuarios.cs",
-              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Negocio\\NegocioUsuarios.cs",
-              "RelativeDocumentMoniker": "Negocio\\NegocioUsuarios.cs",
-              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Negocio\\NegocioUsuarios.cs",
-              "RelativeToolTip": "Negocio\\NegocioUsuarios.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwB0AAAAxAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "NegocioPerXUsu.cs",
+              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Negocio\\NegocioPerXUsu.cs",
+              "RelativeDocumentMoniker": "Negocio\\NegocioPerXUsu.cs",
+              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Negocio\\NegocioPerXUsu.cs",
+              "RelativeToolTip": "Negocio\\NegocioPerXUsu.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAADwvw8AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T19:51:27.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DaoUsuarios.cs",
-              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Dao\\DaoUsuarios.cs",
-              "RelativeDocumentMoniker": "Dao\\DaoUsuarios.cs",
-              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Dao\\DaoUsuarios.cs",
-              "RelativeToolTip": "Dao\\DaoUsuarios.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAxwC4AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T19:49:34.189Z",
+              "WhenOpened": "2025-03-03T19:42:50.753Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "NegocioNegocios.cs",
-              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Negocio\\NegocioNegocios.cs",
-              "RelativeDocumentMoniker": "Negocio\\NegocioNegocios.cs",
-              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Negocio\\NegocioNegocios.cs",
-              "RelativeToolTip": "Negocio\\NegocioNegocios.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAowCcAAAAhAAAAAAAAAA==",
+              "Title": "DaoPermisosXUsuarios.cs",
+              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Dao\\DaoPermisosXUsuarios.cs",
+              "RelativeDocumentMoniker": "Dao\\DaoPermisosXUsuarios.cs",
+              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Dao\\DaoPermisosXUsuarios.cs",
+              "RelativeToolTip": "Dao\\DaoPermisosXUsuarios.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAADwvxgAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T19:40:30.187Z",
+              "WhenOpened": "2025-03-03T18:37:25.512Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "DaoUsuarios.cs",
+              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Dao\\DaoUsuarios.cs",
+              "RelativeDocumentMoniker": "Dao\\DaoUsuarios.cs",
+              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Dao\\DaoUsuarios.cs",
+              "RelativeToolTip": "Dao\\DaoUsuarios.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T18:25:10.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "daoNegocios.cs",
               "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Dao\\daoNegocios.cs",
               "RelativeDocumentMoniker": "Dao\\daoNegocios.cs",
               "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\Dao\\daoNegocios.cs",
               "RelativeToolTip": "Dao\\daoNegocios.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAswBUAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAiwDQAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T19:39:23.226Z",
+              "WhenOpened": "2025-03-03T17:46:50.855Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "registracion.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\registracion.aspx.cs",
-              "RelativeDocumentMoniker": "gestion de negocio\\registracion.aspx.cs",
-              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\registracion.aspx.cs",
-              "RelativeToolTip": "gestion de negocio\\registracion.aspx.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAswDsAAABCAAAAAAAAAA==",
+              "Title": "AdministracionDeUsuarios.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\AdministracionDeUsuarios.aspx.cs",
+              "RelativeDocumentMoniker": "gestion de negocio\\AdministracionDeUsuarios.aspx.cs",
+              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\AdministracionDeUsuarios.aspx.cs",
+              "RelativeToolTip": "gestion de negocio\\AdministracionDeUsuarios.aspx.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAADwv2gAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T18:41:20.622Z",
+              "WhenOpened": "2025-03-03T17:15:42.224Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "registracion.aspx",
-              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\registracion.aspx",
-              "RelativeDocumentMoniker": "gestion de negocio\\registracion.aspx",
-              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\registracion.aspx",
-              "RelativeToolTip": "gestion de negocio\\registracion.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "DocumentIndex": 5,
+              "Title": "estilos.css",
+              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\estilos.css",
+              "RelativeDocumentMoniker": "gestion de negocio\\estilos.css",
+              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\estilos.css",
+              "RelativeToolTip": "gestion de negocio\\estilos.css",
+              "ViewState": "AgIAACMBAAAAAAAAAAAAADMBAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-03T17:13:44.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdministracionDeUsuarios.aspx",
+              "DocumentMoniker": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\AdministracionDeUsuarios.aspx",
+              "RelativeDocumentMoniker": "gestion de negocio\\AdministracionDeUsuarios.aspx",
+              "ToolTip": "C:\\Users\\USURIO\\OneDrive\\Escritorio\\proyectos de programacion\\proyectos .NET\\Apps Web\\Gestion_Negocio_Def\\gestion de negocio\\AdministracionDeUsuarios.aspx",
+              "RelativeToolTip": "gestion de negocio\\AdministracionDeUsuarios.aspx",
+              "LogicalView": "7651a702-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-02-26T18:41:11.909Z",
+              "WhenOpened": "2025-03-03T17:06:30.127Z",
               "EditorCaption": ""
             }
           ]

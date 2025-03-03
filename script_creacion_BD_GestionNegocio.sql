@@ -95,3 +95,22 @@ constraint FK_pXp_productos foreign key (idProducto_pXp,idNegocio_pXp) reference
 )
 go
 
+
+create table permisos
+(
+idPermiso_Per int identity(1,1) not null,
+NombrePermiso_Per varchar(30) not null
+constraint PK_PERMISOS primary key (idPermiso_Per),
+)
+go
+
+create table permisosXusuarios
+(
+idUsuario_PerXus int not null,
+idPermiso_PerXus int not null,
+TienePermiso_PerXus bit not null,
+constraint PK_PERXUS primary key (idUsuario_PerXus,idPermiso_PerXus),
+constraint FK_USUARIOS_PERXUS foreign key (idUsuario_PerXus) references usuarios (idUsuario_Us),
+constraint FK_PERMISOS_PERXUS foreign key (idPermiso_PerXus) references permisos (idPermiso_Per)
+)
+go

@@ -49,7 +49,7 @@ namespace Dao
         }
         public int altaNegocio(NegocioC negocio)
         {
-            string consulta="insert into Negocios(nombre_n) " +
+            string consulta="insert into Negocios (nombre_n) " +
                 "select '"+negocio.NombreNegocio+"'";
             return ad.ejecutarConsulta(consulta);
         }

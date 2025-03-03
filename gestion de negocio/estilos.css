@@ -302,3 +302,15 @@ agregarProducto-esconder {
 .ultimaCelda {
   
 }
+/*--------- administracion y usuarios ---*/
+.administracionYpermisos{
+    display:grid;
+    grid-template-columns:20% max-content;
+    align-items:center;
+}
+.agregarUsuario{
+    grid-column:1/2;
+}
+.administrarPermisos {
+    grid-column: 2/3;
+}

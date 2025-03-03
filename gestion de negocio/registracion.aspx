@@ -19,7 +19,7 @@
         <asp:TextBox class="form-control" ID="txtUNRegistro" runat="server" TextMode="singleLine" ControlToValidate="txtUNRegistro"></asp:TextBox>
         <label for="floatingPassword">UserName</label>
           <asp:CustomValidator ID="cvNombreUsuario" runat="server" ValidationGroup="registro" Text="Nombre de usuario existente" ControlToValidate="txtUNRegistro" ForeColor="Red" OnServerValidate="cvNombreUsuario_ServerValidate"></asp:CustomValidator>
-              <asp:RequiredFieldValidator ID="rfvNombreUsuario" runat="server" ValidationGroup="registro"></asp:RequiredFieldValidator>
+              <asp:RequiredFieldValidator ID="rfvNombreUsuario" runat="server" ValidationGroup="registro" ControlToValidate="txtUNRegistro"></asp:RequiredFieldValidator>
         </div>
          <div class="">
              <asp:DropDownList ID="ddlNegociosRegistrados" runat="server"  class="form-select" ControlToValidate="ddlNegociosRegistrados">
@@ -33,16 +33,16 @@
                  <asp:Label ID="lblMensajeErrorAgregarNegocio" runat="server" Text=""></asp:Label>
              </div>
           <div class="form-floating">
-          <asp:TextBox class="form-control" ID="txtPassword1"  runat="server" TextMode="Password"></asp:TextBox>
+          <asp:TextBox class="form-control" ID="txtPassword1"  runat="server" TextMode="Password" ControlToCompare="txtPassword1"></asp:TextBox>
           <label for="floatingPassword">Password</label>
          </div>
           <div class="form-floating">
            <asp:TextBox class="form-control" ID="txtPassword2"  runat="server" TextMode="Password"></asp:TextBox>
            <label for="floatingPassword">Repeat password</label>
-              <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="CompareValidator"></asp:CompareValidator>
+              <asp:CompareValidator ID="cvPasswordRegistro" runat="server" Text="Tienen que ser iguales" ControlToValidate="txtPassword2" ControlToCompare="txtPassword1" ValidationGroup="registro"></asp:CompareValidator>
           </div>
          <div class="paddingLogin">
-             <asp:Button class="btn btn-primary" ID="btnRegistrarse" runat="server" Text="Create account" /></div>
+             <asp:Button class="btn btn-primary" ID="btnRegistrarse" runat="server" Text="Create account" OnClick="btnRegistrarse_Click" /></div>
          <div class="paddingLogin">
              <asp:LinkButton ID="lbVolverALogin" runat="server" OnClick="lbVolverALogin_Click">Already have an account? Log in</asp:LinkButton></div>
      </section>

@@ -24,6 +24,7 @@ namespace gestion_de_negocio
         {
             NegocioNegocios negNeg = new NegocioNegocios();
             DataTable dt = negNeg.obtenerTablaNegocios();
+            ddlNegociosRegistrados.Items.Clear();
             foreach (DataRow dr in dt.Rows)
             {
                 ListItem item = new ListItem();
@@ -58,6 +59,7 @@ namespace gestion_de_negocio
             else
             {
                 lblMensajeErrorAgregarNegocio.Text = string.Empty;
+                cargarDDlNegocios();
             }
         }
 
