@@ -22,7 +22,7 @@
 Reporte de ganancias y pérdidas por períodos específicos.
 Visualización de datos con gráficos
 " />
-                <asp:Button CssClass="boton_menu" ID="btnAdmin" runat="server" Text="Administracion y permisos" title="Gestion de permisos dentro de los usuarios de la empresa" />
+                <asp:Button CssClass="boton_menu" ID="btnAdmin" runat="server" Text="Administracion y permisos" title="Gestion de permisos dentro de los usuarios de la empresa" OnClick="btnAdmin_Click" />
             </section>
         </main>
     </form>

@@ -17,8 +17,8 @@ namespace gestion_de_negocio
         {
             if (!IsPostBack)
             {
-                Debug.WriteLine("------------------------fff");
                 cargarDDlNegocios();
+                cargarDdlRoles();
                 cargarGridUsuarios();
             }
         }
@@ -28,12 +28,59 @@ namespace gestion_de_negocio
             NegocioNegocios negNeg = new NegocioNegocios();
             DataTable dt = negNeg.obtenerTablaNegocios();
             ddlNegociosRegistrados.Items.Clear();
-            foreach (DataRow dr in dt.Rows)
+            ddlNegociosRegistrados.DataSource = dt;
+            ddlNegociosRegistrados.DataTextField = "nombre_n";
+            ddlNegociosRegistrados.DataValueField = "idNegocio_n";
+            ddlNegociosRegistrados.DataBind();
+            ddlNegociosRegistrados.Items.Add(new ListItem("", "0"));
+            ddlNegociosRegistrados.SelectedValue = "0";
+        }
+        public void cargarGridUsuarios()
+        {
+            NegocioPerXUsu negPxU = new NegocioPerXUsu();
+            DataTable tabla = negPxU.tablaPermisosDeCadaUsuario();
+           
+            grdUsuarios.DataSource = tabla;
+            Debug.WriteLine("Datos cargados: " + tabla.Rows.Count);
+            grdUsuarios.DataBind();
+        }
+        public void cargarDdlRoles()
+        {
+            NegocioRoles negRol = new NegocioRoles();
+            DataTable tablaRoles = new DataTable();
+            ddlRoles.Items.Clear();
+            ddlRoles.DataSource = tablaRoles;
+            ddlRoles.DataBind();
+            ddlRoles.DataTextField = "nombre_r";
+            ddlRoles.DataValueField = "idRol_r";
+            ddlRoles.Items.Add(new ListItem("", "0"));
+            ddlRoles.SelectedValue = "0";
+        }
+        protected void grdUsuarios_DataBound(object sender,EventArgs e)
+        {
+            if (grdUsuarios.Rows.Count == 0)
             {
-                ListItem item = new ListItem();
-                item.Text = dr["nombre_n"].ToString();
-                item.Value = dr["idNegocio_n"].ToString();
-                ddlNegociosRegistrados.Items.Add(item);
+               
+                TableCell celda = new TableCell();
+                celda.Text = "No hay datos Disponibles";
+                celda.ColumnSpan = grdUsuarios.Columns.Count;
+                celda.HorizontalAlign = HorizontalAlign.Center;
+
+                GridViewRow row = new GridViewRow(0,0,DataControlRowType.DataRow,DataControlRowState.Normal);
+                row.Cells.Add(celda);
+                grdUsuarios.Controls[0].Controls.Add(row);
+            }
+        }
+
+        protected void grdUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int idEnInt = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "idUsuario_Us"));
+                string idEnString = idEnInt.ToString();
+                Label lblId = (Label)e.Row.FindControl("lbl_it_IdUsuario");
+                lblId.Text = idEnString;    
+
             }
         }
 
@@ -71,44 +118,10 @@ namespace gestion_de_negocio
         {
 
         }
-        public void cargarGridUsuarios()
-        {
-            NegocioPerXUsu negPxU = new NegocioPerXUsu();
-            DataTable tabla = negPxU.tablaPermisosDeCadaUsuario();
-           
-            grdUsuarios.DataSource = tabla;
-            Debug.WriteLine("Datos cargados: " + tabla.Rows.Count);
-            grdUsuarios.DataBind();
-        }
-        protected void grdUsuarios_DataBound(object sender,EventArgs e)
-        {
-            Debug.WriteLine("-------xd");
-            if (grdUsuarios.Rows.Count == 0)
-            {
-               
-                TableCell celda = new TableCell();
-                celda.Text = "No hay datos Disponibles";
-                celda.ColumnSpan = grdUsuarios.Columns.Count;
-                celda.HorizontalAlign = HorizontalAlign.Center;
 
-                GridViewRow row = new GridViewRow(0,0,DataControlRowType.DataRow,DataControlRowState.Normal);
-                row.Cells.Add(celda);
-                grdUsuarios.Controls[0].Controls.Add(row);
-            }
-        }
-
-        protected void grdUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void ddlNegociosRegistrados_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(e.Row.RowType == DataControlRowType.DataRow)
-            {
-                int idEnInt = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "idUsuario_Us"));
-                string idEnString = idEnInt.ToString();
-                Label lblId = (Label)e.Row.FindControl("lbl_it_IdUsuario");
-                lblId.Text = idEnString;    
-
-                Debug.WriteLine("-------" + idEnString);
-            }
-           
+          
         }
     }
 }

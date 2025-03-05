@@ -13,13 +13,16 @@ namespace gestion_de_negocio
         protected void Page_Load(object sender, EventArgs e)
         {
            
-            // conseguimos la info que genero la funcion __doPostBack
-            string idDelControl = Request["__EVENTTARGET"];
-            string accion = Request["__EVENTARGUMENT"];
-            Debug.WriteLine("--<> "+idDelControl);
-            Debug.WriteLine("--<> " + accion);
+           
            
         }
-       
+
+        protected void btnAdmin_Click(object sender, EventArgs e)
+        {
+            if (Session["rolUsuario"].ToString() == "administrador")
+            {
+                Response.Redirect("administracionDeUsuarios.aspx");
+            }
+        }
     }
 }

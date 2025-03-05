@@ -33,7 +33,6 @@
     border: solid;
     border-radius:15px;
     padding:50px;
-    margin-top:30px;
     
 }
 
@@ -54,7 +53,7 @@
     padding: 10px 0;
 }
 .form-floating {
-    padding: 20px 0;
+    padding: 0px 0;
 }
 /*------ menu -----------------*/
 .body_menu {
@@ -77,7 +76,7 @@
 }
 .contenedor_Menu {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows:200px 1fr 1fr 1fr 1fr;
     width: 100%;
     background-color: #010222;
     padding: 40px;
@@ -305,12 +304,35 @@ agregarProducto-esconder {
 /*--------- administracion y usuarios ---*/
 .administracionYpermisos{
     display:grid;
-    grid-template-columns:20% max-content;
+    grid-template-columns:20% 80%;
     align-items:center;
 }
 .agregarUsuario{
     grid-column:1/2;
+    margin:10px 20px 10px 10px;
 }
 .administrarPermisos {
     grid-column: 2/3;
+    width:80%;
+    height:100%;
+}
+.nota{
+    width:400px;
+}
+#grdUsuarios {
+    width:100%;
+    border:2px solid black;
+    border-radius:20px;
+    margin-bottom:0px;
+}
+.contenedor_GridUsuarios {
+    padding: 2px;
+    background-color: black;
+    margin: 40px;
+    border-radius:5px;
+    
+}
+#h2Permisos{
+    margin-top:8px;
+    text-align:center;
 }

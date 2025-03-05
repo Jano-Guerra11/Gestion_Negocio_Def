@@ -85,6 +85,8 @@ namespace gestion_de_negocio
             {
                 UsuarioValido = true;
                 Session["negocio"] = NxU.IdNegocio;
+                Session["rolUsuario"] = negocioUsuarios.obtenerRolDelUsuario(NxU.IdUsuario);
+
                 if (chbxRecordarme.Checked)
                 {
                     crearCookies(usuarios,negocio);
@@ -101,11 +103,6 @@ namespace gestion_de_negocio
             ckContrasena.Expires = DateTime.Now.AddDays(10);
             HttpCookie ckNegocio = new HttpCookie("negocio",negocio.NombreNegocio);
             ckNegocio.Expires = DateTime.Now.AddDays(10);
-        }
-
-        protected void lbRegistrarse_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("registracion.aspx");
         }
     }
 }

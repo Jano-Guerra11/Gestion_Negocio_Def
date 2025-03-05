@@ -10,6 +10,10 @@
     <title>Login</title>
 </head>
 <body>
+    <p>
+        </p>
+    <p>
+        &nbsp;</p>
 <script src="Scripts/bootstrap.bundle.min.js"></script>
     <form id="form1" runat="server">
         <main class="table-responsive">
@@ -36,8 +40,8 @@
                 </div>
                 
             </section>
-            <div>
-    para crear usuario debe ingresar como admin
+            <div class="nota">
+              Para crear usuarios debe ingresar como admin y dirigirse a "administracion y permisos"
 </div>
         </main>
     </form>
