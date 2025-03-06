@@ -14,6 +14,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <div class="usuarioIniciado">
+            <asp:Label ID="lblUsuarioIniciado" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblNegocioIniciado" runat="server" Text=""></asp:Label> 
+            </div>
             <main class="administracionYpermisos">
            
             <section class="agregarUsuario table-bordered">
@@ -78,31 +82,33 @@
                         <asp:TemplateField HeaderText="Rol">
                             <ItemTemplate>
                                 <asp:Label ID="lbl_it_Rol" runat="server" Text='<%# Bind("nombre_r") %>'></asp:Label>
+                                <asp:DropDownList ID="ddl_it_Roles" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddl_it_Roles_SelectedIndexChanged" >
+                                </asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Productos">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_PerProductos" runat="server" Text='<%# Bind("PRODUCTOS") %>'></asp:Label>
+                                <asp:Button class="botonGrid" ID="btn_it_Productos" runat="server" OnClick="btn_it_Productos_Click" Text='<%# Bind("PRODUCTOS") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Inventario">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_PerInventario" runat="server" Text='<%# Bind("INVENTARIO") %>'></asp:Label>
+                                <asp:Button class="botonGrid" ID="btn_it_Inventario" runat="server" OnClick="btn_it_Inventario_Click" Text='<%# Bind("INVENTARIO") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Ventas">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_PerVentas" runat="server" Text='<%# Bind("VENTAS") %>'></asp:Label>
+                                <asp:Button class="botonGrid" ID="btn_it_Ventas" runat="server" OnClick="btn_it_Ventas_Click" Text='<%# Bind("VENTAS") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Reportes">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_PerReportes" runat="server" Text='<%# Bind("REPORTES") %>'></asp:Label>
+                                <asp:Button class="botonGrid" ID="btn_it_Reportes" runat="server" Text='<%# Bind("REPORTES") %>' OnClick="btn_it_Reportes_Click" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Administracion">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_PerAdministracion" runat="server" Text='<%# Bind("ADMINISTRACION") %>'></asp:Label>
+                                <asp:Button class="botonGrid" ID="btn_it_Admin" runat="server" OnClick="btn_it_Admin_Click" Text='<%# Bind("ADMINISTRACION") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                     

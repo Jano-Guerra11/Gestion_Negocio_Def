@@ -17,9 +17,29 @@ namespace gestion_de_negocio
         {
             if (!IsPostBack)
             {
+                validarUsuario();
                 cargarDDlNegocios();
                 cargarDdlRoles();
                 cargarGridUsuarios();
+
+              
+
+            }
+        }
+        public void validarUsuario()
+        {
+           
+            if(Request.Cookies["nombreUsuario"] !=null &&
+                Request.Cookies["ContrasenaUsuario"] !=null &&
+                Request.Cookies["negocio"]!=null)
+            {
+                //usuario valido
+                lblUsuarioIniciado.Text = Request.Cookies["nombreUsuario"].Value;
+                lblNegocioIniciado.Text = Request.Cookies["negocio"].Value;
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
             }
         }
 
@@ -37,17 +57,16 @@ namespace gestion_de_negocio
         }
         public void cargarGridUsuarios()
         {
+            
             NegocioPerXUsu negPxU = new NegocioPerXUsu();
-            DataTable tabla = negPxU.tablaPermisosDeCadaUsuario();
-           
-            grdUsuarios.DataSource = tabla;
-            Debug.WriteLine("Datos cargados: " + tabla.Rows.Count);
+            DataTable tabla = negPxU.tablaPermisosDeCadaUsuario();         
+            grdUsuarios.DataSource = tabla;         
             grdUsuarios.DataBind();
         }
         public void cargarDdlRoles()
         {
             NegocioRoles negRol = new NegocioRoles();
-            DataTable tablaRoles = new DataTable();
+            DataTable tablaRoles = negRol.obtenerRoles();
             ddlRoles.Items.Clear();
             ddlRoles.DataSource = tablaRoles;
             ddlRoles.DataBind();
@@ -122,6 +141,55 @@ namespace gestion_de_negocio
         protected void ddlNegociosRegistrados_SelectedIndexChanged(object sender, EventArgs e)
         {
           
+        }
+
+        protected void btn_it_Admin_Click(object sender, EventArgs e)
+        {
+            modificarPermiso(sender,"Administracion");
+        }
+
+        protected void btn_it_Reportes_Click(object sender, EventArgs e)
+        {
+            modificarPermiso(sender, "Reportes");
+        }
+
+        protected void btn_it_Ventas_Click(object sender, EventArgs e)
+        {
+            modificarPermiso(sender, "Ventas");
+        }
+
+        protected void btn_it_Inventario_Click(object sender, EventArgs e)
+        {
+            modificarPermiso(sender, "Inventario");
+        }
+
+        protected void btn_it_Productos_Click(object sender, EventArgs e)
+        {
+            modificarPermiso(sender, "Productos");
+        }
+        public void modificarPermiso(object sender,string nombreDelPermiso)
+        {
+            NegocioPermisos negPer = new NegocioPermisos();
+            NegocioPerXUsu negPxU = new NegocioPerXUsu();
+            Button btn = (Button)sender;
+            GridViewRow filaDelControl = (GridViewRow)btn.NamingContainer;
+            int idDelUsuario = Convert.ToInt32(((Label)filaDelControl.FindControl("lbl_it_idUsuario")).Text);
+            int idDelPermiso = negPer.obtenerIdPorNombre(nombreDelPermiso);
+
+            if (btn.Text == "SI")
+            {
+                negPxU.modificarUnPermisoDelUsuario(idDelPermiso, idDelUsuario, "false");
+            }
+            else
+            {
+                negPxU.modificarUnPermisoDelUsuario(idDelPermiso, idDelUsuario, "true");
+            }
+            cargarGridUsuarios();
+        }
+
+        protected void ddl_it_Roles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // modificar rol 
         }
     }
 }

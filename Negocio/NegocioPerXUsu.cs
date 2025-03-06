@@ -15,5 +15,14 @@ namespace Negocio
         {
             return dao.tablaPermisosDeCadaUsuario(); 
         }
+        public bool modificarUnPermisoDelUsuario(int idDelPermiso, int idDelUsuario, string trueOrFalse)
+        {
+            bool result = false;
+            if (dao.modificarUnPermisoDelUsuario(idDelPermiso, idDelUsuario, trueOrFalse) == 1)
+            {
+                result = true;
+            }
+            return result;
+        }
     }
 }

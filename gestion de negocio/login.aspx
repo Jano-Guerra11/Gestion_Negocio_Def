@@ -29,7 +29,7 @@
                      <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" OnClick="btnMostrar_Click" />
                </div>
                <div class="form-floating">
-                   <asp:TextBox class="form-control" id="txtNombreNegocio"  runat="server" TextMode="Password"></asp:TextBox>
+                   <asp:TextBox class="form-control" id="txtNombreNegocio"  runat="server" TextMode="singleLine"></asp:TextBox>
                    <label for="floatingPassword">Bussines Name</label>
                    </div>
                 <div>

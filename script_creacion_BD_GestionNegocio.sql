@@ -114,3 +114,16 @@ constraint FK_USUARIOS_PERXUS foreign key (idUsuario_PerXus) references usuarios
 constraint FK_PERMISOS_PERXUS foreign key (idPermiso_PerXus) references permisos (idPermiso_Per)
 )
 go
+
+use Gestion_de_Negocio
+go
+
+create table rolesXpermisos
+(
+idRol_rXp int not null,
+idPermiso_rXp int not null,
+constraint PK_RolesXPermisos primary key (idRol_rXp,idPermiso_rXp),
+constraint FK_RxP_Roles foreign key (idRol_rXp) references roles (idRol_r),
+constraint FL_RxP_Permisos foreign key (idPermiso_rXp) references permisos (idPermiso_Per)
+)
+go

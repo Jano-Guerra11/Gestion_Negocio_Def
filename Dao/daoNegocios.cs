@@ -37,7 +37,7 @@ namespace Dao
             DataTable dt = ad.obtenerTabla(consulta, "idNegocio");
             if (dt.Rows.Count > 0)
             {
-                id = Convert.ToInt32(dt.Rows[0]);
+                id = Convert.ToInt32(dt.Rows[0][0]);
             }
             return id;
 

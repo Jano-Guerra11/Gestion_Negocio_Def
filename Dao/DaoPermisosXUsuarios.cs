@@ -14,16 +14,23 @@ namespace Dao
         public DataTable tablaPermisosDeCadaUsuario()
         {
             string consulta = "select Cast(idUsuario_Us AS VARCHAR(10)) AS 'idUsuario_Us', nombre_us, nombre_r," +
-                "MAX(CASE WHEN idPermiso_Per = 1 THEN 'SI' ELSE 'NO' END ) AS 'PRODUCTOS'," +
-                "MAX(CASE WHEN idPermiso_Per = 2 THEN 'SI' ELSE 'NO' END ) AS 'INVENTARIO'," +
-                "MAX(CASE WHEN idPermiso_Per = 3 THEN 'SI' ELSE 'NO' END ) AS 'VENTAS'," +
-                "MAX(CASE WHEN idPermiso_Per = 4 THEN 'SI' ELSE 'NO' END ) AS 'REPORTES'," +
-                "MAX(CASE WHEN idPermiso_Per = 5 THEN 'SI' ELSE 'NO' END ) AS 'ADMINISTRACION' " +
+                "MAX(CASE WHEN idPermiso_Per = 1 AND TienePermiso_PerXus = 'True' THEN 'SI' ELSE 'NO' END ) AS 'PRODUCTOS'," +
+                "MAX(CASE WHEN idPermiso_Per = 2 AND TienePermiso_PerXus = 'True' THEN 'SI' ELSE 'NO' END ) AS 'INVENTARIO'," +
+                "MAX(CASE WHEN idPermiso_Per = 3 AND TienePermiso_PerXus = 'True' THEN 'SI' ELSE 'NO' END ) AS 'VENTAS'," +
+                "MAX(CASE WHEN idPermiso_Per = 4 AND TienePermiso_PerXus = 'True' THEN 'SI' ELSE 'NO' END ) AS 'REPORTES'," +
+                "MAX(CASE WHEN idPermiso_Per = 5 AND TienePermiso_PerXus = 'True' THEN 'SI' ELSE 'NO' END ) AS 'ADMINISTRACION' " +
                 " from usuarios inner join permisosXusuarios on usuarios.idUsuario_us = permisosXusuarios.idUsuario_PerXus" +
                 " inner join permisos on permisos.idPermiso_Per = permisosXusuarios.idPermiso_PerXus " +
                 " inner join roles on roles.idRol_r = usuarios.idRol_us " +
                 "GROUP BY  Cast(idUsuario_Us AS VARCHAR(10)), nombre_us, nombre_r";
            return ad.obtenerTabla(consulta,"permisosDeCadaUsuario");
         }
+        public int modificarUnPermisoDelUsuario(int idDelPermiso,int idDelUsuario,string trueOrFalse)
+        {
+            string consulta = "update permisosXusuarios SET TienePermiso_PerXus = '"+trueOrFalse+"' " +
+                "WHERE idUsuario_PerXus = " + idDelUsuario + " AND idPermiso_PerXus = " + idDelPermiso;
+           return ad.ejecutarConsulta(consulta);
+        }
+        
     }
 }

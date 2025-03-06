@@ -76,6 +76,7 @@ namespace gestion_de_negocio
 
             usuarios.NombreUsuario = txtNombreUsuario.Text;
             usuarios.Contrasenia = txtPassword.Text;
+            usuarios.IdUsuario = negocioUsuarios.obtenerID(usuarios);
             negocio.NombreNegocio = txtNombreNegocio.Text;
             NxU.IdUsuario = negocioUsuarios.obtenerID(usuarios); 
             NxU.IdNegocio = negNeg.obtenerID(negocio);
@@ -99,10 +100,13 @@ namespace gestion_de_negocio
         {
             HttpCookie ckUsuario = new HttpCookie("nombreUsuario",usuario.NombreUsuario);
             ckUsuario.Expires = DateTime.Now.AddDays(10);
+            Response.Cookies.Add(ckUsuario);
             HttpCookie ckContrasena = new HttpCookie("ContrasenaUsuario",usuario.Contrasenia);
             ckContrasena.Expires = DateTime.Now.AddDays(10);
+            Response.Cookies.Add(ckContrasena);
             HttpCookie ckNegocio = new HttpCookie("negocio",negocio.NombreNegocio);
             ckNegocio.Expires = DateTime.Now.AddDays(10);
+            Response.Cookies.Add(ckNegocio);
         }
     }
 }

@@ -88,7 +88,22 @@ namespace Dao
             }
                return existe;
         }
-        
+        public string obtenerUnDatoEnString(string consulta)
+        {
+           using(SqlConnection conexion = obtenerConexion())
+            using (SqlCommand cmd = new SqlCommand(consulta,conexion))
+            using(SqlDataReader datos = cmd.ExecuteReader())
+            {
+                if (datos.Read())
+                {
+                    return datos[0].ToString();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         
     }

@@ -15,7 +15,7 @@ namespace Dao
         public bool existeUsuario(Usuarios usuario)
         {
             bool existe = false;
-            string consulta = "SELECT * FROM usuarios where idUsuario_us = "+usuario.IdUsuario.ToString()
+            string consulta = "SELECT * FROM usuarios where idUsuario_us = "+usuario.IdUsuario
                 +" and nombre_Us = '"+usuario.NombreUsuario+"' and contrasenia_us = '"+usuario.Contrasenia+"'";
             if(ad.existe(consulta))
             {
@@ -31,7 +31,7 @@ namespace Dao
             DataTable dt = ad.obtenerTabla(consulta,"idUsuario");
             if(dt.Rows.Count > 0)
             {
-              id = Convert.ToInt32(dt.Rows[0]);
+              id = Convert.ToInt32(dt.Rows[0][0]);
             }
             return id;
 
