@@ -46,11 +46,18 @@ namespace Dao
             string consulta = "select * from usuarios where nombre_us = '" + nombre + "'";
             return ad.existe(consulta);
         }
-        /*
+        
         public int altaUsuario(Usuarios usuario)
         {
-            string consulta = "INSERT INTO usuarios ()";
+            string consulta = "INSERT INTO usuarios (idUsuario_Us,nombre_Us,contrasenia_us,idrol_us) " +
+                "values ("+usuario.NombreUsuario+",'"+usuario.NombreUsuario+"','"+usuario.Contrasenia+"'," +
+                ""+usuario.IdUsuario+")";
+            return ad.ejecutarConsulta(consulta);
         }
-        */
+        public int obtenerIdMaximo()
+        {
+            string consulta = "select MAX(idUsuario_us) from usuarios";
+            return ad.obtenerMaximo(consulta);
+        }
     }
 }

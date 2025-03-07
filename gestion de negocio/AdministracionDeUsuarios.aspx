@@ -26,7 +26,7 @@
              <div class="form-floating">
              <asp:TextBox class="form-control" ID="txtUNRegistro" runat="server" TextMode="singleLine" ControlToValidate="txtUNRegistro"></asp:TextBox>
              <label for="floatingPassword">Nombre de Usuario</label>
-             <asp:CustomValidator ID="cvNombreUsuario" runat="server" ValidationGroup="registro" Text="Nombre de usuario existente" ControlToValidate="txtUNRegistro" ForeColor="Red" OnServerValidate="cvNombreUsuario_ServerValidate"></asp:CustomValidator>
+             <asp:CustomValidator ID="cvNombreUsuario" runat="server" Text="Nombre de usuario existente" ControlToValidate="txtUNRegistro" ForeColor="Red" OnServerValidate="cvNombreUsuario_ServerValidate" ErrorMessage="nombre de usuario existente" ValidationGroup="registro"></asp:CustomValidator>
              <asp:RequiredFieldValidator ID="rfvNombreUsuario" runat="server" ValidationGroup="registro" ControlToValidate="txtUNRegistro" ForeColor="Red">*</asp:RequiredFieldValidator>
              </div>
             <div class="form-floating">

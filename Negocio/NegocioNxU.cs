@@ -20,5 +20,17 @@ namespace Negocio
             }
             return existe;
         }
+        public bool altaNegXUsu(NegociosXUsuarios negXusu)
+        {
+            bool alta = false;
+            if (!dao.existeNegXUsu(negXusu))
+            {
+                if (dao.altaNegXUsu(negXusu) == 1)
+                {
+                    alta = true;
+                }
+            }
+            return alta;
+        }
     }
 }

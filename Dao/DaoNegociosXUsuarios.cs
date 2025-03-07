@@ -21,5 +21,10 @@ namespace Dao
             }
             return existe;
         }
+        public int altaNegXUsu(NegociosXUsuarios nXu)
+        {
+            string consulta = "insert into negociosXusuarios (idUsuario_nXu,idNegocio_nXu)";
+            return ad.ejecutarConsulta(consulta);
+        }
     }
 }

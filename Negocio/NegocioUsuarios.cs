@@ -3,6 +3,7 @@ using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,22 @@ namespace Negocio
                 rol = datos.Columns["idRol_us"].ToString();
             }
             return rol;
+        }
+        public bool altaUsuario(Usuarios usuario)
+        {
+            bool alta = false;
+            if (!dao.existeUsuario(usuario))
+            {
+               if(dao.altaUsuario(usuario) == 1)
+               {
+                   alta = true;
+               }
+            }
+            return alta;
+        }
+        public int obtenerNuevoId()
+        {
+            return dao.obtenerIdMaximo() + 1 ;
         }
     }
 }

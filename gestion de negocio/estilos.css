@@ -341,3 +341,14 @@ agregarProducto-esconder {
     height:100%;
     border:none;
 }
+.usuarioIniciado{
+   display:flex;
+   justify-content:flex-end;
+    
+}
+#lblUsuarioIniciado{
+    margin:0 10px 2px 0;
+}
+#lblNegocioIniciado {
+    margin: 0 10px 2px 10px;
+}

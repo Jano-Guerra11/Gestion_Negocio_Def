@@ -47,6 +47,7 @@
     <Compile Include="DaoPermisos.cs" />
     <Compile Include="DaoPermisosXUsuarios.cs" />
     <Compile Include="DaoRoles.cs" />
+    <Compile Include="DaoRolesXPermisos.cs" />
     <Compile Include="DaoUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

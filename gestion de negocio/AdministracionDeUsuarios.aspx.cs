@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using Negocio;
 using System.Diagnostics;
+using Entidades;
 
 namespace gestion_de_negocio
 {
@@ -21,9 +22,6 @@ namespace gestion_de_negocio
                 cargarDDlNegocios();
                 cargarDdlRoles();
                 cargarGridUsuarios();
-
-              
-
             }
         }
         public void validarUsuario()
@@ -34,8 +32,8 @@ namespace gestion_de_negocio
                 Request.Cookies["negocio"]!=null)
             {
                 //usuario valido
-                lblUsuarioIniciado.Text = Request.Cookies["nombreUsuario"].Value;
-                lblNegocioIniciado.Text = Request.Cookies["negocio"].Value;
+                lblUsuarioIniciado.Text = "Usuario: "+ Request.Cookies["nombreUsuario"].Value;
+                lblNegocioIniciado.Text = "Negocio: " + Request.Cookies["negocio"].Value;
             }
             else
             {
@@ -57,9 +55,9 @@ namespace gestion_de_negocio
         }
         public void cargarGridUsuarios()
         {
-            
+            string nombreNegocio = Request.Cookies["negocio"].Value;
             NegocioPerXUsu negPxU = new NegocioPerXUsu();
-            DataTable tabla = negPxU.tablaPermisosDeCadaUsuario();         
+            DataTable tabla = negPxU.tablaPermisosDeCadaUsuario(nombreNegocio);         
             grdUsuarios.DataSource = tabla;         
             grdUsuarios.DataBind();
         }
@@ -69,9 +67,9 @@ namespace gestion_de_negocio
             DataTable tablaRoles = negRol.obtenerRoles();
             ddlRoles.Items.Clear();
             ddlRoles.DataSource = tablaRoles;
-            ddlRoles.DataBind();
             ddlRoles.DataTextField = "nombre_r";
             ddlRoles.DataValueField = "idRol_r";
+            ddlRoles.DataBind();
             ddlRoles.Items.Add(new ListItem("", "0"));
             ddlRoles.SelectedValue = "0";
         }
@@ -111,6 +109,7 @@ namespace gestion_de_negocio
         protected void cvNombreUsuario_ServerValidate(object source, ServerValidateEventArgs args)
         {
             NegocioUsuarios negUs = new NegocioUsuarios();
+            Debug.WriteLine("--- pase pasew");
             if (negUs.existeNombreUsuario(args.Value))
             {
                 args.IsValid = false;
@@ -121,21 +120,66 @@ namespace gestion_de_negocio
         protected void btnAgregarNegocio_Click(object sender, EventArgs e)
         {
             NegocioNegocios negNeg = new NegocioNegocios();
-            if (!negNeg.altaNegocio(txtNuevoNegocio.Text))
+            if(txtNuevoNegocio.Text != "")
             {
+               if (!negNeg.altaNegocio(txtNuevoNegocio.Text))
+               {
                 lblMensajeErrorAgregarNegocio.Text = "Negocio existente";
-            }
-            else
-            {
+               }
+               else
+               {
                 lblMensajeErrorAgregarNegocio.Text = string.Empty;
                 cargarDDlNegocios();
                 txtNuevoNegocio.Text = string.Empty;
+               }
             }
+            else { lblMensajeErrorAgregarNegocio.Text = "no se permiten espacios en blanco"; }
         }
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
+            NegocioUsuarios negUs = new NegocioUsuarios();
+            NegocioNxU negNXu = new NegocioNxU();
+            Usuarios nuevoUsuario = new Usuarios();
+            NegociosXUsuarios negXusu = new NegociosXUsuarios();
 
+            nuevoUsuario.NombreUsuario = txtUNRegistro.Text;
+            nuevoUsuario.Contrasenia = txtPassword2.Text;
+            nuevoUsuario.RolUsuario = Convert.ToInt32(ddlRoles.SelectedValue);
+            nuevoUsuario.IdUsuario = negUs.obtenerNuevoId();
+            negXusu.IdUsuario = nuevoUsuario.IdUsuario;
+            negXusu.IdNegocio = Convert.ToInt32(ddlNegociosRegistrados.SelectedValue);
+
+            if (negUs.altaUsuario(nuevoUsuario) && negNXu.altaNegXUsu(negXusu)
+                && darDeAltaTodosLosPermisosDelUsuario(nuevoUsuario.IdUsuario, nuevoUsuario.RolUsuario))
+            {
+                // usuario y sus permisos cargador correctamente
+            } 
+           
+        }
+        public bool darDeAltaTodosLosPermisosDelUsuario(int idUsuario, int idRol)
+        {
+            int contadorDeAltas = 0;
+            bool alta = false;
+            NegocioRolesXpermisos negRolXPer = new NegocioRolesXpermisos();
+            DataTable permisosDelRol = negRolXPer.tablaDePermisosSegunRol(idRol);
+            
+            permisosXusuarios perXus = new permisosXusuarios();
+            NegocioPerXUsu negPerXus = new NegocioPerXUsu();
+
+            foreach(DataRow dr in permisosDelRol.Rows)
+            {
+                if(negPerXus.altaUnPermisoDelUsuario(idUsuario, Convert.ToInt32(dr["idPermiso_rxp"]),
+                    dr["tienePermiso_rxp"].ToString()))
+                {
+                    contadorDeAltas += 1;
+                }
+            }
+            if(contadorDeAltas == permisosDelRol.Rows.Count)
+            {
+                alta = true;
+            }
+            return alta;
         }
 
         protected void ddlNegociosRegistrados_SelectedIndexChanged(object sender, EventArgs e)

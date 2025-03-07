@@ -46,6 +46,7 @@
     <Compile Include="NegocioPermisos.cs" />
     <Compile Include="NegocioPerXUsu.cs" />
     <Compile Include="NegocioRoles.cs" />
+    <Compile Include="NegocioRolesXpermisos.cs" />
     <Compile Include="NegocioUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

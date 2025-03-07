@@ -96,13 +96,27 @@ namespace Dao
             {
                 if (datos.Read())
                 {
-                    return datos[0].ToString();
+                    return datos.GetString(0);
                 }
                 else
                 {
                     return null;
                 }
             }
+        }
+        public int obtenerMaximo(string consulta)
+        {
+            int maximo = 0;
+            using (SqlConnection conexion = obtenerConexion())
+            using (SqlCommand cmd = new SqlCommand(consulta, conexion))
+            using (SqlDataReader datos = cmd.ExecuteReader())
+            {
+                if (datos.Read())
+                {
+                    maximo = datos.GetInt32(0);
+                }
+            }
+            return maximo;
         }
 
         

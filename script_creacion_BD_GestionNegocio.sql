@@ -11,9 +11,11 @@ nombre_r varchar(30) not null,
 constraint PK_Roles primary key (idRol_r),
 )
 go
+
+
 create table usuarios
 (
-idUsuario_us int identity(1,1) not null,
+idUsuario_us int not null,
 nombre_us varchar(30) not null,
 contrasenia_us varchar(30) not null,
 idRol_us int not null,
@@ -122,6 +124,7 @@ create table rolesXpermisos
 (
 idRol_rXp int not null,
 idPermiso_rXp int not null,
+tienePermiso_rXp int null,
 constraint PK_RolesXPermisos primary key (idRol_rXp,idPermiso_rXp),
 constraint FK_RxP_Roles foreign key (idRol_rXp) references roles (idRol_r),
 constraint FL_RxP_Permisos foreign key (idPermiso_rXp) references permisos (idPermiso_Per)
