@@ -186,6 +186,15 @@ namespace gestion_de_negocio
         protected global::System.Web.UI.WebControls.Button btnRegistrarse;
 
         /// <summary>
+        /// Control lblConfirmacionRegistro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblConfirmacionRegistro;
+
+        /// <summary>
         /// Control grdUsuarios.
         /// </summary>
         /// <remarks>

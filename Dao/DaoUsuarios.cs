@@ -50,8 +50,8 @@ namespace Dao
         public int altaUsuario(Usuarios usuario)
         {
             string consulta = "INSERT INTO usuarios (idUsuario_Us,nombre_Us,contrasenia_us,idrol_us) " +
-                "values ("+usuario.NombreUsuario+",'"+usuario.NombreUsuario+"','"+usuario.Contrasenia+"'," +
-                ""+usuario.IdUsuario+")";
+                "values ("+usuario.IdUsuario+",'"+usuario.NombreUsuario+"','"+usuario.Contrasenia+"'," +
+                ""+usuario.RolUsuario+")";
             return ad.ejecutarConsulta(consulta);
         }
         public int obtenerIdMaximo()

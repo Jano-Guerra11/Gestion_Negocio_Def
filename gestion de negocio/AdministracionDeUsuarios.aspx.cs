@@ -8,6 +8,7 @@ using System.Data;
 using Negocio;
 using System.Diagnostics;
 using Entidades;
+using System.Threading;
 
 namespace gestion_de_negocio
 {
@@ -143,17 +144,27 @@ namespace gestion_de_negocio
             Usuarios nuevoUsuario = new Usuarios();
             NegociosXUsuarios negXusu = new NegociosXUsuarios();
 
+            int idNuevo = negUs.obtenerNuevoId(); 
             nuevoUsuario.NombreUsuario = txtUNRegistro.Text;
             nuevoUsuario.Contrasenia = txtPassword2.Text;
             nuevoUsuario.RolUsuario = Convert.ToInt32(ddlRoles.SelectedValue);
-            nuevoUsuario.IdUsuario = negUs.obtenerNuevoId();
-            negXusu.IdUsuario = nuevoUsuario.IdUsuario;
+            nuevoUsuario.IdUsuario = idNuevo;
+            negXusu.IdUsuario = idNuevo;
             negXusu.IdNegocio = Convert.ToInt32(ddlNegociosRegistrados.SelectedValue);
 
-            if (negUs.altaUsuario(nuevoUsuario) && negNXu.altaNegXUsu(negXusu)
-                && darDeAltaTodosLosPermisosDelUsuario(nuevoUsuario.IdUsuario, nuevoUsuario.RolUsuario))
+            Debug.WriteLine("----- objeto usuario -> " + nuevoUsuario.IdUsuario);
+           
+
+            if (negUs.altaUsuario(nuevoUsuario) && negNXu.altaNegXUsu(negXusu) &&
+                darDeAltaTodosLosPermisosDelUsuario(idNuevo, nuevoUsuario.RolUsuario))
             {
-                // usuario y sus permisos cargador correctamente
+                
+                
+                   lblConfirmacionRegistro.Text = "usuario registrado";
+                   cargarGridUsuarios();
+                
+
+                
             } 
            
         }
@@ -167,19 +178,22 @@ namespace gestion_de_negocio
             permisosXusuarios perXus = new permisosXusuarios();
             NegocioPerXUsu negPerXus = new NegocioPerXUsu();
 
-            foreach(DataRow dr in permisosDelRol.Rows)
+            
+            Debug.WriteLine("soy el parametro de darDeAktaTodosLosPermisos: " + idUsuario);
+            foreach (DataRow dr in permisosDelRol.Rows)
             {
-                if(negPerXus.altaUnPermisoDelUsuario(idUsuario, Convert.ToInt32(dr["idPermiso_rxp"]),
+                Debug.WriteLine("soy el id enviado a la funcion desde el .cs: " + idUsuario);
+                if (negPerXus.altaUnPermisoDelUsuario(idUsuario, Convert.ToInt32(dr["idPermiso_rxp"]),
                     dr["tienePermiso_rxp"].ToString()))
                 {
                     contadorDeAltas += 1;
                 }
             }
-            if(contadorDeAltas == permisosDelRol.Rows.Count)
-            {
-                alta = true;
-            }
-            return alta;
+               if(contadorDeAltas == permisosDelRol.Rows.Count)
+               {
+                   alta = true;
+               }
+              return alta;
         }
 
         protected void ddlNegociosRegistrados_SelectedIndexChanged(object sender, EventArgs e)

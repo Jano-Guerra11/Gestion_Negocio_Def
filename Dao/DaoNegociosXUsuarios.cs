@@ -23,7 +23,8 @@ namespace Dao
         }
         public int altaNegXUsu(NegociosXUsuarios nXu)
         {
-            string consulta = "insert into negociosXusuarios (idUsuario_nXu,idNegocio_nXu)";
+            string consulta = "insert into negociosXusuarios (idUsuario_nXu,idNegocio_nXu)" +
+                " values("+nXu.IdUsuario+","+nXu.IdNegocio+")";
             return ad.ejecutarConsulta(consulta);
         }
     }

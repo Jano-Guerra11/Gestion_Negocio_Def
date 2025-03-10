@@ -96,7 +96,7 @@ namespace Dao
             {
                 if (datos.Read())
                 {
-                    return datos.GetString(0);
+                    return datos.GetInt32(0).ToString();
                 }
                 else
                 {

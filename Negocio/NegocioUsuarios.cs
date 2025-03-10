@@ -45,7 +45,7 @@ namespace Negocio
         public bool altaUsuario(Usuarios usuario)
         {
             bool alta = false;
-            if (!dao.existeUsuario(usuario))
+            if (!dao.existeUsuario(usuario) && !dao.existeNombreUsuario(usuario.NombreUsuario))
             {
                if(dao.altaUsuario(usuario) == 1)
                {

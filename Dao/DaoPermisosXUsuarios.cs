@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,7 @@ namespace Dao
         }
         public int altaUnPermisoDelUsuario(permisosXusuarios perXus)
         {
+            Debug.WriteLine("id del usuario: " + perXus.IdUsuario_perXus);
             string consulta = "insert into permisosXusuarios (idUsuario_PerXus,idPermiso_PerXus,tienePermiso_PerXus) " +
                 "values (" + perXus.IdUsuario_perXus + "," + perXus.IdPermiso_perXus + ",'" + perXus.TienePermiso_perXus + "')";
             return ad.ejecutarConsulta(consulta);

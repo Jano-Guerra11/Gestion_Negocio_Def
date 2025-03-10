@@ -60,7 +60,7 @@
      </div>
     <div class="paddingLogin">
         <asp:Button class="btn btn-primary" ID="btnRegistrarse" runat="server" Text="Create account" OnClick="btnRegistrarse_Click" ValidationGroup="registro" /></div>
-   
+                <asp:Label ID="lblConfirmacionRegistro" runat="server" Text=""></asp:Label>
 </section>
                  
        <section class="administrarPermisos">

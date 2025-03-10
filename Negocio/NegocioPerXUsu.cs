@@ -3,6 +3,7 @@ using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,8 +33,9 @@ namespace Negocio
             }
                return result;
         }
-        public bool altaUnPermisoDelUsuario(int idDelPermiso, int idDelUsuario, string trueOrFalse)
+        public bool altaUnPermisoDelUsuario(int idDelUsuario, int idDelPermiso, string trueOrFalse)
         {
+            Debug.WriteLine("soy el parametro recibido dentro de la funcion altaunPEmriso en negocio -> " + idDelUsuario);
             bool result = false;
             permisosXusuarios permisoDelUsuario = new permisosXusuarios();
             permisoDelUsuario.IdUsuario_perXus = idDelUsuario;
@@ -41,6 +43,7 @@ namespace Negocio
             permisoDelUsuario.TienePermiso_perXus = Convert.ToBoolean(trueOrFalse);
             if (!dao.existePermisoXusuario(permisoDelUsuario))
             {
+                Debug.WriteLine("dentro de la funcion altaun en negocio -> " + permisoDelUsuario.IdUsuario_perXus);
                 if (dao.altaUnPermisoDelUsuario(permisoDelUsuario) == 1)
                 {
                     result = true;
