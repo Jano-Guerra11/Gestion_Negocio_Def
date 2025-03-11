@@ -116,7 +116,44 @@
                 </asp:GridView>
            </div>
             </section>
+                <section class="CrearYConfigurarRoles">
+                    <div class="contenedor_tablaRoles">
 
+                    <table id="tablaRoles" class="table table-hover">
+                        <tr>
+                           <td></td> <th class="tableTitle">Agregar Rol</th> 
+                        </tr>
+                        <tr>
+                            <td>Nombre</td> <td><asp:TextBox ID="txtNombreRol" runat="server"></asp:TextBox>
+               </td>
+                        </tr> 
+                        <tr> 
+                            <td></td><th class="tableTitle">Permisos</th>
+                        </tr>
+                        <tr>
+                            <td>Productos</td><td><asp:CheckBox ID="chkBxProductos" runat="server" /></td>
+                        </tr>
+                        <tr>
+                           <td>Inventario</td><td><asp:CheckBox ID="chkBxInventario" runat="server" /></td>
+                        </tr>
+                         <tr>
+                     <td>Ventas</td><td><asp:CheckBox ID="chkBxVentas" runat="server" /></td>
+                         </tr>
+                            <tr>
+                       <td>Reportes</td><td><asp:CheckBox ID="chkBxReportes" runat="server" /></td>
+                          </tr>
+                             <tr>
+                      <td>Administracion</td><td><asp:CheckBox ID="chkbxAdministracion" runat="server" /></td>
+                         </tr>
+                        <tr>
+                            <td></td><td>
+                                <asp:Button class="btn btn-success" ID="btnAgregarRol" runat="server" Text="Agregar" OnClick="btnAgregarRol_Click" />
+                                <asp:Label ID="lblMensajeRol" runat="server" Text=""></asp:Label>
+                                     </td>
+                        </tr>
+                    </table>
+                    </div>
+                </section>
             </main>
         </div>
     </form>

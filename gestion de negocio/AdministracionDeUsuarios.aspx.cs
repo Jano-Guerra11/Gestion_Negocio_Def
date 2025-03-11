@@ -9,6 +9,7 @@ using Negocio;
 using System.Diagnostics;
 using Entidades;
 using System.Threading;
+using System.Drawing;
 
 namespace gestion_de_negocio
 {
@@ -152,19 +153,11 @@ namespace gestion_de_negocio
             negXusu.IdUsuario = idNuevo;
             negXusu.IdNegocio = Convert.ToInt32(ddlNegociosRegistrados.SelectedValue);
 
-            Debug.WriteLine("----- objeto usuario -> " + nuevoUsuario.IdUsuario);
-           
-
             if (negUs.altaUsuario(nuevoUsuario) && negNXu.altaNegXUsu(negXusu) &&
                 darDeAltaTodosLosPermisosDelUsuario(idNuevo, nuevoUsuario.RolUsuario))
-            {
-                
-                
+            {                    
                    lblConfirmacionRegistro.Text = "usuario registrado";
-                   cargarGridUsuarios();
-                
-
-                
+                   cargarGridUsuarios();    
             } 
            
         }
@@ -248,6 +241,54 @@ namespace gestion_de_negocio
         protected void ddl_it_Roles_SelectedIndexChanged(object sender, EventArgs e)
         {
             // modificar rol 
+        }
+
+        protected void btnAgregarRol_Click(object sender, EventArgs e)
+        {
+            NegocioRoles negRoles = new NegocioRoles();
+            NegocioRolesXpermisos negRxP= new NegocioRolesXpermisos();
+            if (negRoles.altaRol(txtNombreRol.Text))
+            {
+                if (altaTodosLosPermisosDelRol(negRoles.obtenerIdRol(txtNombreRol.Text)))
+                {
+                    cargarDdlRoles();
+                    lblMensajeRol.ForeColor = Color.Green;
+                    lblMensajeRol.Text = "Rol creado correctamente";
+                    txtNombreRol.Text = string.Empty;
+
+                }
+                else
+                {
+                    lblMensajeRol.ForeColor = Color.Red;
+                    lblMensajeRol.Text = "no se pudo crear el rol";
+                }
+            }
+        }
+        public bool altaTodosLosPermisosDelRol(int idRol)
+        {
+            NegocioRolesXpermisos negRxP = new NegocioRolesXpermisos();
+            string[] permisos = { "Productos", "Inventario", "Ventas", "Reportes", "Administracion" };
+            int altas = 0;
+            for(int i = 0; i < permisos.Length; i++)
+            {
+                bool chequeado = false;
+                CheckBox checkBox = ((CheckBox)FindControl("chkBx" + permisos[i]));
+                if (checkBox != null)
+                {
+                   
+                    if (checkBox.Checked)
+                    {
+                        chequeado = true;
+                    }
+                    Debug.WriteLine("--- chequeado es --> "+chequeado);
+                    if (negRxP.altaUnPermisoDelRol(idRol, i + 1, chequeado))
+                    {
+                        altas += 1;
+                    }
+                }
+            }
+            return (altas == permisos.Length) ? true : false;
+            
         }
     }
 }

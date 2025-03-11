@@ -1,4 +1,5 @@
 ﻿using Dao;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,25 @@ namespace Negocio
         public DataTable obtenerRoles()
         {
             return dao.obtenerRoles();
+        }
+        public bool altaRol(string nombreRol)
+        {
+            bool alta = false;
+            Roles rol = new Roles();
+            rol.Nombre_r = nombreRol;
+
+            if(!dao.existeRol(rol))
+            {
+               if (dao.altaRol(rol) > 0)
+               {
+                    alta = true;
+               }
+            }
+               return alta;
+        }
+        public int obtenerIdRol(string nombre)
+        {
+           return Convert.ToInt32(dao.obtenerIdRol(nombre));
         }
     }
 }
