@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -15,40 +16,52 @@ namespace gestion_de_negocio
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            fileUpload();
-            cargarGridLuegoBorrar();
-
-
             if (!IsPostBack)
             {
-               // Image1.ImageUrl = "/ryzen3 3200G.png";
+                validarUsuario();
+                fileUpload();
+                cargarGridProductos();
+            }
+        }
+        public void validarUsuario()
+        {
+
+            if (Request.Cookies["nombreUsuario"] != null &&
+                Request.Cookies["ContrasenaUsuario"] != null &&
+                Request.Cookies["negocio"] != null)
+            {
+                //usuario valido
+                lblUsuarioIniciado.Text = "Usuario: " + Request.Cookies["nombreUsuario"].Value;
+                lblNegocioIniciado.Text = "Negocio: " + Request.Cookies["negocio"].Value;
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
             }
         }
 
-        public void cargarGridLuegoBorrar()
-        {
-            SqlConnection cn = new SqlConnection("Data Source=DESKTOP-UJD6JDV\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True");
-            cn.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter("select * from Productos",cn);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds,"productos");
-            grdProductos.DataSource = ds.Tables["productos"];
-            grdProductos.DataBind();
-            cn.Close();
-        }
         public void fileUpload()
         {
-            if (imgProducto.ImageUrl == "")
+            
+            if (grdProductos.SelectedRow == null)
             {
                 flUpProducto.Visible = true;
                 btnGuardarImagen.Visible = true;
                 imgProducto.Visible = false;
             }
             else { flUpProducto.Visible = false;
-            btnGuardarImagen.Visible=false;
+                btnGuardarImagen.Visible=false;
                 imgProducto.Visible=true;
             }
         }
+        public void cargarGridProductos()
+        {
+            string nombreNegocio = Request.Cookies["negocio"].Value;
+            NegocioProductos negProd = new NegocioProductos();
+            grdProductos.DataSource = negProd.obtenerTablaProductosDeUnNegocio(nombreNegocio);
+            grdProductos.DataBind();
+        }
+
 
         protected void MultiView1_ActiveViewChanged(object sender, EventArgs e)
         {
@@ -149,6 +162,18 @@ namespace gestion_de_negocio
         protected void btnMostrarFiltrado_Click(object sender, EventArgs e)
         {
            
+        }
+
+        protected void grdProductos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+
+        protected void grdProductos_DataBound(object sender, EventArgs e)
+        {
+          string id =  ((Label)grdProductos.FindControl("lbl_it_idProducto")).Text;
+
+            Debug.WriteLine("el id de producto de una tabla vacia es -> "+id);
         }
     }
     

@@ -57,11 +57,10 @@ constraint PK_secciones primary key (idSeccion_sec),
 go
 create table productos
 (
-idProducto_pr int identity(1,1) not null,
+idProducto_pr int not null,
 idNegocio_pr int not null,
 nombre_pr varchar(30) not null,
 idSeccion_pr int not null,
-categoria_pr varchar(30) null,
 descripcion_pr varchar(100) null,
 precio_pr money not null,
 stock_pr int not null,
@@ -130,3 +129,14 @@ constraint FK_RxP_Roles foreign key (idRol_rXp) references roles (idRol_r),
 constraint FL_RxP_Permisos foreign key (idPermiso_rXp) references permisos (idPermiso_Per)
 )
 go
+
+create table productosXnegocios
+(
+idNegocio_prXneg int not null,
+idProducto_prXneg int not null,
+constraint PK_productosXnegocios primary key (idNegocio_prXneg,idProducto_prXneg),
+constraint FK_prXneg_Negocios foreign key (idNegocio_prXneg) references negocios (idNegocio_n),
+constraint FK_prXneg_Productos foreign key (idProducto_prXneg) references productos (idProducto_pr)
+)
+go
+

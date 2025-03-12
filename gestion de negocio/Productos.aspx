@@ -18,8 +18,11 @@
 <body id="bodyProductos">
     <form id="form1" runat="server">
         <main>
+                <div class="usuarioIniciado">
+                    <asp:Label ID="lblNegocioIniciado" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lblUsuarioIniciado" runat="server" Text=""></asp:Label>
+                </div>
             <asp:Panel CssClass="contenedor_Productos" ID="pnlContenedor" runat="server">
-
            <section class="agregarProducto">
                <div class="contenedor_Imagen">
                    <asp:FileUpload ID="flUpProducto" runat="server" />
@@ -33,7 +36,7 @@
             <th class="table_header thNombre">Nombre</th>
         </tr>
         <tr class="fila">
-            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtNombre" runat="server">Nombre del producto</asp:TextBox></td>
+            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtNombre" runat="server"></asp:TextBox></td>
         </tr>
         <!-- -->
          <tr class="fila">
@@ -80,7 +83,6 @@
              <asp:Button ID="btnEsconder" runat="server" Text="<" OnClick="btnEsconder_Click" />
             <div class="listadoYfiltrado">
                 <div class="contenedor_filtrado">
-                    <asp:Button ID="btnMostrarFiltrado" runat="server" Text="Filtrado" OnClick="btnMostrarFiltrado_Click" />
                 <table class="filtrado">
                     <tr class="filaFiltrado">
                         <td class="primeraCelda">Codigo </td>
@@ -131,49 +133,47 @@
                     </tr>
                 </table>
                 </div>
-                <asp:Button class="button" ID="btnEliminarColumna" runat="server" Text="Eliminar columna" />
                 <div class="contenedor_gridProductos">
-
-                <asp:GridView ID="grdProductos" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" CssClass="GridView" OnSelectedIndexChanged="grdProductos_SelectedIndexChanged">
+                <asp:GridView ID="grdProductos" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" CssClass="GridView" OnSelectedIndexChanged="grdProductos_SelectedIndexChanged" OnDataBound="grdProductos_DataBound" OnRowDataBound="grdProductos_RowDataBound">
                     <Columns>
                         <asp:TemplateField HeaderText="Codigo">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_codigo" runat="server" Text='<%# Bind("idProducto") %>'></asp:Label>
+                                <asp:Label ID="lbl_it_codigo" runat="server" Text='<%# Bind("idProducto_pr") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Nombre">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_nombre" runat="server" Text='<%# Bind("NombreProducto") %>'></asp:Label>
+                                <asp:Label ID="lbl_it_nombre" runat="server" Text='<%# Bind("nombre_pr") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Seccion">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_seccion" runat="server" Text='<%# Bind("IdCategoría") %>'></asp:Label>
+                                <asp:Label ID="lbl_it_seccion" runat="server" Text='<%# Bind("nombre_sec") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Categoria/Modelo/Tipo">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_tipo" runat="server" Text='<%# Bind("UnidadesEnPedido") %>'></asp:Label>
+                                <asp:Label ID="lbl_it_tipo" runat="server" ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Descripcion">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_descripcion" runat="server"></asp:Label>
+                                <asp:Label ID="lbl_it_descripcion" runat="server" Text='<%# Bind("descripcion_pr") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Precio">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_precio" runat="server" Text='<%# Bind("PrecioUnidad") %>'></asp:Label>
+                                <asp:Label ID="lbl_it_precio" runat="server" Text='<%# Bind("precio_pr") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Stock">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_stock" runat="server" Text='<%# Bind("UnidadesEnExistencia") %>'></asp:Label>
+                                <asp:Label ID="lbl_it_stock" runat="server" Text='<%# Bind("stock_pr") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Proveedor">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_proveedor" runat="server" Text='<%# Bind("idProveedor") %>'></asp:Label>
+                                <asp:Label ID="lbl_it_proveedor" runat="server" Text='<%# Bind("nombre_prov") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

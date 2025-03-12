@@ -188,7 +188,7 @@
 agregarProducto-esconder {
 }
 #bodyProductos {
-    background-color: #585dab;
+   
 }
 .Productos {
     grid-column: 2/2;
@@ -203,6 +203,8 @@ agregarProducto-esconder {
     background-color: #DAF7A6;
 }
 .listadoYfiltrado {
+    display:grid;
+    grid-template-rows:20% 1fr;
     width:100%;
     overflow:auto;
     display:grid;
@@ -268,6 +270,7 @@ agregarProducto-esconder {
     }
     .contenedor_filtrado{
         width:100%;
+        padding:0;
     }
 .filtrado {
     width: 95%;
