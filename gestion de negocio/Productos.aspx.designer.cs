@@ -87,13 +87,13 @@ namespace gestion_de_negocio
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
         /// <summary>
-        /// Control txtSeccion.
+        /// Control ddlSecciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSeccion;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSecciones;
 
         /// <summary>
         /// Control txtCategoria.
@@ -139,6 +139,15 @@ namespace gestion_de_negocio
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardar;
+
+        /// <summary>
+        /// Control lblMensajeAltaObaja.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensajeAltaObaja;
 
         /// <summary>
         /// Control btnEsconder.

@@ -65,9 +65,10 @@ descripcion_pr varchar(100) null,
 precio_pr money not null,
 stock_pr int not null,
 activo_pr bit not null,
+ urlIMagen_pr varchar(50) null
 constraint PK_Productos primary key (idProducto_pr,idNegocio_pr),
 constraint FK_productos_negocios foreign key (idNegocio_pr) references negocios (idNegocio_n),
-constraint FK_productos_secciones foreign key (idSeccion_pr) references secciones (idSeccion_sec),
+constraint FK_productos_secciones foreign key (idSeccion_pr) references secciones (idSeccion_sec) ON DELETE SET NULL,
 )
 go
 
@@ -140,3 +141,47 @@ constraint FK_prXneg_Productos foreign key (idProducto_prXneg) references produc
 )
 go
 
+
+/*--- DATOS INICIALES PREDETERMINADOS -----*/	
+insert into roles(nombre_r)
+values('Administrador')
+go
+
+insert into usuarios(nombre_us,contrasenia_us,idRol_us,IdUsuario_us)
+values('admin','admin',1,1)
+go
+
+insert into permisos(NombrePermiso_Per)
+values
+('Productos'),
+('Inventario'),
+('Ventas'),
+('Reportes'),
+('Administracion')
+go
+
+insert into permisosXusuarios(idUsuario_PerXus,idPermiso_PerXus,TienePermiso_PerXus)
+values
+(1,1,'true'),
+(1,2,'true'),
+(1,3,'true'),
+(1,4,'true'),
+(1,5,'true')
+go
+
+insert into negocios(nombre_n)
+values('negocio')
+go
+
+insert into negociosXusuarios(idUsuario_nXu,idNegocio_nXu)
+values(1,1)
+go
+
+insert into rolesXpermisos(idRol_rXp,idPermiso_rXp,tienePermiso_rXp)
+values
+(1,1,'true'),
+(1,2,'true'),
+(1,3,'true'),
+(1,4,'true'),
+(1,5,'true')
+go

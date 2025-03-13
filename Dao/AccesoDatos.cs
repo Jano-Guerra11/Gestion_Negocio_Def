@@ -11,7 +11,7 @@ namespace Dao
 {
     public class AccesoDatos
     {
-        string rutaBD = "Data Source=DESKTOP-UJD6JDV\\SQLEXPRESS;Initial Catalog=Gestion_de_Negocio;Integrated Security=True";
+        string rutaBD = "Data Source=LAPTOPJANO\\SQLEXPRESS;Initial Catalog=Gestion_de_Negocio;Integrated Security=True";
 
         private SqlConnection obtenerConexion()
         {
@@ -109,12 +109,9 @@ namespace Dao
             int maximo = 0;
             using (SqlConnection conexion = obtenerConexion())
             using (SqlCommand cmd = new SqlCommand(consulta, conexion))
-            using (SqlDataReader datos = cmd.ExecuteReader())
             {
-                if (datos.Read())
-                {
-                    maximo = datos.GetInt32(0);
-                }
+                object resultado = cmd.ExecuteScalar();
+                maximo = (resultado == null || resultado == DBNull.Value) ? 0 : Convert.ToInt32(resultado);
             }
             return maximo;
         }

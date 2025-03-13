@@ -43,7 +43,7 @@ namespace gestion_de_negocio
         public void fileUpload()
         {
             
-            if (grdProductos.SelectedRow == null)
+            if (imgProducto.ImageUrl=="")
             {
                 flUpProducto.Visible = true;
                 btnGuardarImagen.Visible = true;
@@ -105,11 +105,13 @@ namespace gestion_de_negocio
                     flUpProducto.SaveAs(rutaCompleta);
 
                     imgProducto.ImageUrl = "/imagenes/"+flUpProducto.FileName;
-                    fileUpload();
+                   fileUpload();
                     // guardar la ruta en la base de datos
+                    Debug.WriteLine("ruta de la imagen ---> " + imgProducto.ImageUrl);
                 }
             }
         }
+        
 
         protected void grdProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -171,9 +173,53 @@ namespace gestion_de_negocio
 
         protected void grdProductos_DataBound(object sender, EventArgs e)
         {
-          string id =  ((Label)grdProductos.FindControl("lbl_it_idProducto")).Text;
+         
+        }
 
-            Debug.WriteLine("el id de producto de una tabla vacia es -> "+id);
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            NegocioProductos negProd = new NegocioProductos();
+            int idProducto = negProd.obtenerIdDelProducto(txtNombre.Text);
+            int accionRealizada = 0;
+
+            int.TryParse(ddlSecciones.SelectedValue, out int idSeccion);
+            int.TryParse(txtPrecio.Text, out int precio);
+            int.TryParse(txtStock.Text, out int stock);
+
+            bool accionExitosa = false;
+
+            if (idProducto == -1)
+            {
+                accionExitosa = negProd.altaProducto(txtNombre.Text, idSeccion,
+                    txtDescripcion.Text,precio, stock, imgProducto.ImageUrl);
+                // alta productos x negocios
+                // incluir un ddl con los proveedores, poder agregar proveedor al igual que seccion
+                // alta productos x proveedores
+                
+                   accionRealizada = accionExitosa? 1 : 0;
+            }
+            else
+            {
+                accionExitosa = negProd.modificarProducto(txtNombre.Text, idSeccion,
+                    txtDescripcion.Text,precio, stock, imgProducto.ImageUrl);
+                
+                   accionRealizada = accionExitosa? 2 : 0;  
+            }
+
+            switch (accionRealizada)
+            {
+                case 1:
+                    lblMensajeAltaObaja.Text = "Producto agregado correctamente";
+                    break;
+                case 2:
+                    lblMensajeAltaObaja.Text = "Producto modificado correctamente";
+                    break;
+                default:
+                    lblMensajeAltaObaja.Text = "ERROR no se pudo completar la acción";
+                    break;
+            }
+            cargarGridProductos();
+
         }
     }
     

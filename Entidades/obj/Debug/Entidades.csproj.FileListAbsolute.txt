@@ -16,3 +16,9 @@ C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\App
 C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Entidades\obj\Debug\Entidades.dll
 C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Entidades\obj\Debug\Entidades.pdb
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Entidades\bin\Debug\Entidades.dll
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Entidades\bin\Debug\Entidades.pdb
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Entidades\obj\Debug\Entidades.dll
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Entidades\obj\Debug\Entidades.pdb

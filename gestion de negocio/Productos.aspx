@@ -43,7 +43,10 @@
             <th class="table_header">Seccion</th>
          </tr>
          <tr class="fila">
-             <td><asp:TextBox CssClass="txtInfoProducto" ID="txtSeccion" runat="server">Seccion</asp:TextBox></td>
+             <td>
+                 <asp:DropDownList ID="ddlSecciones" runat="server">
+                     <asp:ListItem Value="0">- ninguna -</asp:ListItem>
+                 </asp:DropDownList></td>
          </tr>
         <!-- -->
          <tr class="fila">
@@ -75,7 +78,9 @@
         </tr>
         <!-- -->
         <tr>
-           <td> <asp:Button ID="btnGuardar" runat="server" Text="Guardar"/></td>
+           <td> <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"/>
+               <asp:Label ID="lblMensajeAltaObaja" runat="server" Text=""></asp:Label>
+           </td>
         </tr>
     </table>  
 </section>
@@ -184,5 +189,6 @@
             </asp:Panel>
         </main>
     </form>
+    
 </body>
 </html>

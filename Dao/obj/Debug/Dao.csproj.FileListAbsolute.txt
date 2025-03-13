@@ -25,3 +25,12 @@ C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\App
 C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Dao\obj\Debug\Dao.csproj.Up2Date
 C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Dao\obj\Debug\Dao.dll
 C:\Users\USURIO\OneDrive\Escritorio\proyectos de programacion\proyectos .NET\Apps Web\Gestion_Negocio_Def\Dao\obj\Debug\Dao.pdb
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Dao\bin\Debug\Dao.dll
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Dao\bin\Debug\Dao.pdb
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Dao\bin\Debug\Entidades.dll
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Dao\bin\Debug\Entidades.pdb
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Dao\obj\Debug\Dao.csproj.AssemblyReference.cache
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Dao\obj\Debug\Dao.csproj.CoreCompileInputs.cache
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Dao\obj\Debug\Dao.csproj.Up2Date
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Dao\obj\Debug\Dao.dll
+C:\Users\jano\Desktop\Gestion_Negocio_Def\Dao\obj\Debug\Dao.pdb
