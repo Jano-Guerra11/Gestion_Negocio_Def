@@ -77,6 +77,21 @@
             <td><asp:TextBox CssClass="txtInfoProducto" ID="txtStock" runat="server">20 U</asp:TextBox></td>
         </tr>
         <!-- -->
+         <!-- -->
+        <tr class="fila">
+            <th  class="table_header">Proveedor</th>
+        </tr>
+        <tr class="fila">
+            <td>
+                <asp:DropDownList ID="ddlProveedores" runat="server"></asp:DropDownList>
+            <div class="input-group mb-3">
+    <asp:TextBox CssClass="form-control" ID="txtNuevoProveedor" runat="server"></asp:TextBox>
+    <asp:Button CssClass="btn btn-outline-secondary" ID="btnAgregarProveedor" runat="server" Text="Agregar Proveedor" />
+    <asp:Label ID="lblMensajeErrorAgregarProveedor" runat="server" Text=""></asp:Label>
+</div>
+                </td>
+        </tr>
+        <!-- -->
         <tr>
            <td> <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"/>
                <asp:Label ID="lblMensajeAltaObaja" runat="server" Text=""></asp:Label>

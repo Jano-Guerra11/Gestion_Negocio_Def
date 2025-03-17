@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidades;
 
 namespace gestion_de_negocio
 {
@@ -30,9 +31,22 @@ namespace gestion_de_negocio
                 Request.Cookies["ContrasenaUsuario"] != null &&
                 Request.Cookies["negocio"] != null)
             {
-                //usuario valido
-                lblUsuarioIniciado.Text = "Usuario: " + Request.Cookies["nombreUsuario"].Value;
-                lblNegocioIniciado.Text = "Negocio: " + Request.Cookies["negocio"].Value;
+                //usuario recordado
+                string nombreUsuario = Request.Cookies["nombreUsuario"].Value;
+                string nombreNegocio = Request.Cookies["negocio"].Value;
+
+                lblUsuarioIniciado.Text = "Usuario: " + nombreUsuario;
+                lblNegocioIniciado.Text = "Negocio: " + nombreNegocio;
+                Session["nombreNegocio"] = nombreNegocio;
+            }
+            else if (Session["nombreUsuario"]!=null && Session["nombreNegocio"] != null)
+            {
+                // usuario iniciado pero no recordado
+                string UsuarioIniciado = Session["nombreUsuario"].ToString();
+                string NegocioIniciado = Session["nombreNegocio"].ToString();
+
+                lblUsuarioIniciado.Text = "Usuario: " + UsuarioIniciado;
+                lblNegocioIniciado.Text = "Negocio: " + NegocioIniciado;
             }
             else
             {
@@ -178,7 +192,9 @@ namespace gestion_de_negocio
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            NegocioNegocios negneg = new NegocioNegocios();
             NegocioProductos negProd = new NegocioProductos();
+            NegocioC negocio = new NegocioC();
             int idProducto = negProd.obtenerIdDelProducto(txtNombre.Text);
             int accionRealizada = 0;
 
@@ -190,9 +206,11 @@ namespace gestion_de_negocio
 
             if (idProducto == -1)
             {
+                negocio.NombreNegocio = lblNegocioIniciado.Text;
+                int idNegocioIniciado = negneg.obtenerID(negocio);
                 accionExitosa = negProd.altaProducto(txtNombre.Text, idSeccion,
-                    txtDescripcion.Text,precio, stock, imgProducto.ImageUrl);
-                // alta productos x negocios
+                    txtDescripcion.Text,precio, stock, imgProducto.ImageUrl,idNegocioIniciado);
+                
                 // incluir un ddl con los proveedores, poder agregar proveedor al igual que seccion
                 // alta productos x proveedores
                 

@@ -132,6 +132,42 @@ namespace gestion_de_negocio
         protected global::System.Web.UI.WebControls.TextBox txtStock;
 
         /// <summary>
+        /// Control ddlProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProveedores;
+
+        /// <summary>
+        /// Control txtNuevoProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNuevoProveedor;
+
+        /// <summary>
+        /// Control btnAgregarProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarProveedor;
+
+        /// <summary>
+        /// Control lblMensajeErrorAgregarProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensajeErrorAgregarProveedor;
+
+        /// <summary>
         /// Control btnGuardar.
         /// </summary>
         /// <remarks>

@@ -85,8 +85,10 @@ namespace gestion_de_negocio
               negNeg.existeNegocio(negocio) && negNxU.existeNxU(NxU))
             {
                 UsuarioValido = true;
-                Session["negocio"] = NxU.IdNegocio;
+                Session["idNegocio"] = NxU.IdNegocio;
                 Session["rolUsuario"] = negocioUsuarios.obtenerRolDelUsuario(NxU.IdUsuario);
+                Session["nombreUsuario"] = txtNombreUsuario.Text;
+                Session["nombreNegocio"] = txtNombreNegocio.Text;
 
                 if (chbxRecordarme.Checked)
                 {

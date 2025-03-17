@@ -38,11 +38,13 @@ namespace Negocio
 
             return tablaProductos;
         }
-        public bool altaProducto(string nombre,int seccion,string descripcion,float precio,int stock,string urlImagen)
+        public bool altaProducto(string nombre,int seccion,string descripcion,float precio,int stock,string urlImagen,int idNegocio)
         {
             string idSeccion;
             Productos producto = new Productos();
-            producto.IdProducto_pr = dao.obtenerUltimoId() + 1;
+            DaoProductosXNegocios daoPrXNeg = new DaoProductosXNegocios();
+            int idProducto = dao.obtenerUltimoId() + 1;
+            producto.IdProducto_pr = idProducto;
             producto.Nombre_pr = nombre;
             if(seccion == 0) { idSeccion = "NULL"; }
             else { idSeccion = seccion.ToString(); }
@@ -51,11 +53,13 @@ namespace Negocio
             producto.Stock_pr = stock;
             producto.Activo_pr = true;
             producto.UrlImagen_pr = urlImagen;
+         
 
             bool alta = false;
-            if (!dao.existeProducto(producto.IdProducto_pr))
+            if (!dao.existeProducto(idProducto) &&
+               !daoPrXNeg.existeProductoXNegocio(idProducto,idNegocio))
             {
-               if(dao.altaProducto(producto,idSeccion) == 1)
+               if(dao.altaProducto(producto,idSeccion) == 1 && daoPrXNeg.altaProductosXnegocios(idNegocio,idProducto) ==1)
                {
                    alta = true;
                }

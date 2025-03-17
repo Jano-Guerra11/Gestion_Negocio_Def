@@ -3,28 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\gestion de negocio\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\gestion de negocio\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\negocio\\negocioproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\gestion de negocio\\administraciondeusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\administraciondeusuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\gestion de negocio\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\dao\\daoproveedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\daoproveedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\negocio\\negocioproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|solutionrelative:negocio\\negocioproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\dao\\daoproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\daoproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\gestion de negocio\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\dao\\accesodatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\dao\\daoproductosxnegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\daoproductosxnegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\dao\\daonegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\daonegocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\dao\\accesodatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\accesodatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4684D3F5-2CC7-4452-BCD4-00911DA0FB5F}|Entidades\\Entidades.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\entidades\\productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4684D3F5-2CC7-4452-BCD4-00911DA0FB5F}|Entidades\\Entidades.csproj|solutionrelative:entidades\\productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,59 +58,111 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DaoProductos.cs",
-              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\DaoProductos.cs",
-              "RelativeDocumentMoniker": "Dao\\DaoProductos.cs",
-              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\DaoProductos.cs",
-              "RelativeToolTip": "Dao\\DaoProductos.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAADwvxsAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T16:46:42.406Z",
+              "DocumentIndex": 1,
+              "Title": "AdministracionDeUsuarios.aspx",
+              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\AdministracionDeUsuarios.aspx",
+              "RelativeDocumentMoniker": "gestion de negocio\\AdministracionDeUsuarios.aspx",
+              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\AdministracionDeUsuarios.aspx",
+              "RelativeToolTip": "gestion de negocio\\AdministracionDeUsuarios.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-03-17T17:55:32.476Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Productos.aspx",
+              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx",
+              "RelativeDocumentMoniker": "gestion de negocio\\Productos.aspx",
+              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx*",
+              "RelativeToolTip": "gestion de negocio\\Productos.aspx*",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-03-17T17:54:19.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DaoProveedores.cs",
+              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\DaoProveedores.cs",
+              "RelativeDocumentMoniker": "Dao\\DaoProveedores.cs",
+              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\DaoProveedores.cs",
+              "RelativeToolTip": "Dao\\DaoProveedores.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T17:51:24.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "NegocioProductos.cs",
               "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Negocio\\NegocioProductos.cs",
               "RelativeDocumentMoniker": "Negocio\\NegocioProductos.cs",
               "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Negocio\\NegocioProductos.cs",
               "RelativeToolTip": "Negocio\\NegocioProductos.cs",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAgwDkAAAAiAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAiwD0AAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T16:46:47.919Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Productos.aspx.cs",
               "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx.cs",
               "RelativeDocumentMoniker": "gestion de negocio\\Productos.aspx.cs",
               "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx.cs",
               "RelativeToolTip": "gestion de negocio\\Productos.aspx.cs",
-              "ViewState": "AQIAALoAAAAAAAAAAAAowMIAAAAsAAAA",
+              "ViewState": "AQIAAMIAAAAAAAAAAAAAwNIAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-11T20:24:23.165Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Productos.aspx",
-              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx",
-              "RelativeDocumentMoniker": "gestion de negocio\\Productos.aspx",
-              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx",
-              "RelativeToolTip": "gestion de negocio\\Productos.aspx",
-              "LogicalView": "7651a702-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-03-13T17:13:49.368Z",
+              "DocumentIndex": 5,
+              "Title": "login.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\login.aspx.cs",
+              "RelativeDocumentMoniker": "gestion de negocio\\login.aspx.cs",
+              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\login.aspx.cs",
+              "RelativeToolTip": "gestion de negocio\\login.aspx.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAswFoAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T17:13:11.702Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
+              "Title": "DaoProductosXNegocios.cs",
+              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\DaoProductosXNegocios.cs",
+              "RelativeDocumentMoniker": "Dao\\DaoProductosXNegocios.cs",
+              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\DaoProductosXNegocios.cs",
+              "RelativeToolTip": "Dao\\DaoProductosXNegocios.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABgAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T16:51:45.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "daoNegocios.cs",
+              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\daoNegocios.cs",
+              "RelativeDocumentMoniker": "Dao\\daoNegocios.cs",
+              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\daoNegocios.cs",
+              "RelativeToolTip": "Dao\\daoNegocios.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T17:29:22.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "AccesoDatos.cs",
               "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\AccesoDatos.cs",
               "RelativeDocumentMoniker": "Dao\\AccesoDatos.cs",
@@ -107,19 +171,6 @@
               "ViewState": "AQIAADYAAAAAAAAAAAAtwDsAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T20:46:00.021Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Productos.cs",
-              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Entidades\\Productos.cs",
-              "RelativeDocumentMoniker": "Entidades\\Productos.cs",
-              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Entidades\\Productos.cs",
-              "RelativeToolTip": "Entidades\\Productos.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T20:20:36.664Z",
               "EditorCaption": ""
             }
           ]
