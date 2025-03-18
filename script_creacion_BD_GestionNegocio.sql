@@ -75,7 +75,7 @@ go
 
 create table proveedores
 (
-idProveedor_prov int identity(1,1) not null,
+idProveedor_prov int not null,
 idNegocio_prov int not null,
 nombre_prov varchar(30) not null,
 razonSocial_prov varchar(50) null,
@@ -96,6 +96,7 @@ constraint FK_pXp_proveedores foreign key (idProveedor_pXp,idNegocio_pXp) refere
 constraint FK_pXp_productos foreign key (idProducto_pXp,idNegocio_pXp) references productos(idProducto_pr,idNegocio_pr),
 )
 go
+
 
 
 create table permisos

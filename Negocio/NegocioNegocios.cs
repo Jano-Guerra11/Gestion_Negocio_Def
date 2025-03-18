@@ -27,8 +27,10 @@ namespace Negocio
             }
             return existe;
         }
-        public int obtenerID(NegocioC negocio)
+        public int obtenerID(string nombreNegocio)
         {
+            NegocioC negocio = new NegocioC();
+            negocio.NombreNegocio = nombreNegocio;
             return dao.obtenerID(negocio);
         }
 

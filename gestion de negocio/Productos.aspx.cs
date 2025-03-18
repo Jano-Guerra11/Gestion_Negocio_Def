@@ -22,6 +22,7 @@ namespace gestion_de_negocio
                 validarUsuario();
                 fileUpload();
                 cargarGridProductos();
+                cargarDdlProveedores();
             }
         }
         public void validarUsuario()
@@ -67,6 +68,17 @@ namespace gestion_de_negocio
                 btnGuardarImagen.Visible=false;
                 imgProducto.Visible=true;
             }
+        }
+        public void cargarDdlProveedores()
+        {
+            DataTable proveedores = new DataTable();
+            ddlProveedores.Items.Clear();
+            ddlProveedores.DataSource = proveedores;
+            ddlProveedores.DataTextField = "nombre_prov "+" razonSocial_prov";
+            ddlProveedores.DataValueField = "idProveedor_prov";
+            ddlProveedores.DataBind();
+            ddlProveedores.Items.Add(new ListItem("-- Sin Proveedor --","0"));
+            ddlProveedores.SelectedValue = "0";
         }
         public void cargarGridProductos()
         {
@@ -194,25 +206,21 @@ namespace gestion_de_negocio
         {
             NegocioNegocios negneg = new NegocioNegocios();
             NegocioProductos negProd = new NegocioProductos();
-            NegocioC negocio = new NegocioC();
+           
             int idProducto = negProd.obtenerIdDelProducto(txtNombre.Text);
+            bool accionExitosa = false;
             int accionRealizada = 0;
+            int idNegocioIniciado = negneg.obtenerID(lblNegocioIniciado.Text);
 
             int.TryParse(ddlSecciones.SelectedValue, out int idSeccion);
             int.TryParse(txtPrecio.Text, out int precio);
             int.TryParse(txtStock.Text, out int stock);
 
-            bool accionExitosa = false;
 
             if (idProducto == -1)
             {
-                negocio.NombreNegocio = lblNegocioIniciado.Text;
-                int idNegocioIniciado = negneg.obtenerID(negocio);
                 accionExitosa = negProd.altaProducto(txtNombre.Text, idSeccion,
                     txtDescripcion.Text,precio, stock, imgProducto.ImageUrl,idNegocioIniciado);
-                
-                // incluir un ddl con los proveedores, poder agregar proveedor al igual que seccion
-                // alta productos x proveedores
                 
                    accionRealizada = accionExitosa? 1 : 0;
             }
@@ -238,6 +246,37 @@ namespace gestion_de_negocio
             }
             cargarGridProductos();
 
+        }
+
+        protected void btnAgregarProveedor_Click(object sender, EventArgs e)
+        {
+            if(btnAgregarProveedor.Text == "Agregar Proveedor")
+            {
+                btnAgregarProveedor.Text = "Guardar Proveedor";
+                txtNombreProv.Visible = true;
+                txtRazonSocialProv.Visible = true;
+                txtTelefonoProv.Visible = true;
+                txtMailProv.Visible = true;
+            }
+            else
+            {
+                NegocioProveedores negProv = new NegocioProveedores();
+                NegocioNegocios neNeg = new NegocioNegocios();
+                int idNegocio = neNeg.obtenerID(Session["nombreNegocio"].ToString());
+
+                if (negProv.altaProveedor(idNegocio,txtNombreProv.Text,txtRazonSocialProv.Text,
+                    txtTelefonoProv.Text,txtMailProv.Text))
+                {
+                    btnAgregarProveedor.Text = "Agregar Proveedor";
+                    txtNombreProv.Visible = false;
+                    txtRazonSocialProv.Visible = false;
+                    txtTelefonoProv.Visible = false;
+                    txtMailProv.Visible = false;
+                    lblMensajeErrorAgregarProveedor.Text = "Proveedor cargado";
+                }
+                else { lblMensajeErrorAgregarProveedor.Text = "Error"; }
+            }
+                    
         }
     }
     

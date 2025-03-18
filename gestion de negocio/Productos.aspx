@@ -84,9 +84,15 @@
         <tr class="fila">
             <td>
                 <asp:DropDownList ID="ddlProveedores" runat="server"></asp:DropDownList>
-            <div class="input-group mb-3">
-    <asp:TextBox CssClass="form-control" ID="txtNuevoProveedor" runat="server"></asp:TextBox>
-    <asp:Button CssClass="btn btn-outline-secondary" ID="btnAgregarProveedor" runat="server" Text="Agregar Proveedor" />
+            <div class="input-group input-group-sm mb-3">
+    <asp:Button CssClass="btn btn-outline-secondary" ID="btnAgregarProveedor" runat="server" Text="Agregar Proveedor" OnClick="btnAgregarProveedor_Click" />
+    <asp:TextBox CssClass="form-control" ID="txtNombreProv" runat="server" placeholder="Nombre" Visible="False"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvNombreProv" runat="server" ErrorMessage="*" ControlToValidate="txtNombreProv" Text="*"></asp:RequiredFieldValidator>
+    <asp:TextBox ID="txtRazonSocialProv" runat="server" placeholder="Razon social" Visible="False"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvRazonSocialProv" runat="server" ErrorMessage="*" ControlToValidate="txtRazonSocialProv" Text="*" ValidationGroup="altaProv"></asp:RequiredFieldValidator>
+    <asp:TextBox ID="txtTelefonoProv" runat="server" placeholder="Telefono"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvTelefonoProv" runat="server" ErrorMessage="*" Text="*" ValidationGroup="altaProv" ControlToValidate="txtTelefonoProv"></asp:RequiredFieldValidator>
+    <asp:TextBox ID="txtMailProv" runat="server" placeholder="mail (opcional)" Visible="False"></asp:TextBox>
     <asp:Label ID="lblMensajeErrorAgregarProveedor" runat="server" Text=""></asp:Label>
 </div>
                 </td>

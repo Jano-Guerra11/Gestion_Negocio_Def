@@ -79,7 +79,7 @@ namespace gestion_de_negocio
             usuarios.IdUsuario = negocioUsuarios.obtenerID(usuarios);
             negocio.NombreNegocio = txtNombreNegocio.Text;
             NxU.IdUsuario = negocioUsuarios.obtenerID(usuarios); 
-            NxU.IdNegocio = negNeg.obtenerID(negocio);
+            NxU.IdNegocio = negNeg.obtenerID(negocio.NombreNegocio);
 
             if (negocioUsuarios.existeUsuario(usuarios) &&
               negNeg.existeNegocio(negocio) && negNxU.existeNxU(NxU))
