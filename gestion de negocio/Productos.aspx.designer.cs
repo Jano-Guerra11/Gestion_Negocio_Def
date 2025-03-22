@@ -96,6 +96,15 @@ namespace gestion_de_negocio
         protected global::System.Web.UI.WebControls.DropDownList ddlSecciones;
 
         /// <summary>
+        /// Control btnAgregarSeccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarSeccion;
+
+        /// <summary>
         /// Control txtCategoria.
         /// </summary>
         /// <remarks>
@@ -139,15 +148,6 @@ namespace gestion_de_negocio
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProveedores;
-
-        /// <summary>
-        /// Control btnAgregarProveedor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarProveedor;
 
         /// <summary>
         /// Control txtNombreProv.
@@ -211,6 +211,15 @@ namespace gestion_de_negocio
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMailProv;
+
+        /// <summary>
+        /// Control btnAgregarProveedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarProveedor;
 
         /// <summary>
         /// Control lblMensajeErrorAgregarProveedor.
@@ -283,15 +292,6 @@ namespace gestion_de_negocio
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSeccion;
-
-        /// <summary>
-        /// Control btnAgregarSeccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarSeccion;
 
         /// <summary>
         /// Control txtNuevaSeccion.

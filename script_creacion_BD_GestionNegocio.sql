@@ -48,9 +48,11 @@ constraint FK_nXu_Negocios foreign key (idNegocio_nXu) references negocios (idNe
 )
 go
 
+
+
 create table secciones
 (
-idSeccion_sec int identity(1,1) not null,
+idSeccion_sec int not null,
 nombre_sec varchar(30) not null,
 constraint PK_secciones primary key (idSeccion_sec),
 )

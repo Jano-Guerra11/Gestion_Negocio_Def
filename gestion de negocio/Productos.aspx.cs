@@ -71,14 +71,14 @@ namespace gestion_de_negocio
         }
         public void cargarDdlProveedores()
         {
-            DataTable proveedores = new DataTable();
+            NegocioProveedores negProv = new NegocioProveedores();
+            DataTable proveedores = negProv.obtenerTodosLosProveedores();
             ddlProveedores.Items.Clear();
             ddlProveedores.DataSource = proveedores;
-            ddlProveedores.DataTextField = "nombre_prov "+" razonSocial_prov";
+            ddlProveedores.DataTextField = "nombre_prov";
             ddlProveedores.DataValueField = "idProveedor_prov";
             ddlProveedores.DataBind();
-            ddlProveedores.Items.Add(new ListItem("-- Sin Proveedor --","0"));
-            ddlProveedores.SelectedValue = "0";
+            ddlProveedores.SelectedValue = "0";// tiene que ser el proveedor asignado
         }
         public void cargarGridProductos()
         {
@@ -160,14 +160,8 @@ namespace gestion_de_negocio
             {
                 btn.Text = "+";
                 txt.Visible = false;
-                ListItem item = new ListItem(txt.Text, txt.Text);
-                if (!yaExiste(item,ddl))
-                {
-                ddl.Items.Add(item);
-                }
-                txt.Text = string.Empty;
+              
             }
-            // agregar seccion a BD para luego al cargar la paginas se carguen las secciones correctas
         }
         public bool yaExiste(ListItem item,DropDownList ddl)
         {
@@ -206,6 +200,7 @@ namespace gestion_de_negocio
         {
             NegocioNegocios negneg = new NegocioNegocios();
             NegocioProductos negProd = new NegocioProductos();
+            NegocioProdXProv negProdXProv = new NegocioProdXProv();
            
             int idProducto = negProd.obtenerIdDelProducto(txtNombre.Text);
             bool accionExitosa = false;
@@ -215,12 +210,15 @@ namespace gestion_de_negocio
             int.TryParse(ddlSecciones.SelectedValue, out int idSeccion);
             int.TryParse(txtPrecio.Text, out int precio);
             int.TryParse(txtStock.Text, out int stock);
-
+            int.TryParse(ddlProveedores.SelectedValue, out int idProveedor);
+           
 
             if (idProducto == -1)
             {
                 accionExitosa = negProd.altaProducto(txtNombre.Text, idSeccion,
                     txtDescripcion.Text,precio, stock, imgProducto.ImageUrl,idNegocioIniciado);
+
+                accionExitosa = negProdXProv.altaProductoXProveedor(idProveedor,idProducto,idNegocioIniciado);
                 
                    accionRealizada = accionExitosa? 1 : 0;
             }
@@ -228,6 +226,9 @@ namespace gestion_de_negocio
             {
                 accionExitosa = negProd.modificarProducto(txtNombre.Text, idSeccion,
                     txtDescripcion.Text,precio, stock, imgProducto.ImageUrl);
+                //if(idProveedor != )
+                // modificar producto xproveedor tambien 
+                
                 
                    accionRealizada = accionExitosa? 2 : 0;  
             }

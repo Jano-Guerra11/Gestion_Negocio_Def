@@ -21,7 +21,7 @@ namespace Negocio
 
         public int obtenerIdProveedor(string telefono)
         {
-            int id = 0;
+            int id = -1;
             DataTable tablaIdProv = dao.obtenerTablaConIdProveedor(telefono);
          
             if (tablaIdProv.Rows.Count > 0)
@@ -38,10 +38,12 @@ namespace Negocio
         public bool altaProveedor(int idNegocio,string nombre,string razonSocial,string telefono,string mail)
         {
             bool altaExitosa = false;
-            if(obtenerIdProveedor(telefono) == 0)
+            
+            if(obtenerIdProveedor(telefono) == -1)
             {
                 Proveedores nuevoProv = new Proveedores();
-                nuevoProv.IdProveedor_prov = obtenerUltimoId() + 1;
+                if (nombre == "sin proveedor") nuevoProv.IdProveedor_prov = 0;
+                else nuevoProv.IdProveedor_prov = obtenerUltimoId() + 1;
                 nuevoProv.IdNegocio_prov = idNegocio;
                 nuevoProv.Nombre_prov = nombre;
                 nuevoProv.RazonSocial_prov = razonSocial;
@@ -50,6 +52,10 @@ namespace Negocio
                    altaExitosa = dao.altaProveedor(nuevoProv) == 1;
             }
                return altaExitosa;
+        }
+        public bool existeProveedor(int idProveedor)
+        {
+            return dao.existeProveedor(idProveedor);
         }
     }
 }

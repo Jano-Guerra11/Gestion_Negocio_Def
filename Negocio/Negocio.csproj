@@ -46,6 +46,7 @@
     <Compile Include="NegocioPermisos.cs" />
     <Compile Include="NegocioPerXUsu.cs" />
     <Compile Include="NegocioProductos.cs" />
+    <Compile Include="NegocioProdXProv.cs" />
     <Compile Include="NegocioProveedores.cs" />
     <Compile Include="NegocioRoles.cs" />
     <Compile Include="NegocioRolesXpermisos.cs" />

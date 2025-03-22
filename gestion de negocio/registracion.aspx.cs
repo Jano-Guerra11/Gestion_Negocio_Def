@@ -52,14 +52,20 @@ namespace gestion_de_negocio
         protected void btnAgregarNegocio_Click(object sender, EventArgs e)
         {
             NegocioNegocios negNeg = new NegocioNegocios();
-            if (!negNeg.altaNegocio(txtNuevoNegocio.Text))
+            NegocioProveedores negPRov = new NegocioProveedores();
+            string nombreNuevoNegocio = txtNuevoNegocio.Text;
+            if (!negNeg.altaNegocio(nombreNuevoNegocio))
             {
                 lblMensajeErrorAgregarNegocio.Text = "Negocio existente";
             }
             else
-            {
+            {    // negocio creado 
                 lblMensajeErrorAgregarNegocio.Text = string.Empty;
                 cargarDDlNegocios();
+               int idNeg = negNeg.obtenerID(nombreNuevoNegocio);
+                negPRov.altaProveedor(idNeg,"sin proveedor","-","-","-");
+                // dar de alta los datos predeterminados como la seccion 0
+                // y el proveedor 0? 
             }
         }
 
