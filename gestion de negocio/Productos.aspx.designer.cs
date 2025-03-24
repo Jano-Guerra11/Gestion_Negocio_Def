@@ -105,6 +105,24 @@ namespace gestion_de_negocio
         protected global::System.Web.UI.WebControls.Button btnAgregarSeccion;
 
         /// <summary>
+        /// Control txtNuevaSeccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNuevaSeccion;
+
+        /// <summary>
+        /// Control lblMensajeAltaSeccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensajeAltaSeccion;
+
+        /// <summary>
         /// Control txtCategoria.
         /// </summary>
         /// <remarks>
@@ -294,15 +312,6 @@ namespace gestion_de_negocio
         protected global::System.Web.UI.WebControls.DropDownList ddlSeccion;
 
         /// <summary>
-        /// Control txtNuevaSeccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNuevaSeccion;
-
-        /// <summary>
         /// Control ddlCategorias.
         /// </summary>
         /// <remarks>
@@ -310,15 +319,6 @@ namespace gestion_de_negocio
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCategorias;
-
-        /// <summary>
-        /// Control btnAgregarTipo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarTipo;
 
         /// <summary>
         /// Control txtNuevoTipo.

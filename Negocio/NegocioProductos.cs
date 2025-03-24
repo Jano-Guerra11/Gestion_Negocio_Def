@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entidades;
+using System.Diagnostics;
 
 namespace Negocio
 {
@@ -54,13 +55,21 @@ namespace Negocio
             producto.Activo_pr = true;
             producto.UrlImagen_pr = urlImagen;
          
+            // falta agregar un productoXproveedor en todos los casos porq 
+            // tenemos un proveedor por defecto que es igual a sin proveedor
 
             bool alta = false;
-            if (!dao.existeProducto(idProducto) &&
+            if (!dao.existeProducto(idProducto) &
                !daoPrXNeg.existeProductoXNegocio(idProducto,idNegocio))
             {
-               if(dao.altaProducto(producto,idSeccion) == 1 && daoPrXNeg.altaProductosXnegocios(idNegocio,idProducto) ==1)
+                
+               int filasAfectadasProd = dao.altaProducto(producto, idSeccion);
+                
+                int filasAfectadasPxN = daoPrXNeg.altaProductosXnegocios(idNegocio, idProducto);
+
+               if (filasAfectadasProd == 1 && filasAfectadasPxN ==1)
                {
+                   
                    alta = true;
                }
             }

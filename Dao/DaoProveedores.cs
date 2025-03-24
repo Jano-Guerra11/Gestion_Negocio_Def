@@ -32,7 +32,7 @@ namespace Dao
         }
         public DataTable obtenerTablaConUltimoId()
         {
-            string consulta = "SELECT COALESCE(MAX(idProveedor_prov),0) FROM proveedores;";
+            string consulta = "SELECT COALESCE(MAX(idProveedor_prov),0) FROM proveedores";
            return ad.obtenerTabla(consulta,"ultimoIdProv");
         }
         public DataTable obtenerTablaConIdProveedor(string telefono)

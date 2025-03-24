@@ -22,7 +22,8 @@ namespace gestion_de_negocio
                 validarUsuario();
                 fileUpload();
                 cargarGridProductos();
-                cargarDdlProveedores();
+                cargarDdlProveedores("0");
+                cargarDdlSecciones("0");
             }
         }
         public void validarUsuario()
@@ -40,7 +41,7 @@ namespace gestion_de_negocio
                 lblNegocioIniciado.Text = "Negocio: " + nombreNegocio;
                 Session["nombreNegocio"] = nombreNegocio;
             }
-            else if (Session["nombreUsuario"]!=null && Session["nombreNegocio"] != null)
+            else if (Session["nombreUsuario"] != null && Session["nombreNegocio"] != null)
             {
                 // usuario iniciado pero no recordado
                 string UsuarioIniciado = Session["nombreUsuario"].ToString();
@@ -57,20 +58,21 @@ namespace gestion_de_negocio
 
         public void fileUpload()
         {
-            
-            if (imgProducto.ImageUrl=="")
+
+            if (imgProducto.ImageUrl == "")
             {
                 flUpProducto.Visible = true;
                 btnGuardarImagen.Visible = true;
                 imgProducto.Visible = false;
             }
             else { flUpProducto.Visible = false;
-                btnGuardarImagen.Visible=false;
-                imgProducto.Visible=true;
+                btnGuardarImagen.Visible = false;
+                imgProducto.Visible = true;
             }
         }
-        public void cargarDdlProveedores()
+        public void cargarDdlProveedores(string idProvSeleccionado)
         {
+
             NegocioProveedores negProv = new NegocioProveedores();
             DataTable proveedores = negProv.obtenerTodosLosProveedores();
             ddlProveedores.Items.Clear();
@@ -78,7 +80,21 @@ namespace gestion_de_negocio
             ddlProveedores.DataTextField = "nombre_prov";
             ddlProveedores.DataValueField = "idProveedor_prov";
             ddlProveedores.DataBind();
-            ddlProveedores.SelectedValue = "0";// tiene que ser el proveedor asignado
+            ddlProveedores.SelectedValue = idProvSeleccionado;// tiene que ser el proveedor asignado
+        }
+        public void cargarDdlSecciones(string idSeccionSeleccionada)
+        {
+            NegocioSecciones negSec = new NegocioSecciones();
+            NegocioNegocios Neg = new NegocioNegocios();
+           int idNegocio = Neg.obtenerID(Session["nombreNegocio"].ToString());
+            Debug.WriteLine("id negocio iniciado ->Z " + idNegocio);
+            DataTable secciones = negSec.obtenerTablaSecciones(idNegocio);
+            ddlSecciones.Items.Clear();
+            ddlSecciones.DataSource = secciones;
+            ddlSecciones.DataTextField = "nombre_sec";
+            ddlSecciones.DataValueField = "idSeccion_sec";
+            ddlSecciones.DataBind();
+            ddlSecciones.SelectedValue = idSeccionSeleccionada;
         }
         public void cargarGridProductos()
         {
@@ -130,14 +146,14 @@ namespace gestion_de_negocio
                     string rutaCompleta = Path.Combine(carpetaDestino, flUpProducto.FileName);
                     flUpProducto.SaveAs(rutaCompleta);
 
-                    imgProducto.ImageUrl = "/imagenes/"+flUpProducto.FileName;
-                   fileUpload();
+                    imgProducto.ImageUrl = "/imagenes/" + flUpProducto.FileName;
+                    fileUpload();
                     // guardar la ruta en la base de datos
                     Debug.WriteLine("ruta de la imagen ---> " + imgProducto.ImageUrl);
                 }
             }
         }
-        
+
 
         protected void grdProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -146,39 +162,30 @@ namespace gestion_de_negocio
 
         protected void btnAgregarSeccion_Click(object sender, EventArgs e)
         {
-            agregarAlDdl((Button)sender,txtNuevaSeccion,ddlSeccion);
-        }
 
-        public void agregarAlDdl(Button btn,TextBox txt,DropDownList ddl)
-        {
-            if(btn.Text == "+")
+            if(btnAgregarSeccion.Text == "+")
             {
-                btn.Text = "Agregar";
-                txt.Visible = true;
+                btnAgregarSeccion.Text = "Agregar";
+                txtNuevaSeccion.Visible = true;
+                lblMensajeAltaSeccion.Text = "";
             }
             else
             {
-                btn.Text = "+";
-                txt.Visible = false;
-              
-            }
-        }
-        public bool yaExiste(ListItem item,DropDownList ddl)
-        {
-            bool existe = false;
-            foreach(ListItem li in ddl.Items)
-            {
-                if(li.Text == item.Text)
+                // alta
+                btnAgregarSeccion.Text = "+";
+                txtNuevaSeccion.Visible= false;
+                NegocioSecciones negSec = new NegocioSecciones();
+                NegocioNegocios neg = new NegocioNegocios();
+                int idNegocio = neg.obtenerID(Session["nombreNegocio"].ToString());
+                if (negSec.altaSeccion(txtNuevaSeccion.Text,idNegocio))
                 {
-                    existe = true;
+                    lblMensajeAltaSeccion.Text = "Agregada";
+                    string idNuevaSec = negSec.obtenerIdSeccion(txtNuevaSeccion.Text).ToString();
+                    cargarDdlSecciones(idNuevaSec);
                 }
-            }
-            return existe;
-        }
 
-        protected void btnAgregarTipo_Click(object sender, EventArgs e)
-        {
-            agregarAlDdl((Button)sender, txtNuevoTipo, ddlCategorias);
+            }
+
         }
 
         protected void btnMostrarFiltrado_Click(object sender, EventArgs e)
@@ -205,20 +212,22 @@ namespace gestion_de_negocio
             int idProducto = negProd.obtenerIdDelProducto(txtNombre.Text);
             bool accionExitosa = false;
             int accionRealizada = 0;
-            int idNegocioIniciado = negneg.obtenerID(lblNegocioIniciado.Text);
-
+            int idNegocioIniciado = negneg.obtenerID(Session["nombreNegocio"].ToString());
+          
             int.TryParse(ddlSecciones.SelectedValue, out int idSeccion);
             int.TryParse(txtPrecio.Text, out int precio);
             int.TryParse(txtStock.Text, out int stock);
             int.TryParse(ddlProveedores.SelectedValue, out int idProveedor);
-           
+            
 
             if (idProducto == -1)
             {
+                
                 accionExitosa = negProd.altaProducto(txtNombre.Text, idSeccion,
                     txtDescripcion.Text,precio, stock, imgProducto.ImageUrl,idNegocioIniciado);
 
-                accionExitosa = negProdXProv.altaProductoXProveedor(idProveedor,idProducto,idNegocioIniciado);
+                int nuevoIdProducto = negProd.obtenerIdDelProducto(txtNombre.Text);
+                accionExitosa = negProdXProv.altaProductoXProveedor(idProveedor,nuevoIdProducto,idNegocioIniciado);
                 
                    accionRealizada = accionExitosa? 1 : 0;
             }

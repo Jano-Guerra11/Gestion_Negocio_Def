@@ -9,12 +9,7 @@
     <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            margin-right: 0px;
-        }
-    </style>
-</head>
+    </head>
 <body id="bodyProductos">
     <form id="form1" runat="server">
         <main>
@@ -36,7 +31,7 @@
             <th class="table_header thNombre">Nombre</th>
         </tr>
         <tr class="fila">
-            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtNombre" runat="server"></asp:TextBox></td>
+            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtNombre" runat="server" placeholder="Nombre"></asp:TextBox></td>
         </tr>
         <!-- -->
          <tr class="fila">
@@ -48,6 +43,8 @@
                      <asp:ListItem Value="0">- ninguna -</asp:ListItem>
                  </asp:DropDownList>
                  <asp:Button ID="btnAgregarSeccion" runat="server" Text="+" Font-Bold="True" Font-Size="Large" OnClick="btnAgregarSeccion_Click" />
+                 <asp:TextBox ID="txtNuevaSeccion" runat="server" Visible="false"></asp:TextBox>
+                 <asp:Label ID="lblMensajeAltaSeccion" runat="server" Text=""></asp:Label>
              </td>
          </tr>
         <!-- 
@@ -62,21 +59,21 @@
             <th  class="table_header">Descripcion</th>
         </tr>
         <tr class="fila">
-            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtDescripcion" runat="server">Descripcion del producto</asp:TextBox></td>
+            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtDescripcion" runat="server" placeholder="Descripcion del producto"></asp:TextBox></td>
         </tr>
         <!-- -->
         <tr class="fila">
             <th  class="table_header">Precio</th>
         </tr>
         <tr class="fila">
-            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtPrecio" runat="server">0.0$</asp:TextBox></td>
+            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtPrecio" runat="server" placeholder="0.0$"></asp:TextBox></td>
         </tr>
         <!-- -->
         <tr class="fila">
             <th  class="table_header">Stock</th>
         </tr>
         <tr class="fila">
-            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtStock" runat="server">20 U</asp:TextBox></td>
+            <td><asp:TextBox CssClass="txtInfoProducto" ID="txtStock" runat="server" placeholder="20 U"></asp:TextBox></td>
         </tr>
         <!-- -->
          <!-- -->
@@ -126,13 +123,11 @@
                         <td class="primeraCelda">Seccion </td><td class="ultimaCelda">
                             <asp:DropDownList CssClass="ddls" ID="ddlSeccion" runat="server"></asp:DropDownList>
                         
-                            <asp:TextBox ID="txtNuevaSeccion" runat="server" placeholder="escriba la nueva seccion" Visible="False"></asp:TextBox>
                                          </td>
                     </tr>
                     <tr class="filaFiltrado">
                         <td class="primeraCelda">Categoria/modelo/tipo</td><td class="ultimaCelda">
                             <asp:DropDownList CssClass="ddls" ID="ddlCategorias" runat="server"></asp:DropDownList>
-                            <asp:Button ID="btnAgregarTipo" runat="server" Text="+" Font-Bold="True" Font-Size="Large" OnClick="btnAgregarTipo_Click" />
                             <asp:TextBox ID="txtNuevoTipo" runat="server" placeholder="Escriba la nueva categoria" Visible="false"></asp:TextBox>
                                                       </td>
                         <td class="primeraCelda">Precio</td><td class="celdaMedia" >
@@ -177,11 +172,6 @@
                         <asp:TemplateField HeaderText="Seccion">
                             <ItemTemplate>
                                 <asp:Label ID="lbl_it_seccion" runat="server" Text='<%# Bind("nombre_sec") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Categoria/Modelo/Tipo">
-                            <ItemTemplate>
-                                <asp:Label ID="lbl_it_tipo" runat="server" ></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Descripcion">

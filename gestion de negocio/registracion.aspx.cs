@@ -53,6 +53,8 @@ namespace gestion_de_negocio
         {
             NegocioNegocios negNeg = new NegocioNegocios();
             NegocioProveedores negPRov = new NegocioProveedores();
+            NegocioSecciones negSec = new NegocioSecciones();
+
             string nombreNuevoNegocio = txtNuevoNegocio.Text;
             if (!negNeg.altaNegocio(nombreNuevoNegocio))
             {
@@ -63,9 +65,11 @@ namespace gestion_de_negocio
                 lblMensajeErrorAgregarNegocio.Text = string.Empty;
                 cargarDDlNegocios();
                int idNeg = negNeg.obtenerID(nombreNuevoNegocio);
+                // doy de alta el proveedor por defecto
                 negPRov.altaProveedor(idNeg,"sin proveedor","-","-","-");
-                // dar de alta los datos predeterminados como la seccion 0
-                // y el proveedor 0? 
+                // doy de alta la seccion predeterminada
+                negSec.altaSeccion("sin seccion",idNeg);
+               
             }
         }
 
