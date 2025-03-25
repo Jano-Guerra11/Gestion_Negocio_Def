@@ -67,39 +67,79 @@ namespace gestion_de_negocio
         public bool iniciarSesion()
         {
             bool UsuarioValido = false;
-            Usuarios usuarios = new Usuarios();
-            NegocioC negocio = new NegocioC();
-            NegociosXUsuarios NxU = new NegociosXUsuarios();
-            NegocioUsuarios negocioUsuarios = new NegocioUsuarios();
-            NegocioNegocios negNeg = new NegocioNegocios();
-            NegocioNxU negNxU = new NegocioNxU();
-
-            usuarios.NombreUsuario = txtNombreUsuario.Text;
-            usuarios.Contrasenia = txtPassword.Text;
-            usuarios.IdUsuario = negocioUsuarios.obtenerID(usuarios);
-            negocio.NombreNegocio = txtNombreNegocio.Text;
-            NxU.IdUsuario = negocioUsuarios.obtenerID(usuarios); 
-            NxU.IdNegocio = negNeg.obtenerID(negocio.NombreNegocio);
-
-            if (negocioUsuarios.existeUsuario(usuarios) &&
-              negNeg.existeNegocio(negocio) && negNxU.existeNxU(NxU))
+            if (validarCredenciales())
             {
+                crearVariablesSession();
                 UsuarioValido = true;
-                Session["idNegocio"] = NxU.IdNegocio;
-                Session["rolUsuario"] = negocioUsuarios.obtenerRolDelUsuario(NxU.IdUsuario);
-                Session["nombreUsuario"] = txtNombreUsuario.Text;
-                Session["nombreNegocio"] = txtNombreNegocio.Text;
-
                 if (chbxRecordarme.Checked)
                 {
-                    crearCookies(usuarios,negocio);
-                }
-                
+                    crearCookies();
+                }            
             }
             return UsuarioValido;
         }
-        public void crearCookies(Usuarios usuario,NegocioC negocio )
+        public bool validarCredenciales()
         {
+            var usuario = obtenerUsuarioConDatosDeLogin();
+            var negocio = obtenerNegocioConDatosDeLogin();
+            var negXus = obtenerNegXusuarios(usuario,negocio);
+            return (ExisteUsuario(usuario) && ExisteNegocio(negocio) && ExisteNegXusu(negXus)) ? true : false;
+        }
+        public Usuarios obtenerUsuarioConDatosDeLogin()
+        {
+            NegocioUsuarios neg = new NegocioUsuarios();
+            Usuarios usuario = new Usuarios();
+            usuario.NombreUsuario = txtNombreUsuario.Text;
+            usuario.Contrasenia = txtPassword.Text;
+            usuario.IdUsuario = neg.obtenerID(usuario);
+            return usuario;
+        }
+        public NegocioC obtenerNegocioConDatosDeLogin()
+        {
+            NegocioC negocio = new NegocioC();
+            negocio.NombreNegocio = txtNombreNegocio.Text;
+            return negocio;
+        }
+        public NegociosXUsuarios obtenerNegXusuarios(Usuarios usuario,NegocioC negocio)
+        {
+            return new NegociosXUsuarios
+            {
+                IdUsuario = usuario.IdUsuario,
+                IdNegocio = new NegocioNegocios().obtenerID(negocio.NombreNegocio)
+            };
+        }
+        public bool ExisteUsuario(Usuarios usuario)
+        {
+            NegocioUsuarios neg = new NegocioUsuarios();
+            return neg.existeUsuario(usuario);
+        }
+        public bool ExisteNegocio(NegocioC negocio)
+        {
+            NegocioNegocios neg = new NegocioNegocios();
+            return neg.existeNegocio(negocio);
+        }
+        public bool ExisteNegXusu(NegociosXUsuarios nXu)
+        {
+            NegocioNxU neg = new NegocioNxU();
+            return neg.existeNxU(nXu);
+        }
+        public void crearVariablesSession()
+        {
+            NegocioUsuarios negUs = new NegocioUsuarios(); 
+            var negocio = obtenerNegocioConDatosDeLogin();
+            var usuario = obtenerUsuarioConDatosDeLogin();
+            var negXus = obtenerNegXusuarios(usuario,negocio);
+
+            Session["idNegocio"] = negocio.IdNegocio;
+            Session["rolUsuario"] = negUs.obtenerRolDelUsuario(usuario.IdUsuario);
+            Session["nombreUsuario"] = usuario.NombreUsuario;
+            Session["nombreNegocio"] =negocio.NombreNegocio;
+        }
+        public void crearCookies()
+        {
+            Usuarios usuario = obtenerUsuarioConDatosDeLogin();
+            NegocioC negocio = obtenerNegocioConDatosDeLogin();
+
             HttpCookie ckUsuario = new HttpCookie("nombreUsuario",usuario.NombreUsuario);
             ckUsuario.Expires = DateTime.Now.AddDays(10);
             Response.Cookies.Add(ckUsuario);

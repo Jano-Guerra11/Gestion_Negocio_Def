@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\gestion de negocio\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\gestion de negocio\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\dao\\daoproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCCA7847-11E2-4653-BCA8-3395C1F83445}|Dao\\Dao.csproj|solutionrelative:dao\\daoproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\negocio\\negociosecciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B81C3D01-CDBC-4FBF-AB2E-9662A76FA4A0}|Negocio\\Negocio.csproj|solutionrelative:negocio\\negociosecciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|c:\\users\\jano\\desktop\\gestion_negocio_def\\gestion de negocio\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{98859BB7-C441-48BF-AACF-8A8D66FAB4BF}|gestion de negocio\\Vistas.csproj|solutionrelative:gestion de negocio\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,54 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NegocioSecciones.cs",
-              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Negocio\\NegocioSecciones.cs",
-              "RelativeDocumentMoniker": "Negocio\\NegocioSecciones.cs",
-              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Negocio\\NegocioSecciones.cs",
-              "RelativeToolTip": "Negocio\\NegocioSecciones.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBgAAAAuAAAA",
+              "DocumentIndex": 0,
+              "Title": "login.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\login.aspx.cs",
+              "RelativeDocumentMoniker": "gestion de negocio\\login.aspx.cs",
+              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\login.aspx.cs",
+              "RelativeToolTip": "gestion de negocio\\login.aspx.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAcwE4AAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T18:18:32.312Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DaoProductos.cs",
-              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\DaoProductos.cs",
-              "RelativeDocumentMoniker": "Dao\\DaoProductos.cs",
-              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\Dao\\DaoProductos.cs",
-              "RelativeToolTip": "Dao\\DaoProductos.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAAAC0AAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T15:45:38.873Z",
+              "WhenOpened": "2025-03-25T21:35:28.427Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Productos.aspx",
-              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx",
-              "RelativeDocumentMoniker": "gestion de negocio\\Productos.aspx",
-              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx",
-              "RelativeToolTip": "gestion de negocio\\Productos.aspx",
-              "LogicalView": "7651a702-06e5-11d1-8ebd-00a0c90f26ea",
+              "Title": "login.aspx",
+              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\login.aspx",
+              "RelativeDocumentMoniker": "gestion de negocio\\login.aspx",
+              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\login.aspx",
+              "RelativeToolTip": "gestion de negocio\\login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-03-18T19:25:26.994Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Productos.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx.cs",
-              "RelativeDocumentMoniker": "gestion de negocio\\Productos.aspx.cs",
-              "ToolTip": "C:\\Users\\jano\\Desktop\\Gestion_Negocio_Def\\gestion de negocio\\Productos.aspx.cs",
-              "RelativeToolTip": "gestion de negocio\\Productos.aspx.cs",
-              "ViewState": "AQIAAKIAAAAAAAAAAAAMwLcAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T20:31:18.237Z",
+              "WhenOpened": "2025-03-25T21:35:25.979Z",
               "EditorCaption": ""
             }
           ]
