@@ -46,17 +46,13 @@ namespace gestion_de_negocio
             {
                 args.IsValid = false;
             }
-            else { args.IsValid = true; }           
+            else { args.IsValid = true; }
         }
 
         protected void btnAgregarNegocio_Click(object sender, EventArgs e)
         {
-            NegocioNegocios negNeg = new NegocioNegocios();
-            NegocioProveedores negPRov = new NegocioProveedores();
-            NegocioSecciones negSec = new NegocioSecciones();
-
             string nombreNuevoNegocio = txtNuevoNegocio.Text;
-            if (!negNeg.altaNegocio(nombreNuevoNegocio))
+            if (!crearNegocio(nombreNuevoNegocio, out int idNeg))
             {
                 lblMensajeErrorAgregarNegocio.Text = "Negocio existente";
             }
@@ -64,14 +60,33 @@ namespace gestion_de_negocio
             {    // negocio creado 
                 lblMensajeErrorAgregarNegocio.Text = string.Empty;
                 cargarDDlNegocios();
-               int idNeg = negNeg.obtenerID(nombreNuevoNegocio);
-                // doy de alta el proveedor por defecto
-                negPRov.altaProveedor(idNeg,"sin proveedor","-","-","-");
-                // doy de alta la seccion predeterminada
-                negSec.altaSeccion("sin seccion",idNeg);
-               
+                altaProveedorPorDefecto(idNeg);
+                altaSeccionPorDefecto(idNeg);
             }
         }
+        private bool crearNegocio(string nombreNegocio, out int idNeg)
+        {
+            NegocioNegocios negNeg = new NegocioNegocios();
+            bool alta = false;
+            idNeg = 0;
+            if (negNeg.altaNegocio(nombreNegocio))
+            {
+                idNeg = negNeg.obtenerID(nombreNegocio);
+                alta = true;
+            }
+            return alta;
+        }
+        private void altaProveedorPorDefecto(int idNeg)
+        {
+            NegocioProveedores negPRov = new NegocioProveedores();
+            negPRov.altaProveedor(idNeg, "sin proveedor", "-", "-", "-");
+        } 
+        private void altaSeccionPorDefecto(int idNeg)
+        {
+            NegocioSecciones negSec = new NegocioSecciones();
+            negSec.altaSeccion("sin seccion", idNeg);
+        }
+
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {

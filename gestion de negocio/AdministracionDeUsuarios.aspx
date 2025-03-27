@@ -30,7 +30,7 @@
              <asp:RequiredFieldValidator ID="rfvNombreUsuario" runat="server" ValidationGroup="registro" ControlToValidate="txtUNRegistro" ForeColor="Red">*</asp:RequiredFieldValidator>
              </div>
             <div class="form-floating">
-        <asp:DropDownList ID="ddlNegociosRegistrados" runat="server"  class="form-select" ControlToValidate="ddlNegociosRegistrados" OnSelectedIndexChanged="ddlNegociosRegistrados_SelectedIndexChanged">
+        <asp:DropDownList ID="ddlNegociosRegistrados" runat="server"  class="form-select" ControlToValidate="ddlNegociosRegistrados" >
         </asp:DropDownList>
                  <label for="floatingPassword">Negocio</label>
         <asp:RequiredFieldValidator ID="rfvDdlNegocios" runat="server" ControlToValidate="ddlNegociosRegistrados" InitialValue="0" ForeColor="Red" ValidationGroup="registro">*</asp:RequiredFieldValidator>
@@ -67,11 +67,11 @@
            <h2 id="h2Permisos">Administrar Permisos</h2>
            <div class="contenedor_GridUsuarios">
 
-                <asp:GridView class="table table-striped" ID="grdUsuarios" runat="server" AutoGenerateColumns="False" OnDataBound="grdUsuarios_DataBound" OnRowDataBound="grdUsuarios_RowDataBound">
+                <asp:GridView class="table table-striped" ID="grdUsuarios" runat="server" AutoGenerateColumns="False" OnDataBound="grdUsuarios_DataBound" >
                     <Columns>
                         <asp:TemplateField HeaderText="ID">
                             <ItemTemplate>
-                                <asp:Label ID="lbl_it_idUsuario" runat="server"></asp:Label>
+                                <asp:Label ID="lbl_it_idUsuario" runat="server" Text='<%# Bind("idUsuario_us") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="NOMBRE">

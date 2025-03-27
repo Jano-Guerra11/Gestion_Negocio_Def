@@ -28,19 +28,43 @@ namespace gestion_de_negocio
         }
         public void validarUsuario()
         {
-           
-            if(Request.Cookies["nombreUsuario"] !=null &&
-                Request.Cookies["ContrasenaUsuario"] !=null &&
-                Request.Cookies["negocio"]!=null)
+            if (!validarCookiesUsuarioRecordado() && 
+                !validarSessionsIniciadoNoRecordado())
             {
-                //usuario valido
-                lblUsuarioIniciado.Text = "Usuario: "+ Request.Cookies["nombreUsuario"].Value;
-                lblNegocioIniciado.Text = "Negocio: " + Request.Cookies["negocio"].Value;
-            }
-            else
-            {
+                //usuario no inicado ni recordado
                 Response.Redirect("login.aspx");
+            }            
+        }
+        private bool validarCookiesUsuarioRecordado()
+        {
+            bool recordado = false;
+            if(Request.Cookies["nombreUsuario"] != null &&
+                Request.Cookies["ContrasenaUsuario"] != null &&
+                Request.Cookies["negocio"] != null)
+            {
+                string nombreUsuario = Request.Cookies["nombreUsuario"].Value;
+                string nombreNegocio = Request.Cookies["negocio"].Value;
+
+                lblUsuarioIniciado.Text = "Usuario: " + nombreUsuario;
+                lblNegocioIniciado.Text = "Negocio: " + nombreNegocio;
+                Session["nombreNegocio"] = nombreNegocio;
+                recordado = true;
             }
+            return recordado;
+        }
+        private bool validarSessionsIniciadoNoRecordado()
+        {
+            bool iniciadoNoRecordado = false;
+            if(Session["nombreUsuario"] != null && Session["nombreNegocio"] != null)
+            {
+                string UsuarioIniciado = Session["nombreUsuario"].ToString();
+                string NegocioIniciado = Session["nombreNegocio"].ToString();
+
+                lblUsuarioIniciado.Text = "Usuario: " + UsuarioIniciado;
+                lblNegocioIniciado.Text = "Negocio: " + NegocioIniciado;
+                iniciadoNoRecordado = true;
+            }
+            return iniciadoNoRecordado;
         }
 
         public void cargarDDlNegocios()
@@ -79,28 +103,22 @@ namespace gestion_de_negocio
         {
             if (grdUsuarios.Rows.Count == 0)
             {
-               
-                TableCell celda = new TableCell();
-                celda.Text = "No hay datos Disponibles";
-                celda.ColumnSpan = grdUsuarios.Columns.Count;
-                celda.HorizontalAlign = HorizontalAlign.Center;
-
-                GridViewRow row = new GridViewRow(0,0,DataControlRowType.DataRow,DataControlRowState.Normal);
-                row.Cells.Add(celda);
-                grdUsuarios.Controls[0].Controls.Add(row);
+                grdUsuarios.Controls[0].Controls.Add(crearFilaVaciaDeGridView());
             }
         }
-
-        protected void grdUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
+        private GridViewRow crearFilaVaciaDeGridView()
         {
-            if(e.Row.RowType == DataControlRowType.DataRow)
-            {
-                int idEnInt = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "idUsuario_Us"));
-                string idEnString = idEnInt.ToString();
-                Label lblId = (Label)e.Row.FindControl("lbl_it_IdUsuario");
-                lblId.Text = idEnString;    
-
-            }
+            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.DataRow, DataControlRowState.Normal);
+            row.Cells.Add(crearCeldaSinDatos());
+            return row;
+        }
+        private TableCell crearCeldaSinDatos()
+        {
+            TableCell celda = new TableCell();
+            celda.Text = "No hay datos Disponibles";
+            celda.ColumnSpan = grdUsuarios.Columns.Count;
+            celda.HorizontalAlign = HorizontalAlign.Center;
+            return celda;
         }
 
         protected void lbVolverALogin_Click(object sender, EventArgs e)
@@ -111,88 +129,117 @@ namespace gestion_de_negocio
         protected void cvNombreUsuario_ServerValidate(object source, ServerValidateEventArgs args)
         {
             NegocioUsuarios negUs = new NegocioUsuarios();
-            Debug.WriteLine("--- pase pasew");
+            
             if (negUs.existeNombreUsuario(args.Value))
             {
                 args.IsValid = false;
             }
             else { args.IsValid = true; }
         }
-
+        //-------------------------------------------------------------------------------
         protected void btnAgregarNegocio_Click(object sender, EventArgs e)
+        {           
+            if(!esValidoElNombre(txtNuevoNegocio.Text))
+            {
+                mensajeErrorEnAltaNegocio("no se permiten espacios en blanco");
+                return;
+            }
+
+            if (!crearNegocio(txtNuevoNegocio.Text))
+            {
+                mensajeErrorEnAltaNegocio("Negocio existente");
+                return;
+            }
+
+            procesarNegocioNuevo();
+        }
+        private bool esValidoElNombre(string nombre)
+        {
+            return !string.IsNullOrWhiteSpace(nombre);
+        }
+        private bool crearNegocio(string nombreNuevoNegocio)
         {
             NegocioNegocios negNeg = new NegocioNegocios();
-            if(txtNuevoNegocio.Text != "")
-            {
-               if (!negNeg.altaNegocio(txtNuevoNegocio.Text))
-               {
-                lblMensajeErrorAgregarNegocio.Text = "Negocio existente";
-               }
-               else
-               {
-                lblMensajeErrorAgregarNegocio.Text = string.Empty;
-                cargarDDlNegocios();
-                txtNuevoNegocio.Text = string.Empty;
-               }
-            }
-            else { lblMensajeErrorAgregarNegocio.Text = "no se permiten espacios en blanco"; }
+            return negNeg.altaNegocio(nombreNuevoNegocio);
         }
-
+        private void mensajeErrorEnAltaNegocio(string mensaje)
+        {
+            lblMensajeErrorAgregarNegocio.Text = mensaje;
+        }
+        private void procesarNegocioNuevo()
+        {
+            lblMensajeErrorAgregarNegocio.Text = string.Empty;
+            cargarDDlNegocios();
+            txtNuevoNegocio.Text = string.Empty;
+        }
+      // -------------------------------------------------------------------------------
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            NegocioUsuarios negUs = new NegocioUsuarios();
-            NegocioNxU negNXu = new NegocioNxU();
-            Usuarios nuevoUsuario = new Usuarios();
-            NegociosXUsuarios negXusu = new NegociosXUsuarios();
+            Usuarios nuevoUsuario = crearCargarObjetoUsuario();
+            NegociosXUsuarios negXusu = crearCargarNegXus(nuevoUsuario.IdUsuario);
 
-            int idNuevo = negUs.obtenerNuevoId(); 
-            nuevoUsuario.NombreUsuario = txtUNRegistro.Text;
-            nuevoUsuario.Contrasenia = txtPassword2.Text;
-            nuevoUsuario.RolUsuario = Convert.ToInt32(ddlRoles.SelectedValue);
-            nuevoUsuario.IdUsuario = idNuevo;
-            negXusu.IdUsuario = idNuevo;
-            negXusu.IdNegocio = Convert.ToInt32(ddlNegociosRegistrados.SelectedValue);
-
-            if (negUs.altaUsuario(nuevoUsuario) && negNXu.altaNegXUsu(negXusu) &&
-                darDeAltaTodosLosPermisosDelUsuario(idNuevo, nuevoUsuario.RolUsuario))
+            if (crearUsuarioAsignarNegocio(nuevoUsuario,negXusu) &&
+                darDeAltaTodosLosPermisosDelUsuario(nuevoUsuario.IdUsuario, nuevoUsuario.RolUsuario))
             {                    
                    lblConfirmacionRegistro.Text = "usuario registrado";
                    cargarGridUsuarios();    
             } 
            
         }
+        private Usuarios crearCargarObjetoUsuario()
+        {
+            NegocioUsuarios negUs = new NegocioUsuarios();
+            Usuarios nuevoUsuario = new Usuarios();
+            int idNuevo = negUs.obtenerNuevoId();
+            nuevoUsuario.NombreUsuario = txtUNRegistro.Text;
+            nuevoUsuario.Contrasenia = txtPassword2.Text;
+            nuevoUsuario.RolUsuario = Convert.ToInt32(ddlRoles.SelectedValue);
+            nuevoUsuario.IdUsuario = idNuevo;
+            return nuevoUsuario;
+        }
+        private NegociosXUsuarios crearCargarNegXus(int idNuevo)
+        {
+            NegociosXUsuarios negXusu = new NegociosXUsuarios();
+            negXusu.IdUsuario = idNuevo;
+            negXusu.IdNegocio = Convert.ToInt32(ddlNegociosRegistrados.SelectedValue);
+            return negXusu;
+        }
+        private bool crearUsuarioAsignarNegocio(Usuarios usuario,NegociosXUsuarios nXu)
+        {
+            NegocioUsuarios negUs = new NegocioUsuarios();
+            NegocioNxU negNxU = new NegocioNxU();
+            if (negUs.altaUsuario(usuario) && negNxU.altaNegXUsu(nXu))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool darDeAltaTodosLosPermisosDelUsuario(int idUsuario, int idRol)
         {
-            int contadorDeAltas = 0;
-            bool alta = false;
+           DataTable permisosDelRol = obtenerTablaConPermisosDelRol(idRol);
+            return crearPermisosDelUsuario(idUsuario,permisosDelRol);
+        }
+        private DataTable obtenerTablaConPermisosDelRol(int idRol)
+        {
             NegocioRolesXpermisos negRolXPer = new NegocioRolesXpermisos();
-            DataTable permisosDelRol = negRolXPer.tablaDePermisosSegunRol(idRol);
-            
-            permisosXusuarios perXus = new permisosXusuarios();
+            return negRolXPer.tablaDePermisosSegunRol(idRol);
+        } 
+        private bool crearPermisosDelUsuario(int idUsuario,DataTable permisosDelRol)
+        {
             NegocioPerXUsu negPerXus = new NegocioPerXUsu();
-
-            
-            Debug.WriteLine("soy el parametro de darDeAktaTodosLosPermisos: " + idUsuario);
+            bool accionExitosa = true;
             foreach (DataRow dr in permisosDelRol.Rows)
             {
-                Debug.WriteLine("soy el id enviado a la funcion desde el .cs: " + idUsuario);
-                if (negPerXus.altaUnPermisoDelUsuario(idUsuario, Convert.ToInt32(dr["idPermiso_rxp"]),
+                if (!negPerXus.altaUnPermisoDelUsuario(idUsuario, Convert.ToInt32(dr["idPermiso_rxp"]),
                     dr["tienePermiso_rxp"].ToString()))
                 {
-                    contadorDeAltas += 1;
+                    accionExitosa = false;
                 }
             }
-               if(contadorDeAltas == permisosDelRol.Rows.Count)
-               {
-                   alta = true;
-               }
-              return alta;
+            return accionExitosa;
         }
-
-        protected void ddlNegociosRegistrados_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
+      //--------------------------------------------------------------------------------
 
         protected void btn_it_Admin_Click(object sender, EventArgs e)
         {
@@ -220,24 +267,35 @@ namespace gestion_de_negocio
         }
         public void modificarPermiso(object sender,string nombreDelPermiso)
         {
-            NegocioPermisos negPer = new NegocioPermisos();
-            NegocioPerXUsu negPxU = new NegocioPerXUsu();
-            Button btn = (Button)sender;
-            GridViewRow filaDelControl = (GridViewRow)btn.NamingContainer;
-            int idDelUsuario = Convert.ToInt32(((Label)filaDelControl.FindControl("lbl_it_idUsuario")).Text);
-            int idDelPermiso = negPer.obtenerIdPorNombre(nombreDelPermiso);
+            Button btn = (Button)sender;    
+            GridViewRow filaDelControl = obtenerFilaDesdeBoton(btn);
+            int idDelUsuario = obtenerIdDesdeFila(filaDelControl);
+            int idDelPermiso = obtenerIdDelPermiso(nombreDelPermiso);
 
-            if (btn.Text == "SI")
-            {
-                negPxU.modificarUnPermisoDelUsuario(idDelPermiso, idDelUsuario, "false");
-            }
-            else
-            {
-                negPxU.modificarUnPermisoDelUsuario(idDelPermiso, idDelUsuario, "true");
-            }
+            bool nuevoEstado = btn.Text != "SI";
+            modificarUnPermisoDelUsuario(idDelUsuario,idDelPermiso,nuevoEstado);
+            
             cargarGridUsuarios();
         }
-
+        private GridViewRow obtenerFilaDesdeBoton(Button btn)
+        {
+            return (GridViewRow)btn.NamingContainer;
+        }
+        private int obtenerIdDesdeFila(GridViewRow filaDelControl)
+        {
+          return  Convert.ToInt32(((Label)filaDelControl.FindControl("lbl_it_idUsuario")).Text);
+        }
+        private int obtenerIdDelPermiso(string nombreDelPermiso)
+        {
+            NegocioPermisos negPer = new NegocioPermisos();
+           return negPer.obtenerIdPorNombre(nombreDelPermiso);
+        }
+        private void modificarUnPermisoDelUsuario(int idUsuario,int idPermiso,bool estadoDelPermiso)
+        {
+            NegocioPerXUsu neg = new NegocioPerXUsu();
+            neg.modificarUnPermisoDelUsuario(idUsuario,idPermiso,estadoDelPermiso.ToString());
+        }
+      //----------------------------------------------------------------------------------- 
         protected void ddl_it_Roles_SelectedIndexChanged(object sender, EventArgs e)
         {
             // modificar rol 
@@ -245,50 +303,70 @@ namespace gestion_de_negocio
 
         protected void btnAgregarRol_Click(object sender, EventArgs e)
         {
-            NegocioRoles negRoles = new NegocioRoles();
-            NegocioRolesXpermisos negRxP= new NegocioRolesXpermisos();
-            if (negRoles.altaRol(txtNombreRol.Text))
+            string nombreRol = txtNombreRol.Text;
+            if (!crearNuevoRol(nombreRol))
             {
-                if (altaTodosLosPermisosDelRol(negRoles.obtenerIdRol(txtNombreRol.Text)))
-                {
-                    cargarDdlRoles();
-                    lblMensajeRol.ForeColor = Color.Green;
-                    lblMensajeRol.Text = "Rol creado correctamente";
-                    txtNombreRol.Text = string.Empty;
-
-                }
-                else
-                {
-                    lblMensajeRol.ForeColor = Color.Red;
-                    lblMensajeRol.Text = "no se pudo crear el rol";
-                }
+                mensajeCreacionRol("No se pudo crear el rol", Color.Red);
+                return;
             }
+            if (!altaTodosLosPermisosDelRol(obtenerIdDelRol(nombreRol)))
+            {
+                mensajeCreacionRol("No se pudieron crear los permisos del rol", Color.Red);
+                return;
+            }
+              cargarDdlRoles();
+              mensajeCreacionRol("Rol creado correctamente",Color.Green);  
+        }
+        private bool crearNuevoRol(string nombre)
+        {
+            NegocioRoles negRoles = new NegocioRoles();
+           return negRoles.altaRol(nombre);
+        }
+        private int obtenerIdDelRol(string nombreRol)
+        {
+            NegocioRoles negRoles = new NegocioRoles();
+          return negRoles.obtenerIdRol(nombreRol);
+        }
+        private void mensajeCreacionRol(string mensaje,Color color)
+        {
+            lblMensajeRol.ForeColor = color;
+            lblMensajeRol.Text = "Rol creado correctamente";
+            txtNombreRol.Text = string.Empty;
         }
         public bool altaTodosLosPermisosDelRol(int idRol)
         {
             NegocioRolesXpermisos negRxP = new NegocioRolesXpermisos();
             string[] permisos = { "Productos", "Inventario", "Ventas", "Reportes", "Administracion" };
-            int altas = 0;
-            for(int i = 0; i < permisos.Length; i++)
+
+            int permisosAsignados = AsignarPermisosAlRol(negRxP, idRol, permisos);
+
+            return permisosAsignados == permisos.Length;
+        }
+
+        private int AsignarPermisosAlRol(NegocioRolesXpermisos negRxP, int idRol, string[] permisos)
+        {
+            int count = 0;
+            for (int i = 0; i < permisos.Length; i++)
             {
-                bool chequeado = false;
-                CheckBox checkBox = ((CheckBox)FindControl("chkBx" + permisos[i]));
-                if (checkBox != null)
+                if (AsignarPermiso(negRxP, idRol, i + 1, permisos[i]))
                 {
-                   
-                    if (checkBox.Checked)
-                    {
-                        chequeado = true;
-                    }
-                    Debug.WriteLine("--- chequeado es --> "+chequeado);
-                    if (negRxP.altaUnPermisoDelRol(idRol, i + 1, chequeado))
-                    {
-                        altas += 1;
-                    }
+                    count++;
                 }
             }
-            return (altas == permisos.Length) ? true : false;
-            
+            return count;
+        }
+
+        private bool AsignarPermiso(NegocioRolesXpermisos negRxP, int idRol, int idPermiso, string nombrePermiso)
+        {
+            CheckBox checkBox = obtenerCheckBoxDelPermiso(nombrePermiso);
+            bool estaChequeado = checkBox?.Checked ?? false;
+
+            return negRxP.altaUnPermisoDelRol(idRol, idPermiso, estaChequeado);
+        }
+
+        private CheckBox obtenerCheckBoxDelPermiso(string nombrePermiso)
+        {
+            return (CheckBox)FindControl("chkBx" + nombrePermiso);
         }
     }
 }
