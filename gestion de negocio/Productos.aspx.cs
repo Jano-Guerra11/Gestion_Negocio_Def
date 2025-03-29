@@ -28,34 +28,44 @@ namespace gestion_de_negocio
         }
         public void validarUsuario()
         {
-
+            if (!validarCookiesUsuarioRecordado() &&
+                !validarSessionsIniciadoNoRecordado())
+            {
+                //usuario no inicado ni recordado
+                Response.Redirect("login.aspx");
+            }
+        }
+        private bool validarCookiesUsuarioRecordado()
+        {
+            bool recordado = false;
             if (Request.Cookies["nombreUsuario"] != null &&
                 Request.Cookies["ContrasenaUsuario"] != null &&
                 Request.Cookies["negocio"] != null)
             {
-                //usuario recordado
                 string nombreUsuario = Request.Cookies["nombreUsuario"].Value;
                 string nombreNegocio = Request.Cookies["negocio"].Value;
 
                 lblUsuarioIniciado.Text = "Usuario: " + nombreUsuario;
                 lblNegocioIniciado.Text = "Negocio: " + nombreNegocio;
                 Session["nombreNegocio"] = nombreNegocio;
+                recordado = true;
             }
-            else if (Session["nombreUsuario"] != null && Session["nombreNegocio"] != null)
+            return recordado;
+        }
+        private bool validarSessionsIniciadoNoRecordado()
+        {
+            bool iniciadoNoRecordado = false;
+            if (Session["nombreUsuario"] != null && Session["nombreNegocio"] != null)
             {
-                // usuario iniciado pero no recordado
                 string UsuarioIniciado = Session["nombreUsuario"].ToString();
                 string NegocioIniciado = Session["nombreNegocio"].ToString();
 
                 lblUsuarioIniciado.Text = "Usuario: " + UsuarioIniciado;
                 lblNegocioIniciado.Text = "Negocio: " + NegocioIniciado;
+                iniciadoNoRecordado = true;
             }
-            else
-            {
-                Response.Redirect("login.aspx");
-            }
+            return iniciadoNoRecordado;
         }
-
         public void fileUpload()
         {
 
@@ -85,9 +95,7 @@ namespace gestion_de_negocio
         public void cargarDdlSecciones(string idSeccionSeleccionada)
         {
             NegocioSecciones negSec = new NegocioSecciones();
-            NegocioNegocios Neg = new NegocioNegocios();
-           int idNegocio = Neg.obtenerID(Session["nombreNegocio"].ToString());
-            Debug.WriteLine("id negocio iniciado ->Z " + idNegocio);
+           int idNegocio = obtenerIdNegocioIniciado();
             DataTable secciones = negSec.obtenerTablaSecciones(idNegocio);
             ddlSecciones.Items.Clear();
             ddlSecciones.DataSource = secciones;
@@ -96,20 +104,18 @@ namespace gestion_de_negocio
             ddlSecciones.DataBind();
             ddlSecciones.SelectedValue = idSeccionSeleccionada;
         }
+        private int obtenerIdNegocioIniciado()
+        {
+            NegocioNegocios Neg = new NegocioNegocios();
+            return Neg.obtenerID(Session["nombreNegocio"].ToString());
+        }
         public void cargarGridProductos()
         {
-            string nombreNegocio = Request.Cookies["negocio"].Value;
+            string nombreNegocio = Session["nombreNegocio"].ToString();
             NegocioProductos negProd = new NegocioProductos();
             grdProductos.DataSource = negProd.obtenerTablaProductosDeUnNegocio(nombreNegocio);
             grdProductos.DataBind();
         }
-
-
-        protected void MultiView1_ActiveViewChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnEsconder_Click(object sender, EventArgs e)
         {
             mostrarYesconderAlta();
@@ -128,41 +134,46 @@ namespace gestion_de_negocio
                 btnEsconder.Text = "<";
             }
         }
-
+      //---------------------------------------------------------------------------------------
         protected void btnGuardarImagen_Click(object sender, EventArgs e)
         {
             if (flUpProducto.HasFile)
             {
-                //obtengo la extension 
-                string extension = Path.GetExtension(flUpProducto.FileName).ToLower();
-                string[] extensionesValidas = { ".jpg", ".jpeg", ".png", ".gif" };
-                // comparo la extension con las validas
-                bool valida = extensionesValidas.Any(ex => ex == extension);
-                if (valida)
+                string extension = obtenerExtensionDelArchivo();
+                
+                if (extensionValida(extension))
                 {
-                    // Creo la ruta absoluta en el servidor usando Server.MapPath
-                    string carpetaDestino = Server.MapPath("~/imagenes/"); // Ruta física completa
-
-                    string rutaCompleta = Path.Combine(carpetaDestino, flUpProducto.FileName);
-                    flUpProducto.SaveAs(rutaCompleta);
-
-                    imgProducto.ImageUrl = "/imagenes/" + flUpProducto.FileName;
-                    fileUpload();
-                    // guardar la ruta en la base de datos
-                    Debug.WriteLine("ruta de la imagen ---> " + imgProducto.ImageUrl);
+                    crearYguardarRutaDeLaImagen();
+                    cargarImagen();
                 }
             }
         }
-
-
-        protected void grdProductos_SelectedIndexChanged(object sender, EventArgs e)
+        private string obtenerExtensionDelArchivo()
         {
-
+            return Path.GetExtension(flUpProducto.FileName).ToLower();
         }
+        private bool extensionValida(string extension)
+        {
+            string[] extensionesValidas = { ".jpg", ".jpeg", ".png", ".gif" };
+            bool valida = extensionesValidas.Any(ex => ex == extension);
+            return valida;
+        }
+        private void crearYguardarRutaDeLaImagen()
+        {
+            // Creo la ruta absoluta en el servidor usando Server.MapPath
+            string carpetaDestino = Server.MapPath("~/imagenes/"); // Ruta física completa
 
+            string rutaCompleta = Path.Combine(carpetaDestino, flUpProducto.FileName);
+            flUpProducto.SaveAs(rutaCompleta);
+        }
+        private void cargarImagen()
+        {
+            imgProducto.ImageUrl = "/imagenes/" + flUpProducto.FileName;
+            fileUpload();
+        }
+       //----------------------------------------------------------------------------------------
         protected void btnAgregarSeccion_Click(object sender, EventArgs e)
         {
-
             if(btnAgregarSeccion.Text == "+")
             {
                 btnAgregarSeccion.Text = "Agregar";
@@ -171,38 +182,34 @@ namespace gestion_de_negocio
             }
             else
             {
-                // alta
                 btnAgregarSeccion.Text = "+";
                 txtNuevaSeccion.Visible= false;
-                NegocioSecciones negSec = new NegocioSecciones();
-                NegocioNegocios neg = new NegocioNegocios();
-                int idNegocio = neg.obtenerID(Session["nombreNegocio"].ToString());
-                if (negSec.altaSeccion(txtNuevaSeccion.Text,idNegocio))
-                {
-                    lblMensajeAltaSeccion.Text = "Agregada";
-                    string idNuevaSec = negSec.obtenerIdSeccion(txtNuevaSeccion.Text).ToString();
-                    cargarDdlSecciones(idNuevaSec);
-                }
 
+                bool alta = agregarNuevaSeccion();
+                procesarResultadoDeAltaSeccion(alta);
             }
-
         }
-
-        protected void btnMostrarFiltrado_Click(object sender, EventArgs e)
+        private bool agregarNuevaSeccion()
         {
-           
+            NegocioSecciones negSec = new NegocioSecciones();
+            NegocioNegocios neg = new NegocioNegocios();
+            int idNegocio = obtenerIdNegocioIniciado();
+            return negSec.altaSeccion(txtNuevaSeccion.Text, idNegocio);
         }
-
-        protected void grdProductos_RowDataBound(object sender, GridViewRowEventArgs e)
+        private void procesarResultadoDeAltaSeccion(bool resultadoDeLaAccion)
         {
+            NegocioSecciones negSec = new NegocioSecciones();
+            if(resultadoDeLaAccion)
+            {
+                lblMensajeAltaSeccion.Text = "Agregada";
+                string idNuevaSec = negSec.obtenerIdSeccion(txtNuevaSeccion.Text).ToString();
+                cargarDdlSecciones(idNuevaSec);
+            }
+            else lblMensajeAltaSeccion.Text = "No se pudo agregar";
 
         }
 
-        protected void grdProductos_DataBound(object sender, EventArgs e)
-        {
-         
-        }
-
+      //---------------------------------------------------------------------------------------
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             NegocioNegocios negneg = new NegocioNegocios();
@@ -212,7 +219,7 @@ namespace gestion_de_negocio
             int idProducto = negProd.obtenerIdDelProducto(txtNombre.Text);
             bool accionExitosa = false;
             int accionRealizada = 0;
-            int idNegocioIniciado = negneg.obtenerID(Session["nombreNegocio"].ToString());
+            int idNegocioIniciado = obtenerIdNegocioIniciado();
           
             int.TryParse(ddlSecciones.SelectedValue, out int idSeccion);
             int.TryParse(txtPrecio.Text, out int precio);
@@ -257,7 +264,13 @@ namespace gestion_de_negocio
             cargarGridProductos();
 
         }
-
+        private Productos crearProductoRegistrado()
+        {
+            Productos prodNuevo = new Productos();
+            NegocioProductos negProd = new NegocioProductos();
+            prodNuevo.IdProducto_pr = negProd.obtenerIdDelProducto(txtNombre.Text);
+        }
+      // ----------------------------------------------------------------------------------------
         protected void btnAgregarProveedor_Click(object sender, EventArgs e)
         {
             if(btnAgregarProveedor.Text == "Agregar Proveedor")

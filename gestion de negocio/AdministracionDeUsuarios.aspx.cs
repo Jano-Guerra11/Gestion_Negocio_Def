@@ -171,6 +171,9 @@ namespace gestion_de_negocio
             lblMensajeErrorAgregarNegocio.Text = string.Empty;
             cargarDDlNegocios();
             txtNuevoNegocio.Text = string.Empty;
+           
+           
+           
         }
       // -------------------------------------------------------------------------------
         protected void btnRegistrarse_Click(object sender, EventArgs e)

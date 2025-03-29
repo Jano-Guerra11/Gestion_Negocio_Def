@@ -17,9 +17,10 @@ namespace Entidades
         private bool activo_pr;
         private string urlImagen_pr;
 
-        public Productos(int idProducto = -1, string nombre = "predeterminado",
-                      int? idSeccion = -1, string descripcion = "predeterminada",
-                      float precio = -1, int stock = -1, bool activo = false, string urlImagen_pr = null)
+       
+        public Productos(int idProducto, string nombre,
+                      int? idSeccion , string descripcion ,
+                      float precio, int stock , bool activo, string urlImagen_pr)
         {
             this.idProducto_pr = idProducto;
             this.nombre_pr = nombre;
@@ -30,6 +31,7 @@ namespace Entidades
             this.activo_pr = activo;
             this.UrlImagen_pr = urlImagen_pr;
         }
+        public Productos() { }
         public int IdProducto_pr { get => idProducto_pr; set => idProducto_pr = value; }
         public string Nombre_pr { get => nombre_pr; set => nombre_pr = value; }
         public int? IdSeccion_pr { get => idSeccion_pr; set => idSeccion_pr = value; }
