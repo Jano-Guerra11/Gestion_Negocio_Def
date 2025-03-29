@@ -71,7 +71,7 @@
     <Content Include="estilos.css" />
     <Content Include="login.aspx" />
     <Content Include="Menu.aspx" />
-    <Content Include="Productos.aspx" />
+    <Content Include="VistaProductos.aspx" />
     <Content Include="registracion.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -97,12 +97,12 @@
     <Compile Include="Menu.aspx.designer.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Productos.aspx.cs">
-      <DependentUpon>Productos.aspx</DependentUpon>
+    <Compile Include="VistaProductos.aspx.cs">
+      <DependentUpon>VistaProductos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Productos.aspx.designer.cs">
-      <DependentUpon>Productos.aspx</DependentUpon>
+    <Compile Include="VistaProductos.aspx.designer.cs">
+      <DependentUpon>VistaProductos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="registracion.aspx.cs">
