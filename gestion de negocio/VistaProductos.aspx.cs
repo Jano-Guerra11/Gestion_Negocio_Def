@@ -161,7 +161,7 @@ namespace gestion_de_negocio
         private void crearYguardarRutaDeLaImagen()
         {
             // Creo la ruta absoluta en el servidor usando Server.MapPath
-            string carpetaDestino = Server.MapPath("~/imagenes/"); // Ruta física completa
+            string carpetaDestino = Server.MapPath("~/imagenes/");
 
             string rutaCompleta = Path.Combine(carpetaDestino, flUpProducto.FileName);
             flUpProducto.SaveAs(rutaCompleta);
@@ -176,18 +176,26 @@ namespace gestion_de_negocio
         {
             if(btnAgregarSeccion.Text == "+")
             {
-                btnAgregarSeccion.Text = "Agregar";
-                txtNuevaSeccion.Visible = true;
-                lblMensajeAltaSeccion.Text = "";
+                estadoDeControlesEnAgregar();
             }
             else
             {
-                btnAgregarSeccion.Text = "+";
-                txtNuevaSeccion.Visible= false;
+                estadoDeControlesOcultar();
 
                 bool alta = agregarNuevaSeccion();
                 procesarResultadoDeAltaSeccion(alta);
             }
+        }
+        private void estadoDeControlesEnAgregar()
+        {
+            btnAgregarSeccion.Text = "Agregar";
+            txtNuevaSeccion.Visible = true;
+            lblMensajeAltaSeccion.Text = "";
+        }
+        private void estadoDeControlesOcultar()
+        {
+            btnAgregarSeccion.Text = "+";
+            txtNuevaSeccion.Visible = false;
         }
         private bool agregarNuevaSeccion()
         {
