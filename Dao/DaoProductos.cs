@@ -13,7 +13,9 @@ namespace Dao
     {
         AccesoDatos ad = new AccesoDatos();
 
-        public DataTable obtenerTablaProductosDeUnNegocio(int idNegocio)
+        public DataTable obtenerTablaProductosDeUnNegocio(int idNegocio,string id,
+            string nombrePr,string idSeccion,string precio,string stock,string opId,
+            string opPrecio,string opStock,string proveedor)
         {
             string consulta = "select idProducto_pr,nombre_pr,nombre_sec,descripcion_pr,precio_pr," +
                 "stock_pr,nombre_prov from productos INNER JOIN productosXnegocios on " +
@@ -21,7 +23,10 @@ namespace Dao
                 "productosXproveedores on productos.idProducto_pr = productosXproveedores.idProducto_pXp LEFT JOIN " +
                 "proveedores on productosXproveedores.idProveedor_pXp = proveedores.idProveedor_prov LEFT JOIN " +
                 "secciones ON productos.idSeccion_pr = secciones.idSeccion_sec " +
-                "where activo_pr = 'true' and idNegocio_prXneg = " + idNegocio;
+                "WHERE activo_pr = 'true' AND idNegocio_prXneg = " + idNegocio+" AND idProducto_pr "+opId+" "+id+
+                " AND nombre_pr LIKE "+nombrePr+"% AND idSeccion_pr = "+idSeccion+
+                " AND precio_pr "+opPrecio+" "+precio+" AND stock_pr "+opStock+" "+stock+
+                " AND nombre_prov LIKE "+proveedor+"%";
 
                return ad.obtenerTabla(consulta,"tablaProductos");
         }

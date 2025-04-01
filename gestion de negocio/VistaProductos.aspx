@@ -151,7 +151,7 @@
                         <td class="primeraCelda">Proveedor</td>
                         <td class="celdaMedia">
                             <asp:TextBox ID="txtFiltroProveedor" runat="server"></asp:TextBox></td>
-                        <td class="ultimaCelda"><asp:Button class="" ID="btnFiltrar" runat="server" Text="Filtrar Resultados" /></td>
+                        <td class="ultimaCelda"><asp:Button class="" ID="btnFiltrar" runat="server" Text="Filtrar Resultados" OnClick="btnFiltrar_Click" /></td>
 
                     </tr>
                 </table>

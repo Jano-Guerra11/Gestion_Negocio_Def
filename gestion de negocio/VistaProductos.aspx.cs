@@ -111,10 +111,24 @@ namespace gestion_de_negocio
         }
         public void cargarGridProductos()
         {
-            string nombreNegocio = Session["nombreNegocio"].ToString();
+            int idNegocio = obtenerIdNegocioIniciado();
             NegocioProductos negProd = new NegocioProductos();
-            grdProductos.DataSource = negProd.obtenerTablaProductosDeUnNegocio(nombreNegocio);
+            Productos datosDeFiltracion = productoConDatosDeFiltracion();
+            string nombreProveedor = txtFiltroProveedor.Text;
+            grdProductos.DataSource = negProd.obtenerTablaProductosDeUnNegocio(idNegocio,datosDeFiltracion,
+                ddlOpCodigo.SelectedValue,ddlOpPrecio.SelectedValue,ddlOpStock.SelectedValue,nombreProveedor);
             grdProductos.DataBind();
+        }
+        private Productos productoConDatosDeFiltracion()
+        {
+            int.TryParse(txtCodigo.Text, out int id);
+            Productos datosDeFiltro = new Productos();
+            datosDeFiltro.IdProducto_pr = Convert.ToInt32(txtCodigo.Text);
+            datosDeFiltro.Nombre_pr = txtNombreProducto.Text;
+            datosDeFiltro.IdSeccion_pr = Convert.ToInt32(ddlSeccion.SelectedValue);
+            datosDeFiltro.Precio_pr = Convert.ToInt32(txtFiltroPrecio.Text);
+            datosDeFiltro.Stock_pr = Convert.ToInt32(txtFiltroStock.Text);
+            return datosDeFiltro;
         }
         protected void btnEsconder_Click(object sender, EventArgs e)
         {
@@ -363,6 +377,11 @@ namespace gestion_de_negocio
             {
                 lblMensajeErrorAgregarProveedor.Text = "Error";
             }
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            cargarGridProductos();
         }
     }
     

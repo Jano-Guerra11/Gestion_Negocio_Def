@@ -14,13 +14,13 @@ namespace Negocio
     {
         DaoProductos dao = new DaoProductos();
 
-        public DataTable obtenerTablaProductosDeUnNegocio(string nombreNegocio)
+        public DataTable obtenerTablaProductosDeUnNegocio(int idNegocio,string idPr,
+            string nombrePr,string idSec,string precio,string stock, string opId,
+            string opPrecio, string opStock, string proveedor)
         {
-            daoNegocios daoNegocio = new daoNegocios();
-            NegocioC negocio = new NegocioC();            
-            negocio.NombreNegocio = nombreNegocio;
-            int idNegocio = daoNegocio.obtenerID(negocio);
-            DataTable tablaProductos = dao.obtenerTablaProductosDeUnNegocio(idNegocio);
+           
+            DataTable tablaProductos = dao.obtenerTablaProductosDeUnNegocio(idNegocio,idPr,nombrePr,idSec,precio,stock,opId,
+                opPrecio,opStock,proveedor);
 
             if(tablaProductos.Rows.Count == 0 || tablaProductos == null)
             {
