@@ -115,7 +115,7 @@ namespace gestion_de_negocio
             NegocioProductos negProd = new NegocioProductos();
             Productos datosDeFiltracion = productoConDatosDeFiltracion();
             string nombreProveedor = txtFiltroProveedor.Text;
-            grdProductos.DataSource = negProd.obtenerTablaProductosDeUnNegocio(idNegocio,datosDeFiltracion,
+            grdProductos.DataSource = negProd.obtenerTablaProductosDeUnNegocio(idNegocio,
                 ddlOpCodigo.SelectedValue,ddlOpPrecio.SelectedValue,ddlOpStock.SelectedValue,nombreProveedor);
             grdProductos.DataBind();
         }
