@@ -39,24 +39,15 @@ namespace Negocio
 
             return tablaProductos;
         }
-        public bool altaProducto(string nombre,int seccion,string descripcion,float precio,int stock,string urlImagen,int idNegocio)
+        public bool altaProducto(Productos producto, int idNegocio)
         {
             string idSeccion;
-            Productos producto = new Productos();
             DaoProductosXNegocios daoPrXNeg = new DaoProductosXNegocios();
             int idProducto = dao.obtenerUltimoId() + 1;
             producto.IdProducto_pr = idProducto;
-            producto.Nombre_pr = nombre;
-            if(seccion == 0) { idSeccion = "NULL"; }
-            else { idSeccion = seccion.ToString(); }
-            producto.Descripcion_pr = descripcion;
-            producto.Precio_pr = precio;
-            producto.Stock_pr = stock;
-            producto.Activo_pr = true;
-            producto.UrlImagen_pr = urlImagen;
-         
-            // falta agregar un productoXproveedor en todos los casos porq 
-            // tenemos un proveedor por defecto que es igual a sin proveedor
+            if(producto.IdSeccion_pr == 0) { idSeccion = "NULL"; }
+            else { idSeccion = producto.IdSeccion_pr.ToString(); }
+           
 
             bool alta = false;
             if (!dao.existeProducto(idProducto) &
@@ -88,22 +79,12 @@ namespace Negocio
             }
             return Convert.ToInt32(idProducto);
         }
-        public bool modificarProducto(string nombre, int idSeccion, string descripcion, float precio, int stock, string urlImagen)
+        public bool modificarProducto(Productos producto)
         {
             bool accionExitosa = false;
-            int idDelProducto = obtenerIdDelProducto(nombre);
 
-            if(idDelProducto != -1)
+            if(producto.IdProducto_pr != -1)
             {
-                Productos producto = new Productos();
-                producto.IdProducto_pr = idDelProducto;
-                producto.Nombre_pr = nombre;
-                producto.IdSeccion_pr = idSeccion;
-                producto.Descripcion_pr = descripcion;
-                producto.Precio_pr = precio;
-                producto.Stock_pr = stock;
-                producto.UrlImagen_pr = urlImagen;
-
                 if(dao.modificarProducto(producto) == 1)
                 {
                     accionExitosa = true;

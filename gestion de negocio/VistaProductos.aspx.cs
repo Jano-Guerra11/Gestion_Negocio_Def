@@ -220,41 +220,31 @@ namespace gestion_de_negocio
       //---------------------------------------------------------------------------------------
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            NegocioNegocios negneg = new NegocioNegocios();
-            NegocioProductos negProd = new NegocioProductos();
-            NegocioProdXProv negProdXProv = new NegocioProdXProv();
-           
-            int idProducto = negProd.obtenerIdDelProducto(txtNombre.Text);
-            bool accionExitosa = false;
+            int accionesExitosas = 0;
             int accionRealizada = 0;
             int idNegocioIniciado = obtenerIdNegocioIniciado();
-          
-            int.TryParse(ddlSecciones.SelectedValue, out int idSeccion);
-            int.TryParse(txtPrecio.Text, out int precio);
-            int.TryParse(txtStock.Text, out int stock);
-            int.TryParse(ddlProveedores.SelectedValue, out int idProveedor);
-            
+            int idProveedor = obtenerProveedorSeleccionado();
+            Productos producto = crearProductoRegistrado();
             // primero cargo el objeto y despues verifico si existe o no 
-            if (idProducto == -1)
-            {
-                
-                accionExitosa = negProd.altaProducto(txtNombre.Text, idSeccion,
-                    txtDescripcion.Text,precio, stock, imgProducto.ImageUrl,idNegocioIniciado);
+            // para saber si dar de alta o modificar
+            if (producto.IdProducto_pr == -1)
+            {  
+                accionesExitosas += altaProducto(producto,idNegocioIniciado) ? 1 : 0;
 
-                int nuevoIdProducto = negProd.obtenerIdDelProducto(txtNombre.Text);
-                accionExitosa = negProdXProv.altaProductoXProveedor(idProveedor,nuevoIdProducto,idNegocioIniciado);
-                
-                   accionRealizada = accionExitosa? 1 : 0;
+                int nuevoIdProducto = obtenerIdProductoPorNombre(txtNombre.Text);
+
+                accionesExitosas += altaProductoXproveedor(idProveedor,nuevoIdProducto,idNegocioIniciado) ? 1 : 0;
+
+                   accionRealizada = (accionesExitosas == 2)? 1 : 0;
             }
             else
             {
-                accionExitosa = negProd.modificarProducto(txtNombre.Text, idSeccion,
-                    txtDescripcion.Text,precio, stock, imgProducto.ImageUrl);
-                //if(idProveedor != )
+                accionesExitosas += modificarProducto(producto) ? 1 : 0;
+                accionesExitosas += modificarProductoXProveedor(idProveedor,producto.IdProducto_pr,idNegocioIniciado) ? 1 : 0;
                 // modificar producto xproveedor tambien 
                 
                 
-                   accionRealizada = accionExitosa? 2 : 0;  
+                   accionRealizada = (accionesExitosas == 2) ? 2 : 0;  
             }
 
             switch (accionRealizada)
@@ -276,9 +266,51 @@ namespace gestion_de_negocio
         {
             Productos prodNuevo = new Productos();
             NegocioProductos negProd = new NegocioProductos();
-            prodNuevo.IdProducto_pr = negProd.obtenerIdDelProducto(txtNombre.Text);
 
-            
+            int.TryParse(ddlSecciones.SelectedValue, out int idSeccion);
+            int.TryParse(txtPrecio.Text, out int precio);
+            int.TryParse(txtStock.Text, out int stock);
+
+            prodNuevo.IdProducto_pr = obtenerIdProductoPorNombre(txtNombre.Text);
+            prodNuevo.Nombre_pr = txtNombre.Text;
+            prodNuevo.IdSeccion_pr = idSeccion;
+            prodNuevo.Descripcion_pr = txtDescripcion.Text;
+            prodNuevo.Precio_pr = precio;
+            prodNuevo.Stock_pr = stock;
+            prodNuevo.UrlImagen_pr = imgProducto.ImageUrl;
+            prodNuevo.Activo_pr = true;
+
+            return prodNuevo;
+        }
+        private bool altaProducto(Productos producto,int idNegocioIniciado)
+        {
+            NegocioProductos negProd = new NegocioProductos();
+           return negProd.altaProducto(producto, idNegocioIniciado);
+        }
+        private int obtenerIdProductoPorNombre(string nombre)
+        {
+            NegocioProductos negProd = new NegocioProductos();
+           return  negProd.obtenerIdDelProducto(nombre);
+        }
+        private int obtenerProveedorSeleccionado()
+        {
+           int.TryParse(ddlProveedores.SelectedValue, out int idProveedor);
+            return idProveedor;
+        }
+        private bool altaProductoXproveedor(int idProveedor,int nuevoIdProducto,int idNegocioIniciado)
+        {
+            NegocioProdXProv negProdXProv = new NegocioProdXProv();
+           return negProdXProv.altaProductoXProveedor(idProveedor, nuevoIdProducto, idNegocioIniciado);
+        }
+        private bool modificarProducto(Productos producto)
+        {
+            NegocioProductos neg = new NegocioProductos();
+            return neg.modificarProducto(producto);
+        }
+        private bool modificarProductoXProveedor(int idProveedor,int IdProducto,int idNegocioIniciado)
+        {
+            NegocioProdXProv neg = new NegocioProdXProv();
+            return false;
         }
       // ----------------------------------------------------------------------------------------
         protected void btnAgregarProveedor_Click(object sender, EventArgs e)

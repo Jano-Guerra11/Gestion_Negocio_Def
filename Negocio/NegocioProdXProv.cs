@@ -15,12 +15,24 @@ namespace Negocio
         {
             bool alta = false;
             NegocioProveedores negProv = new NegocioProveedores();
-            if (negProv.existeProveedor(idProveedor))
+            NegocioProductos negProd = new NegocioProductos();
+            if (negProv.existeProveedor(idProveedor) && negProd.existeProducto(idProducto))
             {
                alta = (dao.altaProductosXProveedores(idProveedor,idProducto,idNegocio)==1)? true:false;
 
             }
             return alta;
+        }
+        public bool modificarProveedorDelProducto(int idProveedor, int idProducto, int idNegocio)
+        {
+            bool alta = false;
+            NegocioProveedores negProv = new NegocioProveedores();
+            NegocioProductos negProd = new NegocioProductos();
+            if (negProv.existeProveedor(idProveedor) && negProd.existeProducto(idProducto))
+            {
+
+            }
+            // verificar que exista el proveedor y verificar que no exista un prodXprov igual a este 
         }
     }
 }

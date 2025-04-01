@@ -157,7 +157,7 @@
                 </table>
                 </div>
                 <div class="contenedor_gridProductos">
-                <asp:GridView ID="grdProductos" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" CssClass="GridView" OnSelectedIndexChanged="grdProductos_SelectedIndexChanged" OnDataBound="grdProductos_DataBound" OnRowDataBound="grdProductos_RowDataBound">
+                <asp:GridView ID="grdProductos" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" CssClass="GridView" >
                     <Columns>
                         <asp:TemplateField HeaderText="Codigo">
                             <ItemTemplate>
