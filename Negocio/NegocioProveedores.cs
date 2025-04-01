@@ -35,20 +35,20 @@ namespace Negocio
             DataTable TablaUltimoId = dao.obtenerTablaConUltimoId();
             return Convert.ToInt32(TablaUltimoId.Rows[0][0]); 
         }
-        public bool altaProveedor(int idNegocio,string nombre,string razonSocial,string telefono,string mail)
+        public bool altaProveedor(Proveedores nuevoProv)
         {
             bool altaExitosa = false;
-            
-            if(obtenerIdProveedor(telefono) == -1)
+            // int idNegocio,string nombre,string razonSocial,string telefono,string mail
+            if (obtenerIdProveedor(nuevoProv.Telefono_prov) == -1)
             {
-                Proveedores nuevoProv = new Proveedores();
-                if (nombre == "sin proveedor") nuevoProv.IdProveedor_prov = 0;
+              
+                if (nuevoProv.Nombre_prov == "sin proveedor") nuevoProv.IdProveedor_prov = 0;
                 else nuevoProv.IdProveedor_prov = obtenerUltimoId() + 1;
-                nuevoProv.IdNegocio_prov = idNegocio;
-                nuevoProv.Nombre_prov = nombre;
-                nuevoProv.RazonSocial_prov = razonSocial;
-                nuevoProv.Telefono_prov = telefono;
-                nuevoProv.Mail_prov = string.IsNullOrEmpty(mail)? "NULL" : mail;
+               
+                
+                
+                
+                nuevoProv.Mail_prov = string.IsNullOrEmpty(nuevoProv.Mail_prov)? "NULL" : nuevoProv.Mail_prov;
                    altaExitosa = dao.altaProveedor(nuevoProv) == 1;
             }
                return altaExitosa;

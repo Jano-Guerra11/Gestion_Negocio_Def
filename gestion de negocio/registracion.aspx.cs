@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Entidades;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -79,7 +80,13 @@ namespace gestion_de_negocio
         private void altaProveedorPorDefecto(int idNeg)
         {
             NegocioProveedores negPRov = new NegocioProveedores();
-            negPRov.altaProveedor(idNeg, "sin proveedor", "-", "-", "-");
+            Proveedores provPorDefecto = new Proveedores();
+            provPorDefecto.IdNegocio_prov = idNeg;
+            provPorDefecto.Nombre_prov = "sin proveedor";
+            provPorDefecto.RazonSocial_prov = "-";
+            provPorDefecto.Telefono_prov = "-";
+            provPorDefecto.Mail_prov = "-";
+            negPRov.altaProveedor(provPorDefecto);
         } 
         private void altaSeccionPorDefecto(int idNeg)
         {

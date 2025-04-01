@@ -241,8 +241,6 @@ namespace gestion_de_negocio
             {
                 accionesExitosas += modificarProducto(producto) ? 1 : 0;
                 accionesExitosas += modificarProductoXProveedor(idProveedor,producto.IdProducto_pr,idNegocioIniciado) ? 1 : 0;
-                // modificar producto xproveedor tambien 
-                
                 
                    accionRealizada = (accionesExitosas == 2) ? 2 : 0;  
             }
@@ -317,31 +315,54 @@ namespace gestion_de_negocio
         {
             if(btnAgregarProveedor.Text == "Agregar Proveedor")
             {
-                btnAgregarProveedor.Text = "Guardar Proveedor";
-                txtNombreProv.Visible = true;
-                txtRazonSocialProv.Visible = true;
-                txtTelefonoProv.Visible = true;
-                txtMailProv.Visible = true;
+                mostrarControlesDeAltaProveedor();
             }
             else
             {
-                NegocioProveedores negProv = new NegocioProveedores();
-                NegocioNegocios neNeg = new NegocioNegocios();
-                int idNegocio = neNeg.obtenerID(Session["nombreNegocio"].ToString());
-
-                if (negProv.altaProveedor(idNegocio,txtNombreProv.Text,txtRazonSocialProv.Text,
-                    txtTelefonoProv.Text,txtMailProv.Text))
-                {
-                    btnAgregarProveedor.Text = "Agregar Proveedor";
-                    txtNombreProv.Visible = false;
-                    txtRazonSocialProv.Visible = false;
-                    txtTelefonoProv.Visible = false;
-                    txtMailProv.Visible = false;
-                    lblMensajeErrorAgregarProveedor.Text = "Proveedor cargado";
-                }
-                else { lblMensajeErrorAgregarProveedor.Text = "Error"; }
+                Proveedores provNuevo = cargarProveedorIngresado();
+               bool alta = altaProveedor(provNuevo);
+                procesarAltaProveedor(alta);      
+            }        
+        }
+        private void mostrarControlesDeAltaProveedor()
+        {
+            btnAgregarProveedor.Text = "Guardar Proveedor";
+            txtNombreProv.Visible = true;
+            txtRazonSocialProv.Visible = true;
+            txtTelefonoProv.Visible = true;
+            txtMailProv.Visible = true;
+        }
+        
+        private Proveedores cargarProveedorIngresado()
+        {
+            Proveedores nuevoProv = new Proveedores();
+            nuevoProv.IdNegocio_prov = obtenerIdNegocioIniciado();
+            nuevoProv.Nombre_prov = txtNombreProv.Text;
+            nuevoProv.RazonSocial_prov = txtRazonSocialProv.Text;
+            nuevoProv.Telefono_prov = txtTelefonoProv.Text;
+            nuevoProv.Mail_prov = txtMailProv.Text;
+            return nuevoProv;
+        }
+        private bool altaProveedor(Proveedores provNuevo)
+        {
+            NegocioProveedores neg = new NegocioProveedores();
+            return neg.altaProveedor(provNuevo);
+        }
+        private void procesarAltaProveedor(bool alta)
+        {
+            if(alta)
+            {
+                btnAgregarProveedor.Text = "Agregar Proveedor";
+                txtNombreProv.Visible = false;
+                txtRazonSocialProv.Visible = false;
+                txtTelefonoProv.Visible = false;
+                txtMailProv.Visible = false;
+                lblMensajeErrorAgregarProveedor.Text = "Proveedor cargado";
             }
-                    
+            else
+            {
+                lblMensajeErrorAgregarProveedor.Text = "Error";
+            }
         }
     }
     
