@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Dao
 {
     public class AccesoDatos
     {
-        string rutaBD = "Data Source=LAPTOPJANO\\SQLEXPRESS;Initial Catalog=Gestion_de_Negocio;Integrated Security=True";
+        string rutaBD = "Data Source=DESKTOP-UJD6JDV\\SQLEXPRESS;Initial Catalog=Gestion_de_Negocio;Integrated Security=True;";
 
         private SqlConnection obtenerConexion()
         {
@@ -23,6 +24,8 @@ namespace Dao
                 }
                 catch (Exception ex)
                 {
+                  Debug.WriteLine(ex.StackTrace);
+                Debug.WriteLine("-- exception en obtener conexion");
                     return null;
                 }
             
@@ -45,10 +48,13 @@ namespace Dao
         {
             using (SqlConnection conexion = obtenerConexion())
             {
+
               SqlDataAdapter adapter = obtenerAdaptador(consulta, conexion);
               DataSet ds = new DataSet();
               adapter.Fill(ds,nombreTabla);
               return ds.Tables[nombreTabla];
+              
+               
 
             }
         }

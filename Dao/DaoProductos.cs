@@ -13,7 +13,7 @@ namespace Dao
     {
         AccesoDatos ad = new AccesoDatos();
 
-        public DataTable obtenerTablaProductosDeUnNegocio(int idNegocio,string id,
+        public DataTable obtenerTablaProductosDeUnNegocio(int idNegocio,string idpr,
             string nombrePr,string idSeccion,string precio,string stock,string opId,
             string opPrecio,string opStock,string proveedor)
         {
@@ -23,12 +23,35 @@ namespace Dao
                 "productosXproveedores on productos.idProducto_pr = productosXproveedores.idProducto_pXp LEFT JOIN " +
                 "proveedores on productosXproveedores.idProveedor_pXp = proveedores.idProveedor_prov LEFT JOIN " +
                 "secciones ON productos.idSeccion_pr = secciones.idSeccion_sec " +
-                "WHERE activo_pr = 'true' AND idNegocio_prXneg = " + idNegocio+" AND idProducto_pr "+opId+" "+id+
-                " AND nombre_pr LIKE "+nombrePr+"% AND idSeccion_pr = "+idSeccion+
-                " AND precio_pr "+opPrecio+" "+precio+" AND stock_pr "+opStock+" "+stock+
-                " AND nombre_prov LIKE "+proveedor+"%";
+                "WHERE activo_pr = 'true' AND idNegocio_prXneg = " + idNegocio;
+              
 
-               return ad.obtenerTabla(consulta,"tablaProductos");
+            if (!string.IsNullOrWhiteSpace(idpr))
+            {
+                consulta += " AND idProducto_pr " + opId + " " + idpr+" ";
+            }
+            if (!string.IsNullOrWhiteSpace(nombrePr))
+            {
+                consulta += " AND nombre_pr LIKE " + nombrePr + "% ";
+            }
+            if (!string.IsNullOrWhiteSpace(idSeccion))
+            {
+                consulta += " AND idSeccion_pr = " + idSeccion+" ";
+            }
+            if (!string.IsNullOrWhiteSpace(precio))
+            {
+                consulta+= " AND precio_pr " + opPrecio + " " + precio +" ";
+            }
+            if (!string.IsNullOrWhiteSpace(stock))
+            {
+                consulta += " AND stock_pr " + opStock + " " + stock +" ";
+            }
+            if (!string.IsNullOrWhiteSpace(proveedor))
+            {
+                consulta += " AND nombre_prov LIKE " + proveedor + "%";
+            }
+
+            return ad.obtenerTabla(consulta,"tablaProductos");
         }
         public int altaProducto(Productos producto,string idseccion)
         {

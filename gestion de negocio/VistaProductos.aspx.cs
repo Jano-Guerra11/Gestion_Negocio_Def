@@ -113,22 +113,22 @@ namespace gestion_de_negocio
         {
             int idNegocio = obtenerIdNegocioIniciado();
             NegocioProductos negProd = new NegocioProductos();
-            Productos datosDeFiltracion = productoConDatosDeFiltracion();
-            string nombreProveedor = txtFiltroProveedor.Text;
-            grdProductos.DataSource = negProd.obtenerTablaProductosDeUnNegocio(idNegocio,
-                ddlOpCodigo.SelectedValue,ddlOpPrecio.SelectedValue,ddlOpStock.SelectedValue,nombreProveedor);
+            List<String> datosDeFiltracion = listaConDatosDeFiltracion();
+            grdProductos.DataSource = negProd.obtenerTablaProductosDeUnNegocio(datosDeFiltracion,idNegocio,
+                ddlOpCodigo.SelectedValue,ddlOpPrecio.SelectedValue,ddlOpStock.SelectedValue);
             grdProductos.DataBind();
         }
-        private Productos productoConDatosDeFiltracion()
+        private List<string> listaConDatosDeFiltracion()
         {
-            int.TryParse(txtCodigo.Text, out int id);
-            Productos datosDeFiltro = new Productos();
-            datosDeFiltro.IdProducto_pr = Convert.ToInt32(txtCodigo.Text);
-            datosDeFiltro.Nombre_pr = txtNombreProducto.Text;
-            datosDeFiltro.IdSeccion_pr = Convert.ToInt32(ddlSeccion.SelectedValue);
-            datosDeFiltro.Precio_pr = Convert.ToInt32(txtFiltroPrecio.Text);
-            datosDeFiltro.Stock_pr = Convert.ToInt32(txtFiltroStock.Text);
-            return datosDeFiltro;
+            List<string> datosDeFiltrado = new List<string>();
+            datosDeFiltrado.Add(txtCodigo.Text);
+            datosDeFiltrado.Add(txtNombreProducto.Text);
+            datosDeFiltrado.Add(txtFiltroProveedor.Text);
+            datosDeFiltrado.Add(ddlSeccion.SelectedValue);
+            datosDeFiltrado.Add(txtFiltroPrecio.Text);
+            datosDeFiltrado.Add(txtFiltroStock.Text);
+           
+            return datosDeFiltrado;
         }
         protected void btnEsconder_Click(object sender, EventArgs e)
         {
