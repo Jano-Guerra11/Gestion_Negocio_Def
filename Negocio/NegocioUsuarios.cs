@@ -23,9 +23,9 @@ namespace Negocio
             return existe;
         }
 
-        public int obtenerID(Usuarios usuario)
+        public int obtenerID(string nombre,string contraseña)
         {
-            return dao.obtenerID(usuario);
+            return dao.obtenerID_ConNombreYContraseña(nombre,contraseña);
         }
         public bool existeNombreUsuario(string nombre)
         {

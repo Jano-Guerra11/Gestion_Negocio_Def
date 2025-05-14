@@ -51,5 +51,14 @@ namespace Negocio
             }
              return result;
         }
+        public bool usuarioTienePermiso(permisosXusuarios permisoYusuario)
+        {
+            bool tienePermiso = false;
+            if (dao.existePermisoXusuario(permisoYusuario))
+            {
+                tienePermiso = true;
+            }
+            return tienePermiso;
+        }
     }
 }

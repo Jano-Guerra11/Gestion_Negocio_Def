@@ -27,9 +27,9 @@ namespace gestion_de_negocio
             HttpCookie ckNegocio = Request.Cookies["negocio"];
             if (ckNombre != null && ckContrasena != null && ckNegocio != null)
             {
-                txtNombreUsuario.Text = ckNombre.ToString();
-                txtPassword.Text = ckContrasena.ToString();
-                txtNombreNegocio.Text = ckNegocio.ToString();
+                txtNombreUsuario.Text = ckNombre.Value;
+                txtPassword.Attributes["value"] = ckContrasena.Value;
+                txtNombreNegocio.Text = ckNegocio.Value;
             }
         }
         protected void btnMostrar_Click(object sender, EventArgs e)
@@ -91,7 +91,7 @@ namespace gestion_de_negocio
             Usuarios usuario = new Usuarios();
             usuario.NombreUsuario = txtNombreUsuario.Text;
             usuario.Contrasenia = txtPassword.Text;
-            usuario.IdUsuario = neg.obtenerID(usuario);
+            usuario.IdUsuario = neg.obtenerID(txtNombreUsuario.Text, txtPassword.Text);
             return usuario;
         }
         public NegocioC obtenerNegocioConDatosDeLogin()
@@ -131,6 +131,7 @@ namespace gestion_de_negocio
             var negXus = obtenerNegXusuarios(usuario,negocio);
 
             Session["idNegocio"] = negocio.IdNegocio;
+            Session["idUsuario"] = usuario.IdUsuario;
             Session["rolUsuario"] = negUs.obtenerRolDelUsuario(usuario.IdUsuario);
             Session["nombreUsuario"] = usuario.NombreUsuario;
             Session["nombreNegocio"] =negocio.NombreNegocio;

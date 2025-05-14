@@ -12,7 +12,7 @@ namespace Dao
 {
     public class AccesoDatos
     {
-        string rutaBD = "Data Source=DESKTOP-UJD6JDV\\SQLEXPRESS;Initial Catalog=Gestion_de_Negocio;Integrated Security=True;";
+        string rutaBD = "Data Source=LAPTOPJANO\\SQLEXPRESS;Initial Catalog=Gestion_de_Negocio;Integrated Security=True";
 
         private SqlConnection obtenerConexion()
         {

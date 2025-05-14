@@ -34,6 +34,7 @@ namespace gestion_de_negocio
                 //usuario no inicado ni recordado
                 Response.Redirect("login.aspx");
             }
+            validarAccesoAProductos();
         }
         private bool validarCookiesUsuarioRecordado()
         {
@@ -65,6 +66,23 @@ namespace gestion_de_negocio
                 iniciadoNoRecordado = true;
             }
             return iniciadoNoRecordado;
+        }
+        private void validarAccesoAProductos()
+        {
+            NegocioPerXUsu negPerXus = new NegocioPerXUsu();
+            if (!negPerXus.usuarioTienePermiso(cargarPermisosXusuario(1)))
+            {
+                Response.Redirect("Menu.aspx");
+            }
+           
+        }
+        private permisosXusuarios cargarPermisosXusuario(int idPermiso)
+        {
+            permisosXusuarios permisosXusuarios = new permisosXusuarios();
+            permisosXusuarios.IdUsuario_perXus = Convert.ToInt32(Session["idUsuario"]);
+            permisosXusuarios.IdPermiso_perXus = 1;
+            Debug.WriteLine("id del usuario ----> " + permisosXusuarios.IdUsuario_perXus);
+            return permisosXusuarios;
         }
         public void fileUpload()
         {

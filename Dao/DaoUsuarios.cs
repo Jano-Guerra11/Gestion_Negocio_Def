@@ -23,11 +23,11 @@ namespace Dao
             }     
             return existe;
         }
-        public int obtenerID(Usuarios usuario)
+        public int obtenerID_ConNombreYContraseña(string nombre, string contraseña)
         {
             int id = 0;
-            string consulta = "SELECT idUsuario_us FROM usuarios where nombre_Us = '" + usuario.NombreUsuario +
-                "' and contrasenia_us = '" + usuario.Contrasenia + "'";
+            string consulta = "SELECT idUsuario_us FROM usuarios where nombre_Us = '" + nombre +
+                "' and contrasenia_us = '" + contraseña + "'";
             DataTable dt = ad.obtenerTabla(consulta,"idUsuario");
             if(dt.Rows.Count > 0)
             {

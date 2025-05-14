@@ -12,10 +12,13 @@
 </head>
 <body class="body_menu">
     <form id="form1" runat="server">
-     
+     <header>
+         <asp:Label ID="lblUsuarioIniciado" runat="server" Text=""></asp:Label>
+         <asp:Label ID="lblNegocioIniciado" runat="server" Text="Label"></asp:Label>
+     </header>
         <main class="main">
             <section class="contenedor_Menu">
-                <asp:Button onmouseover="notifyServer('hover')" onmouseout="notifyServer('leave')"  CssClass="boton_menu" ID="btnProductos" runat="server" Text="Productos" title="Agregar - Eliminar - Modificar - Listar - Categorización de Productos" />    
+                <asp:Button onmouseover="notifyServer('hover')" onmouseout="notifyServer('leave')"  CssClass="boton_menu" ID="btnProductos" runat="server" Text="Productos" title="Agregar - Eliminar - Modificar - Listar - Categorización de Productos" OnClick="btnProductos_Click" />    
                 <asp:Button CssClass="boton_menu" ID="btnInventario" runat="server" Text="Gestion inventario"  title="Registro de entradas y salidas de inventario" />
                 <asp:Button CssClass="boton_menu" ID="btnVentas" runat="server" Text="Gestion ventas"  title="Registro de ventas realizadas"/>
                 <asp:Button CssClass="boton_menu" ID="btnReportes" runat="server" Text="Reportes y estadisticas" title="Reportes sobre productos más vendidos.

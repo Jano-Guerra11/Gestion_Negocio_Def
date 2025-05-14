@@ -24,6 +24,24 @@ namespace gestion_de_negocio
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control lblUsuarioIniciado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsuarioIniciado;
+
+        /// <summary>
+        /// Control lblNegocioIniciado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNegocioIniciado;
+
+        /// <summary>
         /// Control btnProductos.
         /// </summary>
         /// <remarks>
